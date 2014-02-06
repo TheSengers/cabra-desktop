@@ -19,7 +19,7 @@ public class Main extends Object implements Runnable{
         GUI.setNimbusLookAndFeel();
         
         //creating controller does everything
-        Controller c = new Controller();
+        Controller cont = new Controller();
         
         //build about dialog in the background so there's no delay when the user loads it
         javax.swing.SwingUtilities.invokeLater(new Runnable(){
