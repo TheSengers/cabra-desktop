@@ -137,15 +137,15 @@ public final class Controller extends Object{
             //show changelog
             if(About.NIGHTLY){
                 //don't bother with showing nightly changelog; docs are rarely written for nightlies
-                Utils.showDialog(gui.getFrame(),
+              /*  Utils.showDialog(gui.getFrame(),
                         "<html><center>Thanks for testing Cabra " + version + "!<br>As thanks, here's <b>100</b> points!",
                         "Thanks for upgrading to Cabra " + version + "!"
-                        );
+                        );  */
             }
             else{
-                Utils.openURLinDialog("http://cabra.hathix.com/changelog/" + Utils.sanitizeURL(version) + ".php", 
+               /* Utils.openURLinDialog("http://cabra.hathix.com/changelog/" + Utils.sanitizeURL(version) + ".php", 
                         "Thanks for upgrading to Cabra " + version + "!", 
-                        gui.getFrame(), true);
+                        gui.getFrame(), true);  */
             }
             
             //earn points for upgrading
