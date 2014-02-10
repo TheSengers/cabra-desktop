@@ -91,7 +91,7 @@ public class Controller_tests {
 		assertEquals("Number of projects",expectedSize, actualSize);		
 	}
 	
-	@Test
+	@Test 
 	//creating a project with a null string for a name.
 	public void addProject_withNullName_test() {
 		Controller cont = getNewController();
@@ -262,7 +262,24 @@ public class Controller_tests {
 		cont.setActiveProject("p5", true);
 			
 		String actualName = cont.getActiveProject().getName();
-		String expectedName = "p2";
+		String expectedName = "p1";
+		assertEquals("Name of project",expectedName, actualName);		
+	}
+	
+	@Test
+	//setting active project with a null project.
+	public void setActiveProject_withNullProject_test() {
+		Controller cont = getNewController();
+		
+		cont.addProject("p1", true);
+		cont.addProject("p2", true);
+		cont.setActiveProject("p1", true);
+		
+		Project proj = null;
+		cont.setActiveProject(proj, true);
+			
+		String actualName = cont.getActiveProject().getName();
+		String expectedName = "p1";
 		assertEquals("Name of project",expectedName, actualName);		
 	}
 
