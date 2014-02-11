@@ -3,6 +3,7 @@ package cabra.tests;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
 import cabra.*;
 
 public class Utils_test {
@@ -12,6 +13,8 @@ public class Utils_test {
 		fail("Not yet implemented");
 	}
 */	
+	
+	/*------------Utils.arraySum test------------*/
 	@Test
 	public void arraySum_empty_test() {
 		int[] empty_arr;
@@ -53,7 +56,7 @@ public class Utils_test {
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
 
-	
+	/*------------Utils.averageSum test------------*/
 	@Test
 	public void average_positive_positivenums_test() {
 		int[] num = {1,2,3,4,5};
@@ -77,4 +80,15 @@ public class Utils_test {
 		int expected = (-3)/5;
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
+
+	/*------------Utils.arrayFromString test------------*/
+	@SuppressWarnings("deprecation")
+	@Test
+	public void arrayFromString_positive_test() {
+		String input = "[I;like;to;test!]";
+		String[] actual = Utils.arrayFromString(input);
+		String[] expected = {"I","like","to","test!"};
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+
 }
