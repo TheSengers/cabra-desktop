@@ -98,6 +98,7 @@ public class Session_tests {
 	}
 	
 	@Test
+	//this test simulates a short session
 	public void getCardStats_positiveTest() {
 		Project proj = new Project("p1");
 		proj.addCard(new Card("q","a"), Status.A);
