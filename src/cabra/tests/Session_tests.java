@@ -123,10 +123,10 @@ public class Session_tests {
 		
 		assertEquals("Num of cards learned", expectedNumLearned, actualNumLearned);
 		
-		int actualNumSkipped = sess.getCardStats()[2];
-		int expectedNumSkipped = 1;
+		int actualNumSortOf = sess.getCardStats()[2];
+		int expectedNumSortOf = 1;
 		
-		assertEquals("Num of cards sort of", expectedNumSkipped, actualNumSkipped);
+		assertEquals("Num of cards sort of", expectedNumSortOf, actualNumSortOf);
 		
 		int actualNumNotLearned = sess.getCardStats()[1];
 		int expectedNumNotLearned = 2;
@@ -134,6 +134,33 @@ public class Session_tests {
 		assertEquals("Num of cards not learned", expectedNumNotLearned, actualNumNotLearned);
 	}
 	
+	@Test
+	//testing skipping cards.
+	public void getCardStats_skippingCards_test() {
+		Project proj = new Project("p1");
+		proj.addCard(new Card("q","a"), Status.A);
+		proj.addCard(new Card("q","a"), Status.A);
+		proj.addCard(new Card("q","a"), Status.A);
+		Session sess = new Session(proj);
+		sess.getCard();
+		sess.putResult(KnowPanel.Choices.SKIPPED);
+		sess.getCard();
+		sess.putResult(KnowPanel.Choices.YES);
+		sess.getCard();
+		sess.putResult(KnowPanel.Choices.YES);
+
+
+		int actualNumLearned = sess.getCardStats()[0];
+		int expectedNumLearned = 2;
+		
+		assertEquals("Num of cards learned", expectedNumLearned, actualNumLearned);
+		
+		int actualNumSkipped = sess.getCardStats()[3];
+		int expectedNumSkipped = 1;
+		
+		assertEquals("Num of skipped cards", expectedNumSkipped, actualNumSkipped);
+		
+	}
 	
 
 }
