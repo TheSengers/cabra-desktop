@@ -82,7 +82,7 @@ public class Controller_tests {
 	//creating a project with an empty string for a name.
 	public void addProject_withEmptyName_test() {
 		Controller cont = getNewController();
-		Project proj = cont.addProject("Project1", false);
+		Project proj = cont.addProject("", true);
 		
 		ArrayList<Project> Projects = cont.getAllProjects();
 		
