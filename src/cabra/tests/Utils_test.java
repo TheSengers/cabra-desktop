@@ -90,5 +90,29 @@ public class Utils_test {
 		String[] expected = {"I","like","to","test!"};
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
+	
+	@SuppressWarnings("deprecation")
+	@Test
+	public void arrayFromString_empty_test() {
+		String input = "[]";
+		String[] actual = Utils.arrayFromString(input);
+		String[] expected = {""};
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
 
+	/*------------Utils.stringFromArray test------------*/
+	@Test
+	public void stringFromArray_positive_test() {
+		String[] input = {"I","like","to","test!"};
+		String actual = Utils.stringFromArray(input);
+		String expected =  "[I;like;to;test!]";
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+	@Test
+	public void stringFromArray_empty_test() {
+		String[] input = {""};
+		String actual = Utils.stringFromArray(input);
+		String expected =  "[]";
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}	
 }
