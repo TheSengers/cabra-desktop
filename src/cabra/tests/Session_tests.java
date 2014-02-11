@@ -65,7 +65,7 @@ public class Session_tests {
 	}
 	
 	@Test
-	//the third session should have 1 card to study since status B cards are studies every third session.
+	//the third session should have 1 card to study since status B cards are studied every third session.
 	public void getNumCards_secondSession_test() {
 		Project proj = new Project("p1");
 		proj.addCard(new Card("q","a"), Status.B);
@@ -95,6 +95,43 @@ public class Session_tests {
 		boolean expectedBool = true;
 		
 		assertEquals("Is session finished", expectedBool, actualBool);		
+	}
+	
+	@Test
+	//test should be finished after one getCard() because there is only one card to study.
+	public void getCardStats_positiveTest() {
+		Project proj = new Project("p1");
+		proj.addCard(new Card("q","a"), Status.A);
+		proj.addCard(new Card("q","a"), Status.A);
+		proj.addCard(new Card("q","a"), Status.A);
+		proj.addCard(new Card("q","a"), Status.A);
+		proj.addCard(new Card("q","a"), Status.A);
+		Session sess = new Session(proj);
+		sess.getCard();
+		sess.putResult(KnowPanel.Choices.YES);
+		sess.getCard();
+		sess.putResult(KnowPanel.Choices.YES);
+		sess.getCard();
+		sess.putResult(KnowPanel.Choices.SORT_OF);
+		sess.getCard();
+		sess.putResult(KnowPanel.Choices.NO);
+		sess.getCard();
+		sess.putResult(KnowPanel.Choices.NO);
+
+		int actualNumLearned = sess.getCardStats()[0];
+		int expectedNumLearned = 2;
+		
+		assertEquals("Num of cards learned", expectedNumLearned, actualNumLearned);
+		
+		int actualNumSkipped = sess.getCardStats()[2];
+		int expectedNumSkipped = 1;
+		
+		assertEquals("Num of cards sort of", expectedNumSkipped, actualNumSkipped);
+		
+		int actualNumNotLearned = sess.getCardStats()[1];
+		int expectedNumNotLearned = 2;
+		
+		assertEquals("Num of cards not learned", expectedNumNotLearned, actualNumNotLearned);
 	}
 	
 	

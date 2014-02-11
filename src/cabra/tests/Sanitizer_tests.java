@@ -72,7 +72,7 @@ public class Sanitizer_tests {
 	}
 	
 	@Test
-	public void removeUnderscores_nullString_test() {
+	public void s() {
 		String actualString = Sanitizer.removeUnderscores(null);
 		String expectedString = null;
 		
