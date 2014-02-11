@@ -98,7 +98,6 @@ public class Session_tests {
 	}
 	
 	@Test
-	//test should be finished after one getCard() because there is only one card to study.
 	public void getCardStats_positiveTest() {
 		Project proj = new Project("p1");
 		proj.addCard(new Card("q","a"), Status.A);
