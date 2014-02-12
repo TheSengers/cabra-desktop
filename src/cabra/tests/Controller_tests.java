@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import cabra.*;
+import cabra.PointEnums.Activity;
 
 public class Controller_tests {
 
@@ -281,6 +282,28 @@ public class Controller_tests {
 		String actualName = cont.getActiveProject().getName();
 		String expectedName = "p1";
 		assertEquals("Name of project",expectedName, actualName);		
+	}
+	
+	@Test
+	//note user always starts off with a 100 points.
+	public void getPoints_noPoints_test() {
+		Controller cont = getNewController();	
+
+		int actualPointsNum = cont.getPoints();
+		int expectedPointsNum = 100;
+		assertEquals("Number of points",expectedPointsNum, actualPointsNum);		
+	}
+	
+	@Test
+	//note user always starts off with a 100 points.
+	public void gainPoints_noPoints_test() {
+		Controller cont = getNewController();
+		cont.gainPoints(Activity.ADD_IMAGE);
+		cont.gainPoints(Activity.CODE_FIRSTRUN);
+
+		int actualPointsNum = cont.getPoints();
+		int expectedPointsNum = 100 + Activity.ADD_IMAGE.getPoints() + Activity.CODE_FIRSTRUN.getPoints();
+		assertEquals("Number of points",expectedPointsNum, actualPointsNum);		
 	}
 
 
