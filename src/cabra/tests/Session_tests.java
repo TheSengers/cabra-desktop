@@ -162,5 +162,33 @@ public class Session_tests {
 		
 	}
 	
+	@Test
+	//testing skipping cards.
+	public void getCardStats_cardSkipped_test() {
+		Project proj = new Project("p1");
+		proj.addCard(new Card("q","a"), Status.A);
+		proj.addCard(new Card("q","a"), Status.A);
+		proj.addCard(new Card("q","a"), Status.A);
+		Session sess = new Session(proj);
+		sess.getCard();
+		sess.cardSkipped();
+		sess.getCard();
+		sess.putResult(KnowPanel.Choices.YES);
+		sess.getCard();
+		sess.putResult(KnowPanel.Choices.YES);
+
+
+		int actualNumLearned = sess.getCardStats()[0];
+		int expectedNumLearned = 2;
+		
+		assertEquals("Num of cards learned", expectedNumLearned, actualNumLearned);
+		
+		int actualNumSkipped = sess.getCardStats()[3];
+		int expectedNumSkipped = 1;
+		
+		assertEquals("Num of skipped cards", expectedNumSkipped, actualNumSkipped);
+		
+	}
+	
 
 }
