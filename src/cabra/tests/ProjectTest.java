@@ -42,13 +42,15 @@ public class ProjectTest extends TestCase {
 
     @Test
     /**
-     * ASK TODAY
+     * Test that makes sure you cannot set a session to be Null
      */
     public void testSetSession_WithNullSession() {
         Session session = null;
-        Project ActualResult = new Project("name");
-        ActualResult.setSession(session);
+        Project project = new Project("name");
+        project.setSession(session);
+        Session Result = project.getSession();
         // TODO review the generated test code and remove the default call to fail.
+        assertNotNull(Result);
         fail("The test case is a prototype.");
     }
     
@@ -67,18 +69,6 @@ public class ProjectTest extends TestCase {
     }
     
     
-    @Test
-    /**
-     * Test adding a brand new session
-     */
-    public void testNewSession() {
-        Project project = new Project("Name");
-        project.newSession();
-        
-        Session Result = project.getSession();
-        
-        assertNotNull(Result);
-    }
     
 
     @Test
@@ -380,18 +370,18 @@ public class ProjectTest extends TestCase {
         failNotEquals("Remove cards",NotExpectedResult, ActualResult);
     }
     
-    @Test
+    
     /**
      *This test makes sure that the user cannot remove a card from a project with no cards
      *ASK TODAY
      */
-    public void testRemoveCard_ProjectWithoutCard() {
+    /*public void testRemoveCard_ProjectWithoutCard() {
         Card cardToRemove = new Card("Remove","Yes");
         Project project = new Project("Name");
         project.removeCard(cardToRemove);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
-    }
+    }*/
     
     @Test
     /**
@@ -404,29 +394,14 @@ public class ProjectTest extends TestCase {
         Project project = new Project("Name");
         project.addCard(card);
         project.removeCard(cardToRemove);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    /**
-     *This test makes sure
-     *
-     */
-    public void testRemoveCard_DoesNotRemoveOtherCard() {
-        Card cardToRemove = new Card("Remove","Yes");
-        Card card = new Card("Add","No");
-        Project project = new Project("Name");
-        project.addCard(card);
-        project.removeCard(cardToRemove);
-        // TODO review the generated test code and remove the default call to fail.
-        
         
         Card ExpectedResult = card;
-        Card ActualResult = project.getCards().get(0);
+        Card ActualResult = project.getCurrentCard();
         
-        assertEquals(ExpectedResult, ActualResult);
+        assertEquals("No card was removed since the card did not exist in the project", ExpectedResult, ActualResult);
+       
     }
+
 
     /**
      * Test of save method, of class Project.
@@ -699,22 +674,6 @@ public class ProjectTest extends TestCase {
 
     }
      
-     @Test
-    /**
-     * This test ales suers that a project with items is not considered empty
-     */
-    public void testProjectNotEmpty() {
-        System.out.println("isEmpty");
-        Project project = new Project("Name");
-        Card card =   new Card("Q","A");
-        
-        project.addCard(card);
-        
-        boolean ExpectedResult = true;
-        boolean ActualResult = project.isEmpty();
-        assertEquals(ExpectedResult, ActualResult);
-
-    }
      
      @Test
     /**
