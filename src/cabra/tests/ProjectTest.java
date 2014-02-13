@@ -336,11 +336,11 @@ public class ProjectTest extends TestCase {
      *Test that the user cannot add a deck of empty cards
      */
     public void testAddCards_NoCardsWereGiven() {
-        ArrayList<Card> Cards = new ArrayList<Card>();
+        ArrayList<Card> Cards = null;
         Project project = new Project("Name");
         project.addCards(Cards);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        assertNotNull(project.getCards());
     }
     
     
