@@ -2,6 +2,7 @@ package cabra.tests;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.math.BigInteger;
 
 import org.junit.Test;
@@ -149,9 +150,9 @@ public class Utils_test {
 	
 	@Test
 	public void dayToMillis_max32unsignedlong_test() {
-		int daynums = 25;
+		int daynums = 24;
 		BigInteger actual = BigInteger.valueOf(Utils.daysToMillis(daynums));
-		BigInteger largedays = new BigInteger("25");
+		BigInteger largedays = new BigInteger("24");
 		BigInteger expected = new BigInteger("86400000");
 		expected = expected.multiply(largedays);
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
@@ -199,6 +200,121 @@ public class Utils_test {
 		String ends = ".ja";
 		boolean actual = Utils.endsWith(file_ext, ends);
 		boolean expected = false;
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+	
+	@Test
+	public void endsWith_empty_test() {
+		String file_ext = "";
+		String ends = "";
+		boolean actual = Utils.endsWith(file_ext, ends);
+		boolean expected = true;
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+
+	/*------------Utils.getExtension test------------*/
+	@Test
+	public void getExtension_file_extension_test() {
+		File file_ext = new File("swagyolo.txt");
+		String actual = Utils.getExtension(file_ext);
+		String expected = "txt";
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+	
+	@Test
+	public void getExtension_no_extension_test() {
+		File file_ext = new File("swagyolo");
+		String actual = Utils.getExtension(file_ext);
+		String expected = null;
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+	
+	@Test
+	public void getExtension_mult_file_extension_test() {
+		File file_ext = new File("swagyolo.txt.jar");
+		String actual = Utils.getExtension(file_ext);
+		String expected = "jar";
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+	
+	@Test
+	public void getExtension_empty_test() {
+		File file_ext = new File("");
+		String actual = Utils.getExtension(file_ext);
+		String expected = null;
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+	
+	/*------------Utils.numDigits test------------*/
+	@Test
+	public void numDigits_positive_test() {
+		int input = 1000;
+		int actual = Utils.numDigits(input);
+		int expected = 4;
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+	
+	@Test
+	public void numDigits_largest_32bit_signed_test() {
+		int input = 2147483647;
+		int actual = Utils.numDigits(input);
+		int expected = 10;
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+	@Test
+	public void numDigits_negative_num_test() {
+		int input = (-1000);
+		int actual = Utils.numDigits(input);
+		int expected = 4;
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+	
+	@Test
+	public void numDigits_onedigit_zero_test() {
+		int input = 0;
+		int actual = Utils.numDigits(input);
+		int expected = 1;
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+	
+	/*------------Utils.stringWithPlural test------------*/
+	@Test
+	public void stringWithPlural_positive_test() {
+		String input = "dog";
+		String actual = Utils.stringWithPlural(input, 5);
+		String expected = "dogs";
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+	
+	@Test
+	public void stringWithPlural_one_element_test() {
+		String input = "dog";
+		String actual = Utils.stringWithPlural(input, 1);
+		String expected = "dog";
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+	
+	@Test
+	public void stringWithPlural_two_element_test() {
+		String input = "dog";
+		String actual = Utils.stringWithPlural(input, 2);
+		String expected = "dogs";
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+	
+	@Test
+	public void stringWithPlural_word_ending_with_s_test() {
+		String input = "dogs";
+		String actual = Utils.stringWithPlural(input, 2);
+		String expected = "dogss";
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+
+	@Test
+	public void stringWithPlural_zero_quantity_test() {
+		String input = "dog";
+		String actual = Utils.stringWithPlural(input, 0);
+		String expected = "dog";
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
 }
