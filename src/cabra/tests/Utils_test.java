@@ -111,6 +111,7 @@ public class Utils_test {
 		String expected =  "[I;like;to;test!]";
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
+	
 	@Test
 	public void stringFromArray_empty_test() {
 		String[] input = {""};
@@ -118,6 +119,7 @@ public class Utils_test {
 		String expected =  "[]";
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}	
+	
 	/*------------Utils.daysToMillis test------------*/
 	@Test
 	public void dayToMillis_positive_test() {
@@ -133,7 +135,6 @@ public class Utils_test {
 		BigInteger actual = BigInteger.valueOf(Utils.daysToMillis(daynums));
 		BigInteger largedays = new BigInteger("365");
 		BigInteger expected = new BigInteger("86400000");
-		//expected.multiply(largedays);
 		expected = expected.multiply(largedays);
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
@@ -150,9 +151,9 @@ public class Utils_test {
 	
 	@Test
 	public void dayToMillis_max32unsignedlong_test() {
-		int daynums = 24;
+		int daynums = 25;
 		BigInteger actual = BigInteger.valueOf(Utils.daysToMillis(daynums));
-		BigInteger largedays = new BigInteger("24");
+		BigInteger largedays = new BigInteger("25");
 		BigInteger expected = new BigInteger("86400000");
 		expected = expected.multiply(largedays);
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
@@ -261,6 +262,7 @@ public class Utils_test {
 		int expected = 10;
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
+	
 	@Test
 	public void numDigits_negative_num_test() {
 		int input = (-1000);
@@ -315,6 +317,90 @@ public class Utils_test {
 		String input = "dog";
 		String actual = Utils.stringWithPlural(input, 0);
 		String expected = "dog";
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+
+	/*------------Utils.toIntegerArray test------------*/
+	@SuppressWarnings("deprecation")
+	@Test
+	public void toIntegerArray_positive_test() {
+		int[] input = {0,1,2,3,4,5};
+		Integer[] actual = Utils.toIntegerArray(input);
+		Integer[] expected = {0,1,2,3,4,5};
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Test
+	public void toIntegerArray_positive_negnums_test() {
+		int[] input = {-1,-2,-3,-4,-5};
+		Integer[] actual = Utils.toIntegerArray(input);
+		Integer[] expected = {-1,-2,-3,-4,-5};
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+	
+	/*------------Utils.toPercent test------------*/
+	@Test
+	public void toPercent_positive_test() {
+		int numerator = 90;
+		int denominator = 100;
+		String actual = Utils.toPercent(numerator, denominator);
+		String expected = "90%";
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+	
+	@Test
+	public void toPercent_positive_mixedfrac_test() {
+		int numerator = 80;
+		int denominator = 93;
+		String actual = Utils.toPercent(numerator, denominator);
+		String expected = "86%";
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+	
+	@Test
+	public void toPercent_positive_0_test() {
+		int numerator = 0;
+		int denominator = 100;
+		String actual = Utils.toPercent(numerator, denominator);
+		String expected = "0%";
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+
+	@Test
+	public void toPercent_positive_5percent_test() {
+		int numerator = 5;
+		int denominator = 100;
+		String actual = Utils.toPercent(numerator, denominator);
+		String expected = "5%";
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+	
+	@Test
+	public void toPercent_positive_negnum_test() {
+		int numerator = -5;
+		int denominator = 100;
+		String actual = Utils.toPercent(numerator, denominator);
+		String expected = "-5%";
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+
+	/*------------Utils.padWithLeadingZeroes test------------*/
+	@Test
+	public void padWithLeadingZeroes_positive_test() {
+		int x = 5;
+		int digits = 4;
+		String actual = Utils.padWithLeadingZeroes(x, digits);
+		String expected = "0005";
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+
+	@Test
+	public void padWithLeadingZeroes_positive_lessdig_test() {
+		int x = 532;
+		int digits = 2;
+		String actual = Utils.padWithLeadingZeroes(x, digits);
+		String expected = "532";
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
 }

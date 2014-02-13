@@ -21,4 +21,14 @@ public class Utils_whitebox_test {
 		int expected = 0;
 		assertEquals("Passing an empty array to Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
+
+	//shouldn't work
+	@Test
+	public void toPercent_exception_test() {
+		int numerator = 90;
+		int denominator = 0;
+		String actual = Utils.toPercent(numerator, denominator);
+		String expected = "86%";
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}	
 }
