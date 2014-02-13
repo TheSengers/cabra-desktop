@@ -64,7 +64,7 @@ public class Utils_test {
 	public void average_positive_positivenums_test() {
 		int[] num = {1,2,3,4,5};
 		int actual = Utils.average(num);
-		int expected = 15/5;
+		int expected = 3;
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
 	
@@ -72,7 +72,7 @@ public class Utils_test {
 	public void average_positive_negativenums_test() {
 		int[] num = {-1,-2,-3,-4,-5};
 		int actual = Utils.average(num);
-		int expected = (-15)/5;
+		int expected = -3;
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
 	
@@ -80,7 +80,7 @@ public class Utils_test {
 	public void average_positive_mixednums_test() {
 		int[] num = {-1,2,-3,4,-5};
 		int actual = Utils.average(num);
-		int expected = (-3)/5;
+		int expected = 0;
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
 
