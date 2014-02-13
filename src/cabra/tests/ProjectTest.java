@@ -357,8 +357,10 @@ public class ProjectTest extends TestCase {
     public void testRemoveCard() {
         System.out.println("removeCard");
         Card cardToRemove = new Card("Remove","Yes");
+        Card card = new Card("NotRemove", "no");
         Project project = new Project("Name");
         project.addCard(cardToRemove);
+        project.addCard(card);
         project.removeCard(cardToRemove);
         
         Card NotExpectedResult = cardToRemove;
