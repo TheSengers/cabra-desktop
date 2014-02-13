@@ -126,7 +126,7 @@ public class ProjectTest extends TestCase {
         String NotExpectedResult = note.getName();
         String ActualResult = project.getNotes().get(0).getName();
         
-        failNotEquals("Adding a new note to the project with an empty name", NotExpectedResult, ActualResult);
+        assertNotSame("Adding a new note to the project with an empty name", NotExpectedResult, ActualResult);
     }
     
     @Test
@@ -141,17 +141,19 @@ public class ProjectTest extends TestCase {
      */
     public void testRemoveNote() {
         System.out.println("removeNote");
-        Note note = new Note("loco");
+        Note Removenote = new Note("loco");
+        Note note = new Note("notRemove");
         Project project = new Project("Name");
         
+        project.addNote(Removenote);
         project.addNote(note);
         
-        project.removeNote(note);
+        project.removeNote(Removenote);
         
-        Note NotExpectedResult = note;
+        Note NotExpectedResult = Removenote;
         Note ActualResult = project.getNotes().get(0);
         
-        failNotEquals("Removing a new note", NotExpectedResult, ActualResult);
+        assertNotSame("Removing a new note", NotExpectedResult, ActualResult);
         
     }
     //TODO Remove note from empty project
@@ -288,7 +290,7 @@ public class ProjectTest extends TestCase {
         
         Card ActualResult = project.getCards().get(0);
         
-        failNotEquals("Adding an empty card to the project",NotExpectedResult, ActualResult );
+        assertNotSame("Adding an empty card to the project",NotExpectedResult, ActualResult );
     }
     
     @Test
@@ -366,7 +368,7 @@ public class ProjectTest extends TestCase {
         Card NotExpectedResult = cardToRemove;
         Card ActualResult = project.getCards().get(0);
         
-        failNotEquals("Remove cards",NotExpectedResult, ActualResult);
+        assertNotSame("Remove cards",NotExpectedResult, ActualResult);
     }
     
     
@@ -402,16 +404,6 @@ public class ProjectTest extends TestCase {
     }
 
 
-    /**
-     * Test of save method, of class Project.
-     */
-    public void testSave() {
-        System.out.println("save");
-        Project instance = null;
-        instance.save();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     @Test
     /**
@@ -536,7 +528,7 @@ public class ProjectTest extends TestCase {
         
         ArrayList<Card> ActualResult = project.getCards();
         
-        failNotEquals("Shuffle", ExpectedResult, ActualResult);
+        assertNotSame("Shuffle", ExpectedResult, ActualResult);
         
     }
     
@@ -563,7 +555,7 @@ public class ProjectTest extends TestCase {
         Project project = new Project("");
         String ExpectedResult = "";
         String ActualResult = project.getName();
-        failNotEquals("Empty name", ExpectedResult, ActualResult);
+        assertNotSame("Empty name", ExpectedResult, ActualResult);
 
     }
     
@@ -609,7 +601,7 @@ public class ProjectTest extends TestCase {
         String ExpectedResult = newName;
         String ActualResult = project.getName();
         
-        failNotEquals("Setname works correctly", ExpectedResult, ActualResult);
+        assertNotSame("Setname works correctly", ExpectedResult, ActualResult);
     }
 
     
@@ -667,7 +659,7 @@ public class ProjectTest extends TestCase {
     public void testIsEmpty() {
         System.out.println("isEmpty");
         Project project = new Project("Name");
-        boolean ExpectedResult = false;
+        boolean ExpectedResult = true;
         boolean ActualResult = project.isEmpty();
         assertEquals(ExpectedResult, ActualResult);
 
