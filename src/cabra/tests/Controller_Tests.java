@@ -9,7 +9,7 @@ import org.junit.Test;
 import cabra.*;
 import cabra.PointEnums.Activity;
 
-public class Controller_tests {
+public class Controller_Tests {
 
 	//this functions clears all application data and returns a new Controller.
 	private Controller getNewController()

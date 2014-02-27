@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import cabra.*;
 
-public class Utils_test {
+public class Utils_Test {
 /*
 	@Test
 	public void test() {

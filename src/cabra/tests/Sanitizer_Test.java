@@ -6,7 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import cabra.*;
 
-public class Sanitizer_tests {
+public class Sanitizer_Test {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {

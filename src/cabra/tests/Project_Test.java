@@ -24,9 +24,9 @@ import junit.framework.TestCase;
  *
  * @author HelmanRGKu
  */
-public class ProjectTest extends TestCase {
+public class Project_Test extends TestCase {
     
-    public ProjectTest(String testName) {
+    public Project_Test(String testName) {
         super(testName);
     }
     
