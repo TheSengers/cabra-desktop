@@ -2,6 +2,8 @@ package cabra.tests;
 
 import static org.junit.Assert.*;
 
+import java.awt.Color;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 import cabra.*;
@@ -110,5 +112,110 @@ public class Status_Tests {
 		Status expectedStatus= Status.A;
 		
 		assertEquals("Previous rank", expectedStatus, actualStatus);
+	}
+	
+	/**************************************WHITE-BOX TESTS**************************************/
+	
+	@Test
+	public void getStatus_positiveTest_test() {
+		
+		Status actualStatus = Status.getStatus("A");
+		Status expectedStatus= Status.A;
+		
+		assertEquals("Status", expectedStatus, actualStatus);
+	}
+	
+	@Test
+	public void getStatus_nonExistantStatus_test() {
+		
+		Status actualStatus = Status.getStatus("X");
+		Status expectedStatus= Status.A;
+		
+		assertEquals("Status", expectedStatus, actualStatus);
+	}
+	
+	@Test
+	public void getStatus_learnedStatus_test() {
+		
+		Status actualStatus = Status.getStatus("learned");
+		Status expectedStatus= Status.B;
+		
+		assertEquals("Status", expectedStatus, actualStatus);
+	}
+	
+	@Test
+	public void importFromPast_learnedStatus_test() {
+		
+		String actualString = Status.importFromPast("learned");
+		String expectedString = "C4";
+		
+		assertEquals("Past status", expectedString, actualString);
+	}
+	
+	@Test
+	public void importFromPast_notLearnedStatus_test() {
+		
+		String actualString = Status.importFromPast("not_learned");
+		String expectedString = "A0";
+		
+		assertEquals("Past status", expectedString, actualString);
+	}
+	
+	@Test
+	public void importFromPast_notStudiedStatus_test() {
+		
+		String actualString = Status.importFromPast("not_studied");
+		String expectedString = "A0";
+		
+		assertEquals("Past status", expectedString, actualString);
+	}
+	
+	@Test
+	public void importFromPast_newStatus_test() {
+		
+		String actualString = Status.importFromPast("newStatus");
+		String expectedString = "newStatus";
+		
+		assertEquals("Past status", expectedString, actualString);
+	}
+	
+	@Test
+	public void getReps_positiveTest_test() {
+		Status st = Status.B;
+		
+		int actualReps = st.getReps();
+		int expectedReps = 2;
+		
+		assertEquals("Number of reps", expectedReps, actualReps);
+	}
+	
+	@Test
+	public void getColor_positiveTest_test() {
+		Status st = Status.B;
+		
+		Color actualColor = st.getColor();
+		Color expectedColor = ColorManager.createColor("FF7F00");
+		
+		assertEquals("Status color", expectedColor, actualColor);
+	}
+	
+	@Test
+	public void getToolTipText_positiveTest_test() {
+		Status st = Status.B;
+		
+		String actualToolTip = st.getToolTipText();
+		String expectedToolTip = "You know these cards just a little, so you'll study them a lot.";
+		
+		assertEquals("Tooltip text", expectedToolTip, actualToolTip);
+	}
+	
+	@Test
+	public void toString_positiveTest_test() {
+		Status st = Status.B;
+		
+		String actualString = st.toString();
+		String expectedString = "B";
+		
+		assertEquals("Status toString", expectedString, actualString);
 	}
 }
