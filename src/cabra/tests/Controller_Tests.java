@@ -305,6 +305,88 @@ public class Controller_Tests {
 		int expectedPointsNum = 100 + Activity.ADD_IMAGE.getPoints() + Activity.CODE_FIRSTRUN.getPoints();
 		assertEquals("Number of points",expectedPointsNum, actualPointsNum);		
 	}
+	
+/**************************************WHITE-BOX TESTS**************************************/	
+	
+	@Test
+	//remove the activeProject.
+	public void removeProject_removeActiveProjects_test() {
+		Controller cont = getNewController();
+		Project p1 =  cont.addProject("p1", true);
+		Project p2 = cont.addProject("p2", true);
+		Project p3 = cont.addProject("p3", true);
+		cont.setActiveProject(p2, true);
+		cont.removeProject(p2);
+
+		int actualNumOfProjects = cont.getNumberOfProjects();
+		int expectedNumOfProjects = 2;
+		assertEquals("Number of projects",expectedNumOfProjects, actualNumOfProjects);		
+	}
+	
+	@Test
+	public void removeProject_singleProject_test() {
+		Controller cont = getNewController();
+		Project p1 =  cont.addProject("p1", true);
+		cont.setActiveProject(p1, true);
+		cont.removeProject(p1);
+
+		int actualNumOfProjects = cont.getNumberOfProjects();
+		int expectedNumOfProjects = 0;
+		assertEquals("Number of projects",expectedNumOfProjects, actualNumOfProjects);		
+	}
+	
+	@Test
+	public void removeProject_twoProjects_test() {
+		Controller cont = getNewController();
+		Project p1 =  cont.addProject("p1", true);
+		Project p2 =  cont.addProject("p2", true);
+		cont.setActiveProject(p1, true);
+		cont.removeProject(p1);
+
+		int actualNumOfProjects = cont.getNumberOfProjects();
+		int expectedNumOfProjects = 1;
+		assertEquals("Number of projects",expectedNumOfProjects, actualNumOfProjects);		
+	}
+	
+	@Test
+	//add card to active project.
+	public void addCardToActiveProject_postiveTest_test() {
+		Controller cont = getNewController();
+		Project p1 =  cont.addProject("p1", true);
+		cont.setActiveProject(p1, true);
+		cont.addCardToActiveProject(new Card("question", "answer"));
+
+		int actualNumOfCards= cont.getActiveProject().numCards();
+		int expectedNumOfCards = 1;
+		assertEquals("Number of cards",expectedNumOfCards, actualNumOfCards);		
+	}
+	
+	@Test
+	//add card to active project with not active project.
+	public void addCardToActiveProject_nullActiveProject_test() {
+		Controller cont = getNewController();
+		Project p1 =  cont.addProject("p1", true);
+		cont.setNoActiveProject();
+		cont.addCardToActiveProject(new Card("question", "answer"));
+
+		int actualNumOfCards= cont.getAllProjects().get(0).numCards();
+		int expectedNumOfCards = 0;
+		assertEquals("Number of cards",expectedNumOfCards, actualNumOfCards);		
+	}
+	
+	
+	@Test
+	//add card to active project with not active project.
+	public void controller_withPreviouslySavedPoject_test() {
+		Controller cont = getNewController();
+		cont.addProject("p1", true);
+		cont = null;
+		Controller cont2 = new Controller();
+
+		int actualNumOfProjects= cont2.getNumberOfProjects();
+		int expectedNumOfProjects = 1;
+		assertEquals("Number of projects",expectedNumOfProjects, actualNumOfProjects);		
+	}
 
 
 }
