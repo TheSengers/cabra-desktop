@@ -190,5 +190,92 @@ public class Session_Test {
 		
 	}
 	
+	/**************************************WHITE-BOX TESTS**************************************/
+	
+	@Test
+	public void getCard_noCards_test() {
+		Project proj = new Project("p1");
+		Session sess = new Session(proj);
+
+		Card actualCard = sess.getCard();
+		Card expectedCard = null;
+		
+		assertEquals("Card", expectedCard, actualCard);
+		
+	}
+	
+	@Test
+	public void getCurrentIndex_positiveTest_test() {
+		Project proj = new Project("p1");
+		proj.addCard(new Card("q1", "a1"));
+		proj.addCard(new Card("q2", "a2"));
+		proj.addCard(new Card("q3", "a3"));
+		Session sess = new Session(proj);
+		sess.getCard();
+		sess.getCard();
+
+		int actualIndex = sess.getCurrentIndex();
+		int expectedIndex = 2;
+		
+		assertEquals("Card", expectedIndex, actualIndex);
+	}
+	
+	@Test
+	public void reloadCard_positiveTest_test() {
+		Project proj = new Project("p1");
+		proj.addCard(new Card("q1", "a1"));
+		proj.addCard(new Card("q2", "a2"));
+		proj.addCard(new Card("q3", "a3"));
+		Session sess = new Session(proj);
+		sess.getCard();
+		sess.getCard();
+
+		String actualString = sess.reloadCard().getQuestion();
+		String expectedString = "q2";
+		
+		assertEquals("Card question", expectedString, actualString);
+	}
+	
+	@Test
+	public void endSession_positiveTest_test() {
+		Project proj = new Project("p1");
+		Session sess = new Session(proj);
+		sess.end();
+
+		Session actualSession = proj.getSession();
+		String expectSession = null;
+		
+		assertEquals("Session", expectSession, actualSession);
+	}
+	
+	@Test
+	public void update_positiveTest_test() {
+		Project proj = new Project("p1");
+		proj.addCard(new Card("q1", "a1"));
+		Session sess = new Session(proj);
+		sess.end();
+
+		boolean actualBool = sess.update();
+		boolean expectedBool = true;
+		
+		assertEquals("Finished", expectedBool, actualBool);
+	}
+	
+	@Test
+	public void setUpSession_withMaxCardNumber_test() {
+		UserData.setPref("MaxSession", "2");
+		
+		Project proj = new Project("p1");
+		proj.addCard(new Card("q1", "a1"));
+		proj.addCard(new Card("q2", "a3"));
+		proj.addCard(new Card("q3", "a3"));
+		proj.addCard(new Card("q4", "a4"));
+		Session sess = new Session(proj);
+
+		int actualNumOfCards = sess.getNumCards();
+		int expectedNumOfCards = 2;
+		
+		assertEquals("Num of cards", expectedNumOfCards, actualNumOfCards);
+	}
 
 }
