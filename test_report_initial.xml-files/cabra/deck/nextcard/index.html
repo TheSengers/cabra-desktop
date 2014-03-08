@@ -1,0 +1,283 @@
+
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>nextCard - 8-Mar-2014 12:47:39 PM - CodeCover Report</title>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+</head>
+<body>
+    <div class="headline">
+        Coverage Report
+    </div>
+    <div class="session">
+        8-Mar-2014 12:47:39 PM
+    </div>
+    <div class="sessionDate">
+        measured on March 8, 2014 12:47:39 PM MST
+    </div>
+    <div class="linkToTop">
+          <a href="../../../../test_report_initial.xml">
+              up to the title page
+          </a>
+    </div>
+    <div class="ancestors">
+    <a href="../../index.html">
+        cabra</a>
+    .
+    <a href="../index.html">
+        Deck</a>
+    .
+    nextCard
+    </div><div class="methodInfo">
+    <table class="methodInfo">
+    <thead class="methodInfo">
+        <tr class="methodInfo">
+            <th class="methodInfo firstcolumn"></th>
+            <th class="methodInfo" colspan="3">Statement Coverage</th>
+            <th class="methodInfo" colspan="3">Branch Coverage</th>
+            <th class="methodInfo" colspan="3">Term Coverage</th>
+        </tr>
+    </thead>
+    <tbody class="methodInfo">
+        <tr class="methodInfo">
+            <td class="methodInfo firstcolumn">
+                    private Card nextCard()
+            </td>  
+                                    <td class="methodInfo">
+                        4&nbsp;/&nbsp;7
+                </td>
+                <td class="methodInfo">
+                        57&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:57%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        2&nbsp;/&nbsp;4
+                </td>
+                <td class="methodInfo">
+                        50&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:50%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        1&nbsp;/&nbsp;2
+                </td>
+                <td class="methodInfo">
+                        50&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:50%"></div></div>
+                </td>   
+                        </tr>
+    </tbody>
+    </table></div>
+    <div class="code">
+    <table class="code">
+        <thead class="code">
+        <tr class="code">
+                        <th class="code" colspan="3">Deck.java</th>
+                </tr>
+        </thead>
+        <tbody class="code">
+                      <tr class="code" id="L96">
+             <td class="code lineNumber">
+                  <a href="#L96">96</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; private Card nextCard(){
+              </td>
+          </tr>
+                      <tr class="code" id="L97">
+             <td class="code lineNumber">
+                  <a href="#L97">97</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">Card card = null;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L98">
+             <td class="code lineNumber">
+                  <a href="#L98">98</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: catch(IndexOutOfBoundsException e)">try</span>{
+              </td>
+          </tr>
+                      <tr class="code" id="L99">
+             <td class="code lineNumber">
+                  <a href="#L99">99</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">card = cards.get(currentIndex);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L100">
+             <td class="code lineNumber">
+                  <a href="#L100">100</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L101">
+             <td class="code lineNumber">
+                  <a href="#L101">101</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Branch_Coverage">catch(IndexOutOfBoundsException e)</span>{
+              </td>
+          </tr>
+                      <tr class="code" id="L102">
+             <td class="code lineNumber">
+                  <a href="#L102">102</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //tried to access a bad location, so shuffle and try again
+              </td>
+          </tr>
+                      <tr class="code" id="L103">
+             <td class="code lineNumber">
+                  <a href="#L103">103</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">shuffle();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L104">
+             <td class="code lineNumber">
+                  <a href="#L104">104</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">return nextCard();</span> //return a new card
+              </td>
+          </tr>
+                      <tr class="code" id="L105">
+             <td class="code lineNumber">
+                  <a href="#L105">105</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L106">
+             <td class="code lineNumber">
+                  <a href="#L106">106</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">currentIndex++;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L107">
+             <td class="code lineNumber">
+                  <a href="#L107">107</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: then">if</span>(<span class="covered partlyCovered Term_Coverage">currentIndex &gt;= cards.size()</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L108">
+             <td class="code lineNumber">
+                  <a href="#L108">108</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //we've run out of cards
+              </td>
+          </tr>
+                      <tr class="code" id="L109">
+             <td class="code lineNumber">
+                  <a href="#L109">109</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">shuffle();</span> //for next time
+              </td>
+          </tr>
+                      <tr class="code" id="L110">
+             <td class="code lineNumber">
+                  <a href="#L110">110</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L111">
+             <td class="code lineNumber">
+                  <a href="#L111">111</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">return card;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L112">
+             <td class="code lineNumber">
+                  <a href="#L112">112</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+            </tbody>
+    </table></div>
+        <div class="creationNote">
+        created on March 8, 2014 1:07:12 PM MST with
+        <a href="http://www.codecover.org">
+            CodeCover
+        </a>
+    </div>    
+</body>
+</html>
+        

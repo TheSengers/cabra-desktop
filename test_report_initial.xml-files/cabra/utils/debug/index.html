@@ -1,0 +1,217 @@
+
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>debug - 8-Mar-2014 12:47:39 PM - CodeCover Report</title>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+</head>
+<body>
+    <div class="headline">
+        Coverage Report
+    </div>
+    <div class="session">
+        8-Mar-2014 12:47:39 PM
+    </div>
+    <div class="sessionDate">
+        measured on March 8, 2014 12:47:39 PM MST
+    </div>
+    <div class="linkToTop">
+          <a href="../../../../test_report_initial.xml">
+              up to the title page
+          </a>
+    </div>
+    <div class="ancestors">
+    <a href="../../index.html">
+        cabra</a>
+    .
+    <a href="../index.html">
+        Utils</a>
+    .
+    debug
+    </div><div class="methodInfo">
+    <table class="methodInfo">
+    <thead class="methodInfo">
+        <tr class="methodInfo">
+            <th class="methodInfo firstcolumn"></th>
+            <th class="methodInfo" colspan="3">Statement Coverage</th>
+            <th class="methodInfo" colspan="3">Branch Coverage</th>
+            <th class="methodInfo" colspan="3">Term Coverage</th>
+        </tr>
+    </thead>
+    <tbody class="methodInfo">
+        <tr class="methodInfo">
+            <td class="methodInfo firstcolumn">
+                    public static void debug(Exception e, String title)
+            </td>  
+                                    <td class="methodInfo">
+                        0&nbsp;/&nbsp;5
+                </td>
+                <td class="methodInfo">
+                        0&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:0%"></div></div>
+                </td>   
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                        </tr>
+    </tbody>
+    </table></div>
+    <div class="code">
+    <table class="code">
+        <thead class="code">
+        <tr class="code">
+                        <th class="code" colspan="3">Utils.java</th>
+                </tr>
+        </thead>
+        <tbody class="code">
+                      <tr class="code" id="L543">
+             <td class="code lineNumber">
+                  <a href="#L543">543</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; public static void debug(Exception e, String title){
+              </td>
+          </tr>
+                      <tr class="code" id="L544">
+             <td class="code lineNumber">
+                  <a href="#L544">544</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">e.printStackTrace();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L545">
+             <td class="code lineNumber">
+                  <a href="#L545">545</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">String text = &quot;&lt;i&gt;&quot; + e.toString() + &quot;&lt;/i&gt;&lt;br&gt;&quot;;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L546">
+             <td class="code lineNumber">
+                  <a href="#L546">546</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //add stack trace
+              </td>
+          </tr>
+                      <tr class="code" id="L547">
+             <td class="code lineNumber">
+                  <a href="#L547">547</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(StackTraceElement ste : e.getStackTrace()){
+              </td>
+          </tr>
+                      <tr class="code" id="L548">
+             <td class="code lineNumber">
+                  <a href="#L548">548</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">text += ste.toString() + &quot;&lt;br&gt;&quot;;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L549">
+             <td class="code lineNumber">
+                  <a href="#L549">549</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L550">
+             <td class="code lineNumber">
+                  <a href="#L550">550</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">text += &quot;&lt;br&gt;&lt;b&gt;Please take a screenshot and email it to &lt;u&gt;neel@hathix.com&lt;/u&gt;.&lt;/b&gt;&quot;;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L551">
+             <td class="code lineNumber">
+                  <a href="#L551">551</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L552">
+             <td class="code lineNumber">
+                  <a href="#L552">552</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">showDialog(null, &quot;&lt;html&gt;Sorry! Cabra has encountered an error. Details:&lt;br&gt;&lt;br&gt;&quot; + text,title);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L553">
+             <td class="code lineNumber">
+                  <a href="#L553">553</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+            </tbody>
+    </table></div>
+        <div class="creationNote">
+        created on March 8, 2014 1:07:12 PM MST with
+        <a href="http://www.codecover.org">
+            CodeCover
+        </a>
+    </div>    
+</body>
+</html>
+        

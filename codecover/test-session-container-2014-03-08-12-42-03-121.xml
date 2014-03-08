@@ -1,0 +1,1856 @@
+<?xml version="1.0" encoding="UTF-8"?><TestSessionContainer xmlns="http://www.codecover.org/xml/testsession-container" Date="1394307723115" TestSessionContainerId="77a4b0a7-4d33-46fb-aa3b-cf5cd7c41efa" version="1.0">
+<SrcFileList>
+<SrcFile Content="/*&#10; * To change this template, choose Tools | Templates&#10; * and open the template in the editor.&#10; */&#10;&#10;package cabra;&#10;&#10;import java.io.File;&#10;import javax.swing.*;&#10;import java.awt.*;&#10;import java.util.ArrayList;&#10;import javax.swing.event.HyperlinkEvent;&#10;import javax.swing.event.HyperlinkListener;&#10;&#10;/**Assorted utilities.&#10; *&#10; * @author Neel&#10; */&#10;public final class Utils {&#10;    &#10;    private Utils(){} //can't be instantiated&#10;&#10;    /**Returns the extension of a file.&#10;     * &#10;     * @param file the file to check&#10;     * @return the extension&#10;     * @return &lt;code&gt;null&lt;/code&gt; if the file's a folder&#10;     */&#10;    public static String getExtension(File file){&#10;        String extension = null;&#10;        String name = file.getName(); //like foo.txt&#10;        int dot = name.lastIndexOf('.');&#10;&#10;        if (dot &gt; 0 &amp;&amp;  dot &lt; name.length() - 1) {&#10;            //there is an extension and it's not at the end&#10;            extension = name.substring(dot+1).toLowerCase();&#10;        }&#10;        return extension;    &#10;    }&#10;    &#10;        &#10;    /**Tests to see if the given string ends with any of the options. Used often with files/extensions.&#10;     * &#10;     * @param test the string to test&#10;     * @param ends the strings that you want to see at the end&#10;     * @return true if the string ends with one of the specified string, false otherwise&#10;     */    &#10;    public static boolean endsWith(String test, String... ends){&#10;        for(String end : ends){&#10;            if(test.endsWith(end)) return true;&#10;        }&#10;        return false;&#10;    }    &#10;    &#10;    /** Cleans up a URL, because Java doesn't like URLs with spaces in them&#10;     * &#10;     * @param url the raw URL with spaces&#10;     * @return the URL with %20's instead of spaces&#10;     */&#10;    public static String sanitizeURL(String url){&#10;        return url.replaceAll(&quot; &quot;,&quot;%20&quot;);&#10;    }&#10;    &#10;    /**&#10;     * Decides if the random chance goes through or not (a probability trial.)&#10;     * @param chance the decimal chance that it will happen (0.1 = 10%)&#10;     * @return true if the random chance goes through, false otherwise&#10;     */&#10;    public static boolean pushLuck(double chance) {&#10;        return Math.random() &lt; chance;&#10;    }    &#10;    &#10;    /** Finds the sum of an array of ints.&#10;     * &#10;     * @param nums the array&#10;     * @return their sum&#10;     */&#10;    public static int arraySum(int[] nums){&#10;        int sum = 0;&#10;        for(int i : nums)&#10;            sum += i;&#10;        return sum;&#10;    }&#10;    &#10;    /* Finds the average of the numbers.&#10;     * @param nums as many integers as you want&#10;     * @return the average, shortened to an int&#10;     */&#10;    public static int average(int... nums){&#10;        int count = 0;&#10;        int total = 0;&#10;        for(int num : nums){&#10;            total += num;&#10;            count++;&#10;        }&#10;        return total / count;&#10;    }&#10;    &#10;    /**Converts the given selection into a percent.&#10;     * &#10;     * @param chosen the numerator, or the number of chosen items&#10;     * @param total the denominator, or the total number of items&#10;     * @return the percent, formatted as xx% or just x%&#10;     */&#10;    public static String toPercent(int chosen, int total){&#10;        //for example, let's say we had 2/3 passed&#10;        int percent = percent(chosen,total);&#10;        String percentString = percent + &quot;%&quot;; //67 + %&#10;        return percentString;&#10;    }&#10;    &#10;    /**Returns the percentage, like 5.&#10;     * &#10;     * @param chosen the numerator&#10;     * @param total the denominator&#10;     * @return the percent&#10;     */&#10;    public static int percent(int chosen, int total){&#10;        if(total == 0){&#10;            //dividing by 0 is bad; just return 0%&#10;            return 0;&#10;        }&#10;        //let's say we had 2,3 passed&#10;        double decimal = chosen / (total + 0.0); //2/3.0 is 0.6666&#10;        int percent = (int)(Math.round(decimal * 100)); //0.6666 * 100 ~= 0.67 (we're rounding)&#10;        return percent;&#10;    }&#10;    &#10;    /**&#10;     * Converts the given number of days to milliseconds.&#10;     * @param days  a certain number of days&#10;     * @return  a number of milliseconds equal to that. It's a long.&#10;     */&#10;    public static long daysToMillis(int days){&#10;        return days * 24 * 60 * 60 * 1000; //24 hours, 60 mins, 60 sec, 1000 ms&#10;    }&#10;    &#10;    /**&#10;     * Turns the given int[] array into an Integer[] array.&#10;     * @param a an array of ints&#10;     * @return an array of Integers with the same contents&#10;     */&#10;    public static Integer[] toIntegerArray(int[] a){&#10;        Integer[] Ints = new Integer[a.length];&#10;        for(int i=0; i&lt;a.length; i++){&#10;            Ints[i] = new Integer(a[i]);&#10;        }&#10;        &#10;        return Ints;&#10;    }&#10;    &#10;    /**&#10;     * Returns the given string with an &quot;s&quot; at the end if the quantity is present.&#10;     * stringWithPlural(&quot;dog&quot;, 5) -&gt; &quot;dogs&quot;&#10;     * Warning: doesn't take into account unusual endings (curse you, English.) &quot;child&quot; would become &quot;childs&quot; :(&#10;     * @param string some sort of noun that can be counted&#10;     * @param quantity the number of things there are of the string&#10;     * @return  the string + &quot;s&quot; if there's anything but 1, the original string only if there's only 1&#10;     */&#10;    public static String stringWithPlural(String string, int quantity){&#10;        if(quantity != 1)&#10;            return string + &quot;s&quot;;&#10;        else&#10;            return string;&#10;    }&#10;    &#10;    /**&#10;     * Returns the number of digits in x.&#10;     * @param x a whole number.&#10;     * @return 1 if x is 0, otherwise the number of digits.&#10;     */&#10;    public static int numDigits(int x){&#10;        if(x == 0) return 1;&#10;        return (int)(Math.log10(x)) + 1; //250 -&gt; log250 = 2.something -&gt; 2+1 -&gt; 3&#10;    }&#10;    &#10;    /**&#10;     * Given a number, pads it with leading zeros so the string representation has the given number of digits.&#10;     * If there are more digits in x than the parameter digits, then the representation of x is returned.&#10;     * @param x a number &gt;= 0.&#10;     * @param digits a number &gt;= 0.&#10;     * @return e.g. &quot;00034&quot; if x=34 and digits=5. &quot;532&quot; if x=532 and digits=2 (digits ignored since digits in x &gt; [digits])&#10;     */&#10;    public static String padWithLeadingZeroes(int x, int digits){&#10;        String string = x + &quot;&quot;; //default string representation&#10;        int zeroesInFront = digits - numDigits(x); //total digits - digits in number is number to add on front&#10;        &#10;        //add specified # of 0s on front of string&#10;        for(int i=0; i&lt;zeroesInFront; i++){&#10;            string = &quot;0&quot; + string;&#10;        }&#10;        &#10;        return string;&#10;    }&#10;    &#10;    /**&#10;     * Given a string array, converts it into an array representation.&#10;     * @param array an array of strings. Elements should not have semicolons.&#10;     * @return the stringified array. Use arrayFromString() to decode it.&#10;     */&#10;    public static String stringFromArray(String[] array){&#10;        String string = &quot;[&quot;;&#10;        //tack on each string, add a semicolon to separate them&#10;        for(String arrayString : array){&#10;            string += arrayString + &quot;;&quot;;&#10;        }&#10;        //chop off the last bit&#10;        string = string.substring(0, string.length() - 1);&#10;        string += &quot;]&quot;;&#10;        &#10;        return string;&#10;    }&#10;    &#10;    /**&#10;     * Given a string representing an encoded list of strings (from stringFromArray), changes it into a list of strings.&#10;     * @param stringified represents a string array.&#10;     * @return an array of the strings inside stringified.&#10;     */&#10;    public static String[] arrayFromString(String stringified){&#10;        //chop off starting and ending brackets&#10;        stringified = stringified.substring(1, stringified.length() - 1);&#10;        //now each item is delimited by a semicolon; split them&#10;        String[] strings = stringified.split(&quot;;&quot;);&#10;        return strings;&#10;    }&#10;    &#10;    &#10;    /**&#10;     * Guts the given folder. All files inside it are deleted. The given folder is not deleted.&#10;     * @param file a folder&#10;     */&#10;    public static void purgeFolder(File folder){&#10;        //delete everything inside this&#10;        for(File file : folder.listFiles()){&#10;            obliterate(file);&#10;        }&#10;    }&#10;    &#10;    /**&#10;     * Completely obliterates the given file, leaving no trace of it.&#10;     * @param file &#10;     */&#10;    public static void obliterate(File file){&#10;        if(file.isFile()){&#10;            file.delete();&#10;            file.deleteOnExit();&#10;        }&#10;        else if(file.isDirectory()){&#10;            //delete everything inside, then delete this on exit&#10;            for(File child : file.listFiles()){&#10;                obliterate(child);&#10;            }&#10;            file.delete();&#10;            file.deleteOnExit();&#10;        }&#10;    }&#10;    &#10;    //GUI UTILITIES&#10;    &#10;    /** Creates a JPanel that shows some advice to the user.&#10;     * &#10;     * @param text the advice (can be HTML)&#10;     * @return the created JPanel&#10;     */&#10;    public static JPanel createAdvicePanel(String text){&#10;            JPanel panel = new JPanel(false){&#10;            @Override&#10;                    public void paintComponent(Graphics g){&#10;                        super.paintComponent(g);&#10;                        Utils.drawEmblem(this, g);&#10;                    }&#10;            };&#10;            JLabel filler = new JLabel(text);&#10;            filler.setHorizontalAlignment(JLabel.CENTER);&#10;            //filler.setVerticalAlignment(JLabel.CENTER);&#10;            panel.setLayout(new java.awt.GridLayout(1, 1));&#10;            panel.add(filler);&#10;            return panel;&#10;    }&#10;    &#10;    /** Launches the user's browser to the specified URL.&#10;     * &#10;     * @param url the url to open to&#10;     */&#10;    public static void browse(String url){&#10;       url = sanitizeURL(url);&#10;       java.net.URI uri = null;&#10;       java.awt.Desktop desktop = java.awt.Desktop.getDesktop();&#10;       try{&#10;           uri = new java.net.URI(url);&#10;           desktop.browse(uri);&#10;       }&#10;       catch(java.io.IOException io){&#10;           //io error&#10;           System.err.println(&quot;Error launching browser! Details: &quot; + io);&#10;       }&#10;       catch(java.net.URISyntaxException ex){&#10;           //error with syntax of URI&#10;           System.err.println(&quot;Bad URI!: &quot; + uri + &quot;, details: &quot; + ex);&#10;       }              &#10;    }&#10;    &#10;    /** Creates a JEditorPane (for viewing the web) and puts it in a panel and returns it&#10;     * &#10;     * @param pageURL the URL of the page to open in this text pane&#10;     * @param width, height&#10;     */&#10;    public static JPanel createEditorPane(String pageURL, int width, int height){&#10;        //build editor pane&#10;        JEditorPane editorPane = new JEditorPane();&#10;        editorPane.setEditable(false);&#10;        editorPane.setFont(FontManager.PREFERRED_FONT);       &#10;&#10;        //set the page&#10;        java.net.URL url = null; &#10;        try{&#10;            url = new java.net.URL(pageURL);&#10;        }&#10;        catch(java.net.MalformedURLException m){&#10;            //bad URL&#10;            System.err.println(&quot;Bad url! &quot; + m);&#10;        }&#10;        if(url != null){&#10;            try{&#10;                editorPane.setPage(url);&#10;            }&#10;            catch(java.io.IOException io){&#10;                //error with setting page&#10;                //System.err.println(&quot;Error loading page &quot; + url);&#10;            }&#10;        }&#10;&#10;        //enable hyperlinks&#10;        editorPane.addHyperlinkListener(new HyperlinkListener() {&#10;            public void hyperlinkUpdate(HyperlinkEvent evt) {&#10;                if(evt.getEventType() == HyperlinkEvent.EventType.ACTIVATED){&#10;                    Utils.browse(evt.getURL().toString());&#10;                }&#10;            }&#10;        }); &#10;&#10;        //put it in a scroll pane&#10;        JScrollPane scrollPane = new JScrollPane(editorPane);&#10;        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);&#10;        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); //mostly for the license, which has preformatted text&#10;&#10;        //put it in a JPanel&#10;        JPanel panel = new JPanel(new java.awt.BorderLayout());&#10;        panel.add(scrollPane);&#10;        panel.setPreferredSize(new java.awt.Dimension(width,height));&#10;        return panel;&#10;    }    &#10;   &#10;    /**&#10;     * Uses a JEditorPane to open the given URL in a dialog&#10;     * @param url the url to load&#10;     * @param title the title of the dialog&#10;     * @param frame the parent frame&#10;     * @param visible true if you want the dialog to be visible, false if you want it to be invisible to user&#10;     */&#10;    public static void openURLinDialog(String url, String title, JFrame frame, boolean visible){&#10;        openURLinDialog(url, title, &quot;goat16.png&quot;, frame, visible);&#10;    }&#10;    &#10;    /**&#10;     * Uses a JEditorPane to open the given URL in a dialog&#10;     * @param url the url to load&#10;     * @param title the title of the dialog&#10;     * @param frame the parent frame&#10;     * @param visible true if you want the dialog to be visible, false if you want it to be invisible to user&#10;     * @param iconPath the path to the image icon for the dialog.&#10;     */&#10;    public static void openURLinDialog(String url, String title,  String iconPath, JFrame frame, boolean visible){&#10;        //create panel with page in it&#10;        final int WIDTH = 400;        &#10;        final int HEIGHT = 300;&#10;        JPanel webView = createEditorPane(url, WIDTH, HEIGHT);&#10;        &#10;        //put it in a dialog&#10;        JDialog dialog = new JDialog(frame);&#10;        dialog.setTitle(title);&#10;        dialog.setIconImage(GUI.createImageIcon(iconPath).getImage());&#10;        dialog.setContentPane(webView);&#10;        dialog.pack();&#10;        dialog.setResizable(false);&#10;        dialog.setModal(true);&#10;        Utils.centerComponent(dialog,frame);   &#10;        &#10;        //open it&#10;        dialog.setVisible(visible);&#10;    }&#10;        &#10;    /** Changes the frame's location to a more central screen location&#10;     * @param frame the frame to be moved&#10;     * @param X how far right to move the frame&#10;     * @param Y how far down to move the frame&#10;     */&#10;    public static void changeFrameLocation(Component frame, int X, int Y){&#10;        Point location = frame.getLocation(); //the window's current location&#10;        //move the window over and down a certain amount of pixels&#10;        location.translate(X, Y);&#10;        //set the location&#10;        frame.setLocation(location);&#10;    }    &#10;&#10;    /** Centers the given component in relation to its owner.&#10;     * &#10;     * @param component the component to center&#10;     * @param owner the parent frame&#10;     */&#10;    public static void centerComponent(Component component,Component owner){&#10;        //find the difference in width to see the offsets&#10;        int widthDifference = owner.getWidth() - component.getWidth();&#10;        int heightDifference = owner.getHeight() - component.getHeight();&#10;        &#10;        //we can divide the differences by 2 and add that to the owner's top left&#10;        //and then make that the top left of the component&#10;        //to center the frame&#10;        int leftOffset = widthDifference / 2;&#10;        int topOffset = heightDifference / 2;&#10;        &#10;        //these are the new locations&#10;        int left = owner.getX() + leftOffset;&#10;        int top = owner.getY() + topOffset;&#10;        &#10;        Utils.changeFrameLocation(component, left, top);&#10;    }&#10;    &#10;      /**&#10;       * Centers the given component on the user's screen.&#10;       * @param component a component (usually a frame.)&#10;       */&#10;      public static void centerOnScreen(Component component){&#10;            Toolkit toolkit = java.awt.Toolkit.getDefaultToolkit();&#10;            Dimension screenSize = toolkit.getScreenSize();&#10;            int screenWidth = (int)screenSize.getWidth();&#10;            int screenHeight = (int)screenSize.getHeight();&#10;&#10;            int componentWidth = component.getWidth();&#10;            int componentHeight = component.getHeight();&#10;&#10;            int top = (screenHeight - componentHeight) / 2;&#10;            int left = (screenWidth - componentWidth) / 2;&#10;&#10;            Utils.changeFrameLocation(component, left, top);&#10;      }&#10;    &#10;    /** Draws an emblem (based on current theme) in the bottom left of the given component. &#10;     * Call this in paintComponent() of the component.&#10;     * &#10;     * @param component the component to draw on&#10;     * @param g the Graphics object from paintComponent()&#10;     */&#10;    public static void drawEmblem(JComponent component, Graphics g){&#10;            Themes currentTheme = Themes.getCurrentTheme();&#10;            ImageIcon image = GUI.createImageIcon(&quot;translucent/&quot; + currentTheme.getImageIconPath());&#10;            &#10;            /*if(Themes.getCurrentTheme() == Themes.SNOW){&#10;                image = GUI.createImageIcon(&quot;translucent/snow.png&quot;);&#10;            }*/&#10;            &#10;            int imageWidth = image.getIconWidth();&#10;            int imageHeight = image.getIconHeight();&#10;            //top left corner of where to start drawing&#10;            int topLeftX = component.getWidth() - imageWidth; //x (horizontal) coordinate&#10;            int topLeftY = component.getHeight() - imageHeight; //y (vertical) coordinate&#10;            &#10;            //draw in bottom right corner&#10;            g.drawImage(image.getImage(), topLeftX, topLeftY, (java.awt.image.ImageObserver)null);&#10;            //g.drawImage(image.getImage(), 0,0, (java.awt.image.ImageObserver)null);   &#10;    }&#10;    &#10;    /**&#10;     * Utility method to put the given panel in a JDialog. You'll have to show it on your own.&#10;     * @param panel the panel to put in a dialog&#10;     * @param owner the JFrame that owns the dialog. You can pass null.&#10;     * @param dialogTitle the title for the dialog&#10;     * @param iconPath the path to the dialog's icon, such as foo.png&#10;     * @param width the dialog's width. Pass -1 to pack().&#10;     * @param height the dialog's height. Pass -1 to pack().&#10;     * @return the JDialog the panel is in&#10;     */&#10;    public static JDialog putPanelInDialog(JPanel panel, JFrame owner, String dialogTitle,&#10;            String iconPath, int width, int height){&#10;        JDialog dialog = new JDialog(owner, dialogTitle, true); //boolean means modality&#10;        &#10;        dialog.add(panel);&#10;        dialog.setIconImage(ImageManager.createImageIcon(iconPath).getImage());&#10;        if(width &lt; 0 &amp;&amp; height &lt; 0)&#10;            dialog.pack();&#10;        else&#10;            dialog.setSize(width, height);&#10;        dialog.setResizable(false);&#10;        if(owner != null)&#10;            Utils.centerComponent(dialog, owner);&#10;        else&#10;            dialog.setLocationRelativeTo(null);&#10;        &#10;        return dialog;&#10;    }&#10;    &#10;    /**&#10;     * Creates and shows a dialog.&#10;     * @param frame the parent frame. Can be null.&#10;     * @param whatToSay the body of the dialog.&#10;     * @param title the title of the dialog.&#10;     * @param iconPath the icon's name (x.png)&#10;     */&#10;    public static void showDialog(JFrame frame,String whatToSay,String title){&#10;        showDialog(frame, whatToSay, title, &quot;goat64.png&quot;);&#10;    }&#10;    &#10;    /**&#10;     * Creates and shows an alert dialog.&#10;     * @param frame the parent frame. Can be null.&#10;     * @param whatToSay the body of the dialog.&#10;     * @param title the title of the dialog.&#10;     * @param iconPath the icon's name (x.png)&#10;     */&#10;    public static void showDialog(JFrame frame,String whatToSay,String title, String iconPath){&#10;        JOptionPane.showMessageDialog(&#10;                            frame, //parent&#10;                            whatToSay, //text&#10;                            title, //title&#10;                            JOptionPane.INFORMATION_MESSAGE, //mesage type&#10;                            GUI.createImageIcon(iconPath) //icon&#10;                        );      &#10;    }&#10;    &#10;    /**&#10;     * Convenience overload for debug(Exception, String.) Title is default.&#10;     * @param e the exception to show&#10;     */&#10;    /*public static void debug(Exception e){&#10;        debug(e, &quot;Cabra error&quot;);&#10;    }*/&#10;    &#10;    /**&#10;     * Shows an alert dialog for when an exception occurs.&#10;     * @param e the exception to show&#10;     * @param title the title of the dialog&#10;     */&#10;    public static void debug(Exception e, String title){&#10;        e.printStackTrace();&#10;        String text = &quot;&lt;i&gt;&quot; + e.toString() + &quot;&lt;/i&gt;&lt;br&gt;&quot;;&#10;        //add stack trace&#10;        for(StackTraceElement ste : e.getStackTrace()){&#10;            text += ste.toString() + &quot;&lt;br&gt;&quot;;&#10;        }&#10;        text += &quot;&lt;br&gt;&lt;b&gt;Please take a screenshot and email it to &lt;u&gt;neel@hathix.com&lt;/u&gt;.&lt;/b&gt;&quot;;&#10;        &#10;        showDialog(null, &quot;&lt;html&gt;Sorry! Cabra has encountered an error. Details:&lt;br&gt;&lt;br&gt;&quot; + text,title);&#10;    }&#10;}&#10;" Filename="Utils.java" Intrnl_Id="1"/>
+</SrcFileList>
+<CritList>
+<CritListEntry Name="org.codecover.model.utils.criteria.LoopCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.BranchCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.ConditionCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.StatementCoverage" PluginName="org.codecover"/>
+</CritList>
+<BoolOpList>
+<BoolOp Arity="2" Intrnl_Id="2" Name="conditional and (&amp;&amp;)">
+<BoolAssgnmntBoolMapList>
+<MapEntry BoolAssgnmnt="10" Value="false"/>
+<MapEntry BoolAssgnmnt="02" Value="false"/>
+<MapEntry BoolAssgnmnt="11" Value="true"/>
+</BoolAssgnmntBoolMapList>
+</BoolOp>
+</BoolOpList>
+<HierarchyLvlTypeList>
+<HierarchyLvlType EnglishName="package" IntrnlName="package" Intrnl_Id="3"/>
+<HierarchyLvlType EnglishName="class" IntrnlName="class" Intrnl_Id="4"/>
+<HierarchyLvlType EnglishName="method" IntrnlName="method" Intrnl_Id="5"/>
+<HierarchyLvlType EnglishName="default package" IntrnlName="default package" Intrnl_Id="6"/>
+<HierarchyLvlType EnglishName="anonymous class" IntrnlName="class" Intrnl_Id="7"/>
+</HierarchyLvlTypeList>
+<MASTRoot>
+<HierarchyLvl HierarchyLvlId="1826" HierarchyLvlTypeId="6" Intrnl_Id="8" Name="default package">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="1825" HierarchyLvlTypeId="3" Intrnl_Id="9" Name="cabra">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="1824" HierarchyLvlTypeId="4" Intrnl_Id="10" Name="Utils">
+<Header>
+<Loc EndOffset="363" SrcFileId="1" StartOffset="339"/>
+</Header>
+<LocList>
+<Loc EndOffset="20092" SrcFileId="1" StartOffset="339"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="1789" HierarchyLvlTypeId="5" Intrnl_Id="11" Name="Utils">
+<Header>
+<Loc EndOffset="390" SrcFileId="1" StartOffset="375"/>
+</Header>
+<LocList>
+<Loc EndOffset="392" SrcFileId="1" StartOffset="375"/>
+</LocList>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1790" HierarchyLvlTypeId="5" Intrnl_Id="12" Name="getExtension">
+<Header>
+<Loc EndOffset="644" SrcFileId="1" StartOffset="600"/>
+</Header>
+<LocList>
+<Loc EndOffset="991" SrcFileId="1" StartOffset="600"/>
+</LocList>
+<StmntSeq Intrnl_Id="13">
+<LocList>
+<Loc EndOffset="678" SrcFileId="1" StartOffset="654"/>
+<Loc EndOffset="716" SrcFileId="1" StartOffset="687"/>
+<Loc EndOffset="772" SrcFileId="1" StartOffset="740"/>
+<Loc EndOffset="955" SrcFileId="1" StartOffset="782"/>
+<Loc EndOffset="981" SrcFileId="1" StartOffset="964"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="cabra.Utils.java" Intrnl_Id="14">
+<LocList>
+<Loc EndOffset="678" SrcFileId="1" StartOffset="654"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="cabra.Utils.java" Intrnl_Id="15">
+<LocList>
+<Loc EndOffset="716" SrcFileId="1" StartOffset="687"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S3" CovItemPrefix="cabra.Utils.java" Intrnl_Id="16">
+<LocList>
+<Loc EndOffset="772" SrcFileId="1" StartOffset="740"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S4" CovItemPrefix="cabra.Utils.java" Intrnl_Id="17">
+<Branch CovItemId="B1" CovItemPrefix="cabra.Utils.java" Implct="false" Intrnl_Id="18">
+<Cond/>
+<LocList>
+<Loc EndOffset="955" SrcFileId="1" StartOffset="823"/>
+</LocList>
+<StmntSeq Intrnl_Id="19">
+<LocList>
+<Loc EndOffset="945" SrcFileId="1" StartOffset="897"/>
+</LocList>
+<BasicStmnt CovItemId="S5" CovItemPrefix="cabra.Utils.java" Intrnl_Id="20">
+<LocList>
+<Loc EndOffset="945" SrcFileId="1" StartOffset="897"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="cabra.Utils.java" Implct="true" Intrnl_Id="21">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="22">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="784" SrcFileId="1" StartOffset="782"/>
+<LocList>
+<Loc EndOffset="955" SrcFileId="1" StartOffset="782"/>
+</LocList>
+<RootTerm CovItemId="C1" CovItemPrefix="cabra.Utils.java" Intrnl_Id="23">
+<OpTerm BooleanOpId="2" Intrnl_Id="24">
+<BasicBoolTerm Intrnl_Id="25">
+<LocList>
+<Loc EndOffset="793" SrcFileId="1" StartOffset="786"/>
+</LocList>
+</BasicBoolTerm>
+<BasicBoolTerm Intrnl_Id="26">
+<LocList>
+<Loc EndOffset="821" SrcFileId="1" StartOffset="798"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="796" SrcFileId="1" StartOffset="794"/>
+</LocList>
+</OpTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S6" CovItemPrefix="cabra.Utils.java" Intrnl_Id="27">
+<LocList>
+<Loc EndOffset="981" SrcFileId="1" StartOffset="964"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1791" HierarchyLvlTypeId="5" Intrnl_Id="28" Name="endsWith">
+<Header>
+<Loc EndOffset="1383" SrcFileId="1" StartOffset="1324"/>
+</Header>
+<LocList>
+<Loc EndOffset="1502" SrcFileId="1" StartOffset="1324"/>
+</LocList>
+<StmntSeq Intrnl_Id="29">
+<LocList>
+<Loc EndOffset="1474" SrcFileId="1" StartOffset="1393"/>
+<Loc EndOffset="1496" SrcFileId="1" StartOffset="1483"/>
+</LocList>
+<LoopStmnt CovItemId="S7" CovItemPrefix="cabra.Utils.java" Intrnl_Id="30" MltplExecId="L1-2" MltplExecPrefix="cabra.Utils.java" NvrExecId="L1-0" NvrExecPrefix="cabra.Utils.java" OnceExecutedId="L1-1" OnceExecutedPrefix="cabra.Utils.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="31">
+<LocList>
+<Loc EndOffset="1464" SrcFileId="1" StartOffset="1429"/>
+</LocList>
+<CondStmnt CovItemId="S8" CovItemPrefix="cabra.Utils.java" Intrnl_Id="32">
+<Branch CovItemId="B3" CovItemPrefix="cabra.Utils.java" Implct="false" Intrnl_Id="33">
+<Cond/>
+<LocList>
+<Loc EndOffset="1464" SrcFileId="1" StartOffset="1452"/>
+</LocList>
+<StmntSeq Intrnl_Id="34">
+<LocList>
+<Loc EndOffset="1464" SrcFileId="1" StartOffset="1452"/>
+</LocList>
+<BasicStmnt CovItemId="S9" CovItemPrefix="cabra.Utils.java" Intrnl_Id="35">
+<LocList>
+<Loc EndOffset="1464" SrcFileId="1" StartOffset="1452"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B4" CovItemPrefix="cabra.Utils.java" Implct="true" Intrnl_Id="36">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="37">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1431" SrcFileId="1" StartOffset="1429"/>
+<LocList>
+<Loc EndOffset="1464" SrcFileId="1" StartOffset="1429"/>
+</LocList>
+<RootTerm CovItemId="C2" CovItemPrefix="cabra.Utils.java" Intrnl_Id="38">
+<BasicBoolTerm Intrnl_Id="39">
+<LocList>
+<Loc EndOffset="1450" SrcFileId="1" StartOffset="1432"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+<Keyword EndOffset="1396" SrcFileId="1" StartOffset="1393"/>
+<LocList>
+<Loc EndOffset="1474" SrcFileId="1" StartOffset="1393"/>
+</LocList>
+</LoopStmnt>
+<BasicStmnt CovItemId="S10" CovItemPrefix="cabra.Utils.java" Intrnl_Id="40">
+<LocList>
+<Loc EndOffset="1496" SrcFileId="1" StartOffset="1483"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1792" HierarchyLvlTypeId="5" Intrnl_Id="41" Name="sanitizeURL">
+<Header>
+<Loc EndOffset="1746" SrcFileId="1" StartOffset="1702"/>
+</Header>
+<LocList>
+<Loc EndOffset="1795" SrcFileId="1" StartOffset="1702"/>
+</LocList>
+<StmntSeq Intrnl_Id="42">
+<LocList>
+<Loc EndOffset="1789" SrcFileId="1" StartOffset="1756"/>
+</LocList>
+<BasicStmnt CovItemId="S11" CovItemPrefix="cabra.Utils.java" Intrnl_Id="43">
+<LocList>
+<Loc EndOffset="1789" SrcFileId="1" StartOffset="1756"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1793" HierarchyLvlTypeId="5" Intrnl_Id="44" Name="pushLuck">
+<Header>
+<Loc EndOffset="2088" SrcFileId="1" StartOffset="2043"/>
+</Header>
+<LocList>
+<Loc EndOffset="2135" SrcFileId="1" StartOffset="2043"/>
+</LocList>
+<StmntSeq Intrnl_Id="45">
+<LocList>
+<Loc EndOffset="2129" SrcFileId="1" StartOffset="2099"/>
+</LocList>
+<BasicStmnt CovItemId="S12" CovItemPrefix="cabra.Utils.java" Intrnl_Id="46">
+<LocList>
+<Loc EndOffset="2129" SrcFileId="1" StartOffset="2099"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1794" HierarchyLvlTypeId="5" Intrnl_Id="47" Name="arraySum">
+<Header>
+<Loc EndOffset="2300" SrcFileId="1" StartOffset="2262"/>
+</Header>
+<LocList>
+<Loc EndOffset="2396" SrcFileId="1" StartOffset="2262"/>
+</LocList>
+<StmntSeq Intrnl_Id="48">
+<LocList>
+<Loc EndOffset="2322" SrcFileId="1" StartOffset="2310"/>
+<Loc EndOffset="2370" SrcFileId="1" StartOffset="2331"/>
+<Loc EndOffset="2390" SrcFileId="1" StartOffset="2379"/>
+</LocList>
+<BasicStmnt CovItemId="S13" CovItemPrefix="cabra.Utils.java" Intrnl_Id="49">
+<LocList>
+<Loc EndOffset="2322" SrcFileId="1" StartOffset="2310"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S14" CovItemPrefix="cabra.Utils.java" Intrnl_Id="50" MltplExecId="L2-2" MltplExecPrefix="cabra.Utils.java" NvrExecId="L2-0" NvrExecPrefix="cabra.Utils.java" OnceExecutedId="L2-1" OnceExecutedPrefix="cabra.Utils.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="51">
+<LocList>
+<Loc EndOffset="2370" SrcFileId="1" StartOffset="2361"/>
+</LocList>
+<BasicStmnt CovItemId="S15" CovItemPrefix="cabra.Utils.java" Intrnl_Id="52">
+<LocList>
+<Loc EndOffset="2370" SrcFileId="1" StartOffset="2361"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="2334" SrcFileId="1" StartOffset="2331"/>
+<LocList>
+<Loc EndOffset="2370" SrcFileId="1" StartOffset="2331"/>
+</LocList>
+</LoopStmnt>
+<BasicStmnt CovItemId="S16" CovItemPrefix="cabra.Utils.java" Intrnl_Id="53">
+<LocList>
+<Loc EndOffset="2390" SrcFileId="1" StartOffset="2379"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1795" HierarchyLvlTypeId="5" Intrnl_Id="54" Name="average">
+<Header>
+<Loc EndOffset="2589" SrcFileId="1" StartOffset="2551"/>
+</Header>
+<LocList>
+<Loc EndOffset="2758" SrcFileId="1" StartOffset="2551"/>
+</LocList>
+<StmntSeq Intrnl_Id="55">
+<LocList>
+<Loc EndOffset="2613" SrcFileId="1" StartOffset="2599"/>
+<Loc EndOffset="2636" SrcFileId="1" StartOffset="2622"/>
+<Loc EndOffset="2722" SrcFileId="1" StartOffset="2645"/>
+<Loc EndOffset="2752" SrcFileId="1" StartOffset="2731"/>
+</LocList>
+<BasicStmnt CovItemId="S17" CovItemPrefix="cabra.Utils.java" Intrnl_Id="56">
+<LocList>
+<Loc EndOffset="2613" SrcFileId="1" StartOffset="2599"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S18" CovItemPrefix="cabra.Utils.java" Intrnl_Id="57">
+<LocList>
+<Loc EndOffset="2636" SrcFileId="1" StartOffset="2622"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S19" CovItemPrefix="cabra.Utils.java" Intrnl_Id="58" MltplExecId="L3-2" MltplExecPrefix="cabra.Utils.java" NvrExecId="L3-0" NvrExecPrefix="cabra.Utils.java" OnceExecutedId="L3-1" OnceExecutedPrefix="cabra.Utils.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="59">
+<LocList>
+<Loc EndOffset="2691" SrcFileId="1" StartOffset="2678"/>
+<Loc EndOffset="2712" SrcFileId="1" StartOffset="2704"/>
+</LocList>
+<BasicStmnt CovItemId="S20" CovItemPrefix="cabra.Utils.java" Intrnl_Id="60">
+<LocList>
+<Loc EndOffset="2691" SrcFileId="1" StartOffset="2678"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S21" CovItemPrefix="cabra.Utils.java" Intrnl_Id="61">
+<LocList>
+<Loc EndOffset="2712" SrcFileId="1" StartOffset="2704"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="2648" SrcFileId="1" StartOffset="2645"/>
+<LocList>
+<Loc EndOffset="2722" SrcFileId="1" StartOffset="2645"/>
+</LocList>
+</LoopStmnt>
+<BasicStmnt CovItemId="S22" CovItemPrefix="cabra.Utils.java" Intrnl_Id="62">
+<LocList>
+<Loc EndOffset="2752" SrcFileId="1" StartOffset="2731"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1796" HierarchyLvlTypeId="5" Intrnl_Id="63" Name="toPercent">
+<Header>
+<Loc EndOffset="3077" SrcFileId="1" StartOffset="3024"/>
+</Header>
+<LocList>
+<Loc EndOffset="3265" SrcFileId="1" StartOffset="3024"/>
+</LocList>
+<StmntSeq Intrnl_Id="64">
+<LocList>
+<Loc EndOffset="3174" SrcFileId="1" StartOffset="3138"/>
+<Loc EndOffset="3220" SrcFileId="1" StartOffset="3183"/>
+<Loc EndOffset="3259" SrcFileId="1" StartOffset="3238"/>
+</LocList>
+<BasicStmnt CovItemId="S23" CovItemPrefix="cabra.Utils.java" Intrnl_Id="65">
+<LocList>
+<Loc EndOffset="3174" SrcFileId="1" StartOffset="3138"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S24" CovItemPrefix="cabra.Utils.java" Intrnl_Id="66">
+<LocList>
+<Loc EndOffset="3220" SrcFileId="1" StartOffset="3183"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S25" CovItemPrefix="cabra.Utils.java" Intrnl_Id="67">
+<LocList>
+<Loc EndOffset="3259" SrcFileId="1" StartOffset="3238"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1797" HierarchyLvlTypeId="5" Intrnl_Id="68" Name="percent">
+<Header>
+<Loc EndOffset="3476" SrcFileId="1" StartOffset="3428"/>
+</Header>
+<LocList>
+<Loc EndOffset="3815" SrcFileId="1" StartOffset="3428"/>
+</LocList>
+<StmntSeq Intrnl_Id="69">
+<LocList>
+<Loc EndOffset="3584" SrcFileId="1" StartOffset="3486"/>
+<Loc EndOffset="3671" SrcFileId="1" StartOffset="3631"/>
+<Loc EndOffset="3745" SrcFileId="1" StartOffset="3698"/>
+<Loc EndOffset="3809" SrcFileId="1" StartOffset="3794"/>
+</LocList>
+<CondStmnt CovItemId="S26" CovItemPrefix="cabra.Utils.java" Intrnl_Id="70">
+<Branch CovItemId="B5" CovItemPrefix="cabra.Utils.java" Implct="false" Intrnl_Id="71">
+<Cond/>
+<LocList>
+<Loc EndOffset="3584" SrcFileId="1" StartOffset="3500"/>
+</LocList>
+<StmntSeq Intrnl_Id="72">
+<LocList>
+<Loc EndOffset="3574" SrcFileId="1" StartOffset="3565"/>
+</LocList>
+<BasicStmnt CovItemId="S27" CovItemPrefix="cabra.Utils.java" Intrnl_Id="73">
+<LocList>
+<Loc EndOffset="3574" SrcFileId="1" StartOffset="3565"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B6" CovItemPrefix="cabra.Utils.java" Implct="true" Intrnl_Id="74">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="75">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="3488" SrcFileId="1" StartOffset="3486"/>
+<LocList>
+<Loc EndOffset="3584" SrcFileId="1" StartOffset="3486"/>
+</LocList>
+<RootTerm CovItemId="C3" CovItemPrefix="cabra.Utils.java" Intrnl_Id="76">
+<BasicBoolTerm Intrnl_Id="77">
+<LocList>
+<Loc EndOffset="3499" SrcFileId="1" StartOffset="3489"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S28" CovItemPrefix="cabra.Utils.java" Intrnl_Id="78">
+<LocList>
+<Loc EndOffset="3671" SrcFileId="1" StartOffset="3631"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S29" CovItemPrefix="cabra.Utils.java" Intrnl_Id="79">
+<LocList>
+<Loc EndOffset="3745" SrcFileId="1" StartOffset="3698"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S30" CovItemPrefix="cabra.Utils.java" Intrnl_Id="80">
+<LocList>
+<Loc EndOffset="3809" SrcFileId="1" StartOffset="3794"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1798" HierarchyLvlTypeId="5" Intrnl_Id="81" Name="daysToMillis">
+<Header>
+<Loc EndOffset="4054" SrcFileId="1" StartOffset="4013"/>
+</Header>
+<LocList>
+<Loc EndOffset="4141" SrcFileId="1" StartOffset="4013"/>
+</LocList>
+<StmntSeq Intrnl_Id="82">
+<LocList>
+<Loc EndOffset="4098" SrcFileId="1" StartOffset="4064"/>
+</LocList>
+<BasicStmnt CovItemId="S31" CovItemPrefix="cabra.Utils.java" Intrnl_Id="83">
+<LocList>
+<Loc EndOffset="4098" SrcFileId="1" StartOffset="4064"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1799" HierarchyLvlTypeId="5" Intrnl_Id="84" Name="toIntegerArray">
+<Header>
+<Loc EndOffset="4366" SrcFileId="1" StartOffset="4319"/>
+</Header>
+<LocList>
+<Loc EndOffset="4541" SrcFileId="1" StartOffset="4319"/>
+</LocList>
+<StmntSeq Intrnl_Id="85">
+<LocList>
+<Loc EndOffset="4415" SrcFileId="1" StartOffset="4376"/>
+<Loc EndOffset="4505" SrcFileId="1" StartOffset="4424"/>
+<Loc EndOffset="4535" SrcFileId="1" StartOffset="4523"/>
+</LocList>
+<BasicStmnt CovItemId="S32" CovItemPrefix="cabra.Utils.java" Intrnl_Id="86">
+<LocList>
+<Loc EndOffset="4415" SrcFileId="1" StartOffset="4376"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S33" CovItemPrefix="cabra.Utils.java" Intrnl_Id="87" MltplExecId="L4-2" MltplExecPrefix="cabra.Utils.java" NvrExecId="L4-0" NvrExecPrefix="cabra.Utils.java" OnceExecutedId="L4-1" OnceExecutedPrefix="cabra.Utils.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="88">
+<LocList>
+<Loc EndOffset="4495" SrcFileId="1" StartOffset="4467"/>
+</LocList>
+<BasicStmnt CovItemId="S34" CovItemPrefix="cabra.Utils.java" Intrnl_Id="89">
+<LocList>
+<Loc EndOffset="4495" SrcFileId="1" StartOffset="4467"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="4427" SrcFileId="1" StartOffset="4424"/>
+<LocList>
+<Loc EndOffset="4505" SrcFileId="1" StartOffset="4424"/>
+</LocList>
+<RootTerm CovItemId="C4" CovItemPrefix="cabra.Utils.java" Intrnl_Id="90">
+<BasicBoolTerm Intrnl_Id="91">
+<LocList>
+<Loc EndOffset="4447" SrcFileId="1" StartOffset="4437"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<BasicStmnt CovItemId="S35" CovItemPrefix="cabra.Utils.java" Intrnl_Id="92">
+<LocList>
+<Loc EndOffset="4535" SrcFileId="1" StartOffset="4523"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1800" HierarchyLvlTypeId="5" Intrnl_Id="93" Name="stringWithPlural">
+<Header>
+<Loc EndOffset="5103" SrcFileId="1" StartOffset="5037"/>
+</Header>
+<LocList>
+<Loc EndOffset="5209" SrcFileId="1" StartOffset="5037"/>
+</LocList>
+<StmntSeq Intrnl_Id="94">
+<LocList>
+<Loc EndOffset="5203" SrcFileId="1" StartOffset="5113"/>
+</LocList>
+<CondStmnt CovItemId="S36" CovItemPrefix="cabra.Utils.java" Intrnl_Id="95">
+<Branch CovItemId="B7" CovItemPrefix="cabra.Utils.java" Implct="false" Intrnl_Id="96">
+<Cond/>
+<LocList>
+<Loc EndOffset="5163" SrcFileId="1" StartOffset="5143"/>
+</LocList>
+<StmntSeq Intrnl_Id="97">
+<LocList>
+<Loc EndOffset="5163" SrcFileId="1" StartOffset="5143"/>
+</LocList>
+<BasicStmnt CovItemId="S37" CovItemPrefix="cabra.Utils.java" Intrnl_Id="98">
+<LocList>
+<Loc EndOffset="5163" SrcFileId="1" StartOffset="5143"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B8" CovItemPrefix="cabra.Utils.java" Implct="false" Intrnl_Id="99">
+<Cond>
+<Loc EndOffset="5176" SrcFileId="1" StartOffset="5172"/>
+</Cond>
+<LocList>
+<Loc EndOffset="5203" SrcFileId="1" StartOffset="5189"/>
+</LocList>
+<StmntSeq Intrnl_Id="100">
+<LocList>
+<Loc EndOffset="5203" SrcFileId="1" StartOffset="5189"/>
+</LocList>
+<BasicStmnt CovItemId="S38" CovItemPrefix="cabra.Utils.java" Intrnl_Id="101">
+<LocList>
+<Loc EndOffset="5203" SrcFileId="1" StartOffset="5189"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="5115" SrcFileId="1" StartOffset="5113"/>
+<LocList>
+<Loc EndOffset="5203" SrcFileId="1" StartOffset="5113"/>
+</LocList>
+<RootTerm CovItemId="C5" CovItemPrefix="cabra.Utils.java" Intrnl_Id="102">
+<BasicBoolTerm Intrnl_Id="103">
+<LocList>
+<Loc EndOffset="5129" SrcFileId="1" StartOffset="5116"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1801" HierarchyLvlTypeId="5" Intrnl_Id="104" Name="numDigits">
+<Header>
+<Loc EndOffset="5403" SrcFileId="1" StartOffset="5369"/>
+</Header>
+<LocList>
+<Loc EndOffset="5522" SrcFileId="1" StartOffset="5369"/>
+</LocList>
+<StmntSeq Intrnl_Id="105">
+<LocList>
+<Loc EndOffset="5433" SrcFileId="1" StartOffset="5413"/>
+<Loc EndOffset="5474" SrcFileId="1" StartOffset="5442"/>
+</LocList>
+<CondStmnt CovItemId="S39" CovItemPrefix="cabra.Utils.java" Intrnl_Id="106">
+<Branch CovItemId="B9" CovItemPrefix="cabra.Utils.java" Implct="false" Intrnl_Id="107">
+<Cond/>
+<LocList>
+<Loc EndOffset="5433" SrcFileId="1" StartOffset="5424"/>
+</LocList>
+<StmntSeq Intrnl_Id="108">
+<LocList>
+<Loc EndOffset="5433" SrcFileId="1" StartOffset="5424"/>
+</LocList>
+<BasicStmnt CovItemId="S40" CovItemPrefix="cabra.Utils.java" Intrnl_Id="109">
+<LocList>
+<Loc EndOffset="5433" SrcFileId="1" StartOffset="5424"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B10" CovItemPrefix="cabra.Utils.java" Implct="true" Intrnl_Id="110">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="111">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="5415" SrcFileId="1" StartOffset="5413"/>
+<LocList>
+<Loc EndOffset="5433" SrcFileId="1" StartOffset="5413"/>
+</LocList>
+<RootTerm CovItemId="C6" CovItemPrefix="cabra.Utils.java" Intrnl_Id="112">
+<BasicBoolTerm Intrnl_Id="113">
+<LocList>
+<Loc EndOffset="5422" SrcFileId="1" StartOffset="5416"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S41" CovItemPrefix="cabra.Utils.java" Intrnl_Id="114">
+<LocList>
+<Loc EndOffset="5474" SrcFileId="1" StartOffset="5442"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1802" HierarchyLvlTypeId="5" Intrnl_Id="115" Name="padWithLeadingZeroes">
+<Header>
+<Loc EndOffset="6016" SrcFileId="1" StartOffset="5956"/>
+</Header>
+<LocList>
+<Loc EndOffset="6379" SrcFileId="1" StartOffset="5956"/>
+</LocList>
+<StmntSeq Intrnl_Id="116">
+<LocList>
+<Loc EndOffset="6049" SrcFileId="1" StartOffset="6026"/>
+<Loc EndOffset="6132" SrcFileId="1" StartOffset="6090"/>
+<Loc EndOffset="6341" SrcFileId="1" StartOffset="6261"/>
+<Loc EndOffset="6373" SrcFileId="1" StartOffset="6359"/>
+</LocList>
+<BasicStmnt CovItemId="S42" CovItemPrefix="cabra.Utils.java" Intrnl_Id="117">
+<LocList>
+<Loc EndOffset="6049" SrcFileId="1" StartOffset="6026"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S43" CovItemPrefix="cabra.Utils.java" Intrnl_Id="118">
+<LocList>
+<Loc EndOffset="6132" SrcFileId="1" StartOffset="6090"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S44" CovItemPrefix="cabra.Utils.java" Intrnl_Id="119" MltplExecId="L5-2" MltplExecPrefix="cabra.Utils.java" NvrExecId="L5-0" NvrExecPrefix="cabra.Utils.java" OnceExecutedId="L5-1" OnceExecutedPrefix="cabra.Utils.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="120">
+<LocList>
+<Loc EndOffset="6331" SrcFileId="1" StartOffset="6309"/>
+</LocList>
+<BasicStmnt CovItemId="S45" CovItemPrefix="cabra.Utils.java" Intrnl_Id="121">
+<LocList>
+<Loc EndOffset="6331" SrcFileId="1" StartOffset="6309"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="6264" SrcFileId="1" StartOffset="6261"/>
+<LocList>
+<Loc EndOffset="6341" SrcFileId="1" StartOffset="6261"/>
+</LocList>
+<RootTerm CovItemId="C7" CovItemPrefix="cabra.Utils.java" Intrnl_Id="122">
+<BasicBoolTerm Intrnl_Id="123">
+<LocList>
+<Loc EndOffset="6289" SrcFileId="1" StartOffset="6274"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<BasicStmnt CovItemId="S46" CovItemPrefix="cabra.Utils.java" Intrnl_Id="124">
+<LocList>
+<Loc EndOffset="6373" SrcFileId="1" StartOffset="6359"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1803" HierarchyLvlTypeId="5" Intrnl_Id="125" Name="stringFromArray">
+<Header>
+<Loc EndOffset="6680" SrcFileId="1" StartOffset="6628"/>
+</Header>
+<LocList>
+<Loc EndOffset="7018" SrcFileId="1" StartOffset="6628"/>
+</LocList>
+<StmntSeq Intrnl_Id="126">
+<LocList>
+<Loc EndOffset="6710" SrcFileId="1" StartOffset="6690"/>
+<Loc EndOffset="6866" SrcFileId="1" StartOffset="6783"/>
+<Loc EndOffset="6957" SrcFileId="1" StartOffset="6907"/>
+<Loc EndOffset="6980" SrcFileId="1" StartOffset="6966"/>
+<Loc EndOffset="7012" SrcFileId="1" StartOffset="6998"/>
+</LocList>
+<BasicStmnt CovItemId="S47" CovItemPrefix="cabra.Utils.java" Intrnl_Id="127">
+<LocList>
+<Loc EndOffset="6710" SrcFileId="1" StartOffset="6690"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S48" CovItemPrefix="cabra.Utils.java" Intrnl_Id="128" MltplExecId="L6-2" MltplExecPrefix="cabra.Utils.java" NvrExecId="L6-0" NvrExecPrefix="cabra.Utils.java" OnceExecutedId="L6-1" OnceExecutedPrefix="cabra.Utils.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="129">
+<LocList>
+<Loc EndOffset="6856" SrcFileId="1" StartOffset="6828"/>
+</LocList>
+<BasicStmnt CovItemId="S49" CovItemPrefix="cabra.Utils.java" Intrnl_Id="130">
+<LocList>
+<Loc EndOffset="6856" SrcFileId="1" StartOffset="6828"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="6786" SrcFileId="1" StartOffset="6783"/>
+<LocList>
+<Loc EndOffset="6866" SrcFileId="1" StartOffset="6783"/>
+</LocList>
+</LoopStmnt>
+<BasicStmnt CovItemId="S50" CovItemPrefix="cabra.Utils.java" Intrnl_Id="131">
+<LocList>
+<Loc EndOffset="6957" SrcFileId="1" StartOffset="6907"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S51" CovItemPrefix="cabra.Utils.java" Intrnl_Id="132">
+<LocList>
+<Loc EndOffset="6980" SrcFileId="1" StartOffset="6966"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S52" CovItemPrefix="cabra.Utils.java" Intrnl_Id="133">
+<LocList>
+<Loc EndOffset="7012" SrcFileId="1" StartOffset="6998"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1804" HierarchyLvlTypeId="5" Intrnl_Id="134" Name="arrayFromString">
+<Header>
+<Loc EndOffset="7335" SrcFileId="1" StartOffset="7277"/>
+</Header>
+<LocList>
+<Loc EndOffset="7603" SrcFileId="1" StartOffset="7277"/>
+</LocList>
+<StmntSeq Intrnl_Id="135">
+<LocList>
+<Loc EndOffset="7458" SrcFileId="1" StartOffset="7393"/>
+<Loc EndOffset="7573" SrcFileId="1" StartOffset="7531"/>
+<Loc EndOffset="7597" SrcFileId="1" StartOffset="7582"/>
+</LocList>
+<BasicStmnt CovItemId="S53" CovItemPrefix="cabra.Utils.java" Intrnl_Id="136">
+<LocList>
+<Loc EndOffset="7458" SrcFileId="1" StartOffset="7393"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S54" CovItemPrefix="cabra.Utils.java" Intrnl_Id="137">
+<LocList>
+<Loc EndOffset="7573" SrcFileId="1" StartOffset="7531"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S55" CovItemPrefix="cabra.Utils.java" Intrnl_Id="138">
+<LocList>
+<Loc EndOffset="7597" SrcFileId="1" StartOffset="7582"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1805" HierarchyLvlTypeId="5" Intrnl_Id="139" Name="purgeFolder">
+<Header>
+<Loc EndOffset="7801" SrcFileId="1" StartOffset="7758"/>
+</Header>
+<LocList>
+<Loc EndOffset="7933" SrcFileId="1" StartOffset="7758"/>
+</LocList>
+<StmntSeq Intrnl_Id="140">
+<LocList>
+<Loc EndOffset="7927" SrcFileId="1" StartOffset="7851"/>
+</LocList>
+<LoopStmnt CovItemId="S56" CovItemPrefix="cabra.Utils.java" Intrnl_Id="141" MltplExecId="L7-2" MltplExecPrefix="cabra.Utils.java" NvrExecId="L7-0" NvrExecPrefix="cabra.Utils.java" OnceExecutedId="L7-1" OnceExecutedPrefix="cabra.Utils.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="142">
+<LocList>
+<Loc EndOffset="7917" SrcFileId="1" StartOffset="7900"/>
+</LocList>
+<BasicStmnt CovItemId="S57" CovItemPrefix="cabra.Utils.java" Intrnl_Id="143">
+<LocList>
+<Loc EndOffset="7917" SrcFileId="1" StartOffset="7900"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="7854" SrcFileId="1" StartOffset="7851"/>
+<LocList>
+<Loc EndOffset="7927" SrcFileId="1" StartOffset="7851"/>
+</LocList>
+</LoopStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1806" HierarchyLvlTypeId="5" Intrnl_Id="144" Name="obliterate">
+<Header>
+<Loc EndOffset="8089" SrcFileId="1" StartOffset="8049"/>
+</Header>
+<LocList>
+<Loc EndOffset="8462" SrcFileId="1" StartOffset="8049"/>
+</LocList>
+<StmntSeq Intrnl_Id="145">
+<LocList>
+<Loc EndOffset="8456" SrcFileId="1" StartOffset="8099"/>
+</LocList>
+<CondStmnt CovItemId="S58" CovItemPrefix="cabra.Utils.java" Intrnl_Id="146">
+<Branch CovItemId="B11" CovItemPrefix="cabra.Utils.java" Implct="false" Intrnl_Id="147">
+<Cond/>
+<LocList>
+<Loc EndOffset="8187" SrcFileId="1" StartOffset="8116"/>
+</LocList>
+<StmntSeq Intrnl_Id="148">
+<LocList>
+<Loc EndOffset="8144" SrcFileId="1" StartOffset="8130"/>
+<Loc EndOffset="8177" SrcFileId="1" StartOffset="8157"/>
+</LocList>
+<BasicStmnt CovItemId="S59" CovItemPrefix="cabra.Utils.java" Intrnl_Id="149">
+<LocList>
+<Loc EndOffset="8144" SrcFileId="1" StartOffset="8130"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S60" CovItemPrefix="cabra.Utils.java" Intrnl_Id="150">
+<LocList>
+<Loc EndOffset="8177" SrcFileId="1" StartOffset="8157"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B12" CovItemPrefix="cabra.Utils.java" Implct="false" Intrnl_Id="151">
+<Cond>
+<Loc EndOffset="8200" SrcFileId="1" StartOffset="8196"/>
+</Cond>
+<LocList>
+<Loc EndOffset="8456" SrcFileId="1" StartOffset="8201"/>
+</LocList>
+<StmntSeq Intrnl_Id="152">
+<LocList>
+<Loc EndOffset="8456" SrcFileId="1" StartOffset="8201"/>
+</LocList>
+<CondStmnt CovItemId="S61" CovItemPrefix="cabra.Utils.java" Intrnl_Id="153">
+<Branch CovItemId="B13" CovItemPrefix="cabra.Utils.java" Implct="false" Intrnl_Id="154">
+<Cond/>
+<LocList>
+<Loc EndOffset="8456" SrcFileId="1" StartOffset="8223"/>
+</LocList>
+<StmntSeq Intrnl_Id="155">
+<LocList>
+<Loc EndOffset="8386" SrcFileId="1" StartOffset="8302"/>
+<Loc EndOffset="8413" SrcFileId="1" StartOffset="8399"/>
+<Loc EndOffset="8446" SrcFileId="1" StartOffset="8426"/>
+</LocList>
+<LoopStmnt CovItemId="S62" CovItemPrefix="cabra.Utils.java" Intrnl_Id="156" MltplExecId="L8-2" MltplExecPrefix="cabra.Utils.java" NvrExecId="L8-0" NvrExecPrefix="cabra.Utils.java" OnceExecutedId="L8-1" OnceExecutedPrefix="cabra.Utils.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="157">
+<LocList>
+<Loc EndOffset="8372" SrcFileId="1" StartOffset="8354"/>
+</LocList>
+<BasicStmnt CovItemId="S63" CovItemPrefix="cabra.Utils.java" Intrnl_Id="158">
+<LocList>
+<Loc EndOffset="8372" SrcFileId="1" StartOffset="8354"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="8305" SrcFileId="1" StartOffset="8302"/>
+<LocList>
+<Loc EndOffset="8386" SrcFileId="1" StartOffset="8302"/>
+</LocList>
+</LoopStmnt>
+<BasicStmnt CovItemId="S64" CovItemPrefix="cabra.Utils.java" Intrnl_Id="159">
+<LocList>
+<Loc EndOffset="8413" SrcFileId="1" StartOffset="8399"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S65" CovItemPrefix="cabra.Utils.java" Intrnl_Id="160">
+<LocList>
+<Loc EndOffset="8446" SrcFileId="1" StartOffset="8426"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B14" CovItemPrefix="cabra.Utils.java" Implct="true" Intrnl_Id="161">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="162">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="8203" SrcFileId="1" StartOffset="8201"/>
+<LocList>
+<Loc EndOffset="8456" SrcFileId="1" StartOffset="8201"/>
+</LocList>
+<RootTerm CovItemId="C9" CovItemPrefix="cabra.Utils.java" Intrnl_Id="163">
+<BasicBoolTerm Intrnl_Id="164">
+<LocList>
+<Loc EndOffset="8222" SrcFileId="1" StartOffset="8204"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="8101" SrcFileId="1" StartOffset="8099"/>
+<LocList>
+<Loc EndOffset="8456" SrcFileId="1" StartOffset="8099"/>
+</LocList>
+<RootTerm CovItemId="C8" CovItemPrefix="cabra.Utils.java" Intrnl_Id="165">
+<BasicBoolTerm Intrnl_Id="166">
+<LocList>
+<Loc EndOffset="8115" SrcFileId="1" StartOffset="8102"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1809" HierarchyLvlTypeId="5" Intrnl_Id="167" Name="createAdvicePanel">
+<Header>
+<Loc EndOffset="8703" SrcFileId="1" StartOffset="8652"/>
+</Header>
+<LocList>
+<Loc EndOffset="9254" SrcFileId="1" StartOffset="8652"/>
+</LocList>
+<StmntSeq Intrnl_Id="168">
+<LocList>
+<Loc EndOffset="8732" SrcFileId="1" StartOffset="8717"/>
+<Loc EndOffset="8969" SrcFileId="1" StartOffset="8968"/>
+<Loc EndOffset="9015" SrcFileId="1" StartOffset="8982"/>
+<Loc EndOffset="9073" SrcFileId="1" StartOffset="9028"/>
+<Loc EndOffset="9191" SrcFileId="1" StartOffset="9144"/>
+<Loc EndOffset="9222" SrcFileId="1" StartOffset="9204"/>
+<Loc EndOffset="9248" SrcFileId="1" StartOffset="9235"/>
+</LocList>
+<BasicStmnt CovItemId="S66" CovItemPrefix="cabra.Utils.java" Intrnl_Id="169">
+<LocList>
+<Loc EndOffset="8732" SrcFileId="1" StartOffset="8717"/>
+<Loc EndOffset="8969" SrcFileId="1" StartOffset="8968"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S69" CovItemPrefix="cabra.Utils.java" Intrnl_Id="170">
+<LocList>
+<Loc EndOffset="9015" SrcFileId="1" StartOffset="8982"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S70" CovItemPrefix="cabra.Utils.java" Intrnl_Id="171">
+<LocList>
+<Loc EndOffset="9073" SrcFileId="1" StartOffset="9028"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S71" CovItemPrefix="cabra.Utils.java" Intrnl_Id="172">
+<LocList>
+<Loc EndOffset="9191" SrcFileId="1" StartOffset="9144"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S72" CovItemPrefix="cabra.Utils.java" Intrnl_Id="173">
+<LocList>
+<Loc EndOffset="9222" SrcFileId="1" StartOffset="9204"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S73" CovItemPrefix="cabra.Utils.java" Intrnl_Id="174">
+<LocList>
+<Loc EndOffset="9248" SrcFileId="1" StartOffset="9235"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<HierarchyLvl HierarchyLvlId="1808" HierarchyLvlTypeId="7" Intrnl_Id="175" Name="JPanel">
+<Header>
+<Loc EndOffset="8749" SrcFileId="1" StartOffset="8736"/>
+</Header>
+<LocList>
+<Loc EndOffset="8968" SrcFileId="1" StartOffset="8732"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="1807" HierarchyLvlTypeId="5" Intrnl_Id="176" Name="paintComponent">
+<Header>
+<Loc EndOffset="8831" SrcFileId="1" StartOffset="8763"/>
+</Header>
+<LocList>
+<Loc EndOffset="8954" SrcFileId="1" StartOffset="8763"/>
+</LocList>
+<StmntSeq Intrnl_Id="177">
+<LocList>
+<Loc EndOffset="8881" SrcFileId="1" StartOffset="8857"/>
+<Loc EndOffset="8932" SrcFileId="1" StartOffset="8906"/>
+</LocList>
+<BasicStmnt CovItemId="S67" CovItemPrefix="cabra.Utils.java" Intrnl_Id="178">
+<LocList>
+<Loc EndOffset="8881" SrcFileId="1" StartOffset="8857"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S68" CovItemPrefix="cabra.Utils.java" Intrnl_Id="179">
+<LocList>
+<Loc EndOffset="8932" SrcFileId="1" StartOffset="8906"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1810" HierarchyLvlTypeId="5" Intrnl_Id="180" Name="browse">
+<Header>
+<Loc EndOffset="9412" SrcFileId="1" StartOffset="9375"/>
+</Header>
+<LocList>
+<Loc EndOffset="9962" SrcFileId="1" StartOffset="9375"/>
+</LocList>
+<StmntSeq Intrnl_Id="181">
+<LocList>
+<Loc EndOffset="9444" SrcFileId="1" StartOffset="9421"/>
+<Loc EndOffset="9476" SrcFileId="1" StartOffset="9452"/>
+<Loc EndOffset="9541" SrcFileId="1" StartOffset="9484"/>
+<Loc EndOffset="9593" SrcFileId="1" StartOffset="9565"/>
+<Loc EndOffset="9625" SrcFileId="1" StartOffset="9605"/>
+<Loc EndOffset="9942" SrcFileId="1" StartOffset="9549"/>
+</LocList>
+<BasicStmnt CovItemId="S74" CovItemPrefix="cabra.Utils.java" Intrnl_Id="182">
+<LocList>
+<Loc EndOffset="9444" SrcFileId="1" StartOffset="9421"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S75" CovItemPrefix="cabra.Utils.java" Intrnl_Id="183">
+<LocList>
+<Loc EndOffset="9476" SrcFileId="1" StartOffset="9452"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S76" CovItemPrefix="cabra.Utils.java" Intrnl_Id="184">
+<LocList>
+<Loc EndOffset="9541" SrcFileId="1" StartOffset="9484"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S78" CovItemPrefix="cabra.Utils.java" Intrnl_Id="185">
+<LocList>
+<Loc EndOffset="9593" SrcFileId="1" StartOffset="9565"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S79" CovItemPrefix="cabra.Utils.java" Intrnl_Id="186">
+<LocList>
+<Loc EndOffset="9625" SrcFileId="1" StartOffset="9605"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S77" CovItemPrefix="cabra.Utils.java" Intrnl_Id="187">
+<Branch CovItemId="B15" CovItemPrefix="cabra.Utils.java" Implct="true" Intrnl_Id="188">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="189">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B16" CovItemPrefix="cabra.Utils.java" Implct="false" Intrnl_Id="190">
+<Cond>
+<Loc EndOffset="9671" SrcFileId="1" StartOffset="9642"/>
+</Cond>
+<LocList>
+<Loc EndOffset="9777" SrcFileId="1" StartOffset="9671"/>
+</LocList>
+<StmntSeq Intrnl_Id="191">
+<LocList>
+<Loc EndOffset="9768" SrcFileId="1" StartOffset="9706"/>
+</LocList>
+<BasicStmnt CovItemId="S80" CovItemPrefix="cabra.Utils.java" Intrnl_Id="192">
+<LocList>
+<Loc EndOffset="9768" SrcFileId="1" StartOffset="9706"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B17" CovItemPrefix="cabra.Utils.java" Implct="false" Intrnl_Id="193">
+<Cond>
+<Loc EndOffset="9822" SrcFileId="1" StartOffset="9785"/>
+</Cond>
+<LocList>
+<Loc EndOffset="9942" SrcFileId="1" StartOffset="9822"/>
+</LocList>
+<StmntSeq Intrnl_Id="194">
+<LocList>
+<Loc EndOffset="9933" SrcFileId="1" StartOffset="9873"/>
+</LocList>
+<BasicStmnt CovItemId="S81" CovItemPrefix="cabra.Utils.java" Intrnl_Id="195">
+<LocList>
+<Loc EndOffset="9933" SrcFileId="1" StartOffset="9873"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="9552" SrcFileId="1" StartOffset="9549"/>
+<LocList>
+<Loc EndOffset="9942" SrcFileId="1" StartOffset="9549"/>
+</LocList>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1813" HierarchyLvlTypeId="5" Intrnl_Id="196" Name="createEditorPane">
+<Header>
+<Loc EndOffset="10250" SrcFileId="1" StartOffset="10174"/>
+</Header>
+<LocList>
+<Loc EndOffset="11854" SrcFileId="1" StartOffset="10174"/>
+</LocList>
+<StmntSeq Intrnl_Id="197">
+<LocList>
+<Loc EndOffset="10331" SrcFileId="1" StartOffset="10288"/>
+<Loc EndOffset="10370" SrcFileId="1" StartOffset="10340"/>
+<Loc EndOffset="10426" SrcFileId="1" StartOffset="10379"/>
+<Loc EndOffset="10490" SrcFileId="1" StartOffset="10466"/>
+<Loc EndOffset="10549" SrcFileId="1" StartOffset="10517"/>
+<Loc EndOffset="10689" SrcFileId="1" StartOffset="10500"/>
+<Loc EndOffset="10962" SrcFileId="1" StartOffset="10698"/>
+<Loc EndOffset="11032" SrcFileId="1" StartOffset="11000"/>
+<Loc EndOffset="11300" SrcFileId="1" StartOffset="11298"/>
+<Loc EndOffset="11398" SrcFileId="1" StartOffset="11345"/>
+<Loc EndOffset="11484" SrcFileId="1" StartOffset="11407"/>
+<Loc EndOffset="11577" SrcFileId="1" StartOffset="11493"/>
+<Loc EndOffset="11725" SrcFileId="1" StartOffset="11670"/>
+<Loc EndOffset="11756" SrcFileId="1" StartOffset="11734"/>
+<Loc EndOffset="11826" SrcFileId="1" StartOffset="11765"/>
+<Loc EndOffset="11848" SrcFileId="1" StartOffset="11835"/>
+</LocList>
+<BasicStmnt CovItemId="S82" CovItemPrefix="cabra.Utils.java" Intrnl_Id="198">
+<LocList>
+<Loc EndOffset="10331" SrcFileId="1" StartOffset="10288"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S83" CovItemPrefix="cabra.Utils.java" Intrnl_Id="199">
+<LocList>
+<Loc EndOffset="10370" SrcFileId="1" StartOffset="10340"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S84" CovItemPrefix="cabra.Utils.java" Intrnl_Id="200">
+<LocList>
+<Loc EndOffset="10426" SrcFileId="1" StartOffset="10379"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S85" CovItemPrefix="cabra.Utils.java" Intrnl_Id="201">
+<LocList>
+<Loc EndOffset="10490" SrcFileId="1" StartOffset="10466"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S87" CovItemPrefix="cabra.Utils.java" Intrnl_Id="202">
+<LocList>
+<Loc EndOffset="10549" SrcFileId="1" StartOffset="10517"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S86" CovItemPrefix="cabra.Utils.java" Intrnl_Id="203">
+<Branch CovItemId="B18" CovItemPrefix="cabra.Utils.java" Implct="true" Intrnl_Id="204">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="205">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B19" CovItemPrefix="cabra.Utils.java" Implct="false" Intrnl_Id="206">
+<Cond>
+<Loc EndOffset="10607" SrcFileId="1" StartOffset="10568"/>
+</Cond>
+<LocList>
+<Loc EndOffset="10689" SrcFileId="1" StartOffset="10607"/>
+</LocList>
+<StmntSeq Intrnl_Id="207">
+<LocList>
+<Loc EndOffset="10679" SrcFileId="1" StartOffset="10643"/>
+</LocList>
+<BasicStmnt CovItemId="S88" CovItemPrefix="cabra.Utils.java" Intrnl_Id="208">
+<LocList>
+<Loc EndOffset="10679" SrcFileId="1" StartOffset="10643"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="10503" SrcFileId="1" StartOffset="10500"/>
+<LocList>
+<Loc EndOffset="10689" SrcFileId="1" StartOffset="10500"/>
+</LocList>
+</CondStmnt>
+<CondStmnt CovItemId="S89" CovItemPrefix="cabra.Utils.java" Intrnl_Id="209">
+<Branch CovItemId="B20" CovItemPrefix="cabra.Utils.java" Implct="false" Intrnl_Id="210">
+<Cond/>
+<LocList>
+<Loc EndOffset="10962" SrcFileId="1" StartOffset="10713"/>
+</LocList>
+<StmntSeq Intrnl_Id="211">
+<LocList>
+<Loc EndOffset="10772" SrcFileId="1" StartOffset="10748"/>
+<Loc EndOffset="10952" SrcFileId="1" StartOffset="10727"/>
+</LocList>
+<BasicStmnt CovItemId="S91" CovItemPrefix="cabra.Utils.java" Intrnl_Id="212">
+<LocList>
+<Loc EndOffset="10772" SrcFileId="1" StartOffset="10748"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S90" CovItemPrefix="cabra.Utils.java" Intrnl_Id="213">
+<Branch CovItemId="B22" CovItemPrefix="cabra.Utils.java" Implct="true" Intrnl_Id="214">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="215">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B23" CovItemPrefix="cabra.Utils.java" Implct="false" Intrnl_Id="216">
+<Cond>
+<Loc EndOffset="10828" SrcFileId="1" StartOffset="10799"/>
+</Cond>
+<LocList>
+<Loc EndOffset="10952" SrcFileId="1" StartOffset="10828"/>
+</LocList>
+<StmntSeq Intrnl_Id="217">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="10730" SrcFileId="1" StartOffset="10727"/>
+<LocList>
+<Loc EndOffset="10952" SrcFileId="1" StartOffset="10727"/>
+</LocList>
+</CondStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B21" CovItemPrefix="cabra.Utils.java" Implct="true" Intrnl_Id="218">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="219">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="10700" SrcFileId="1" StartOffset="10698"/>
+<LocList>
+<Loc EndOffset="10962" SrcFileId="1" StartOffset="10698"/>
+</LocList>
+<RootTerm CovItemId="C10" CovItemPrefix="cabra.Utils.java" Intrnl_Id="220">
+<BasicBoolTerm Intrnl_Id="221">
+<LocList>
+<Loc EndOffset="10712" SrcFileId="1" StartOffset="10701"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S92" CovItemPrefix="cabra.Utils.java" Intrnl_Id="222">
+<LocList>
+<Loc EndOffset="11032" SrcFileId="1" StartOffset="11000"/>
+<Loc EndOffset="11300" SrcFileId="1" StartOffset="11298"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S95" CovItemPrefix="cabra.Utils.java" Intrnl_Id="223">
+<LocList>
+<Loc EndOffset="11398" SrcFileId="1" StartOffset="11345"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S96" CovItemPrefix="cabra.Utils.java" Intrnl_Id="224">
+<LocList>
+<Loc EndOffset="11484" SrcFileId="1" StartOffset="11407"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S97" CovItemPrefix="cabra.Utils.java" Intrnl_Id="225">
+<LocList>
+<Loc EndOffset="11577" SrcFileId="1" StartOffset="11493"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S98" CovItemPrefix="cabra.Utils.java" Intrnl_Id="226">
+<LocList>
+<Loc EndOffset="11725" SrcFileId="1" StartOffset="11670"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S99" CovItemPrefix="cabra.Utils.java" Intrnl_Id="227">
+<LocList>
+<Loc EndOffset="11756" SrcFileId="1" StartOffset="11734"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S100" CovItemPrefix="cabra.Utils.java" Intrnl_Id="228">
+<LocList>
+<Loc EndOffset="11826" SrcFileId="1" StartOffset="11765"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S101" CovItemPrefix="cabra.Utils.java" Intrnl_Id="229">
+<LocList>
+<Loc EndOffset="11848" SrcFileId="1" StartOffset="11835"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<HierarchyLvl HierarchyLvlId="1812" HierarchyLvlTypeId="7" Intrnl_Id="230" Name="HyperlinkListener">
+<Header>
+<Loc EndOffset="11055" SrcFileId="1" StartOffset="11036"/>
+</Header>
+<LocList>
+<Loc EndOffset="11298" SrcFileId="1" StartOffset="11032"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="1811" HierarchyLvlTypeId="5" Intrnl_Id="231" Name="hyperlinkUpdate">
+<Header>
+<Loc EndOffset="11117" SrcFileId="1" StartOffset="11070"/>
+</Header>
+<LocList>
+<Loc EndOffset="11288" SrcFileId="1" StartOffset="11070"/>
+</LocList>
+<StmntSeq Intrnl_Id="232">
+<LocList>
+<Loc EndOffset="11274" SrcFileId="1" StartOffset="11136"/>
+</LocList>
+<CondStmnt CovItemId="S93" CovItemPrefix="cabra.Utils.java" Intrnl_Id="233">
+<Branch CovItemId="B24" CovItemPrefix="cabra.Utils.java" Implct="false" Intrnl_Id="234">
+<Cond/>
+<LocList>
+<Loc EndOffset="11274" SrcFileId="1" StartOffset="11196"/>
+</LocList>
+<StmntSeq Intrnl_Id="235">
+<LocList>
+<Loc EndOffset="11256" SrcFileId="1" StartOffset="11218"/>
+</LocList>
+<BasicStmnt CovItemId="S94" CovItemPrefix="cabra.Utils.java" Intrnl_Id="236">
+<LocList>
+<Loc EndOffset="11256" SrcFileId="1" StartOffset="11218"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B25" CovItemPrefix="cabra.Utils.java" Implct="true" Intrnl_Id="237">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="238">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="11138" SrcFileId="1" StartOffset="11136"/>
+<LocList>
+<Loc EndOffset="11274" SrcFileId="1" StartOffset="11136"/>
+</LocList>
+<RootTerm CovItemId="C11" CovItemPrefix="cabra.Utils.java" Intrnl_Id="239">
+<BasicBoolTerm Intrnl_Id="240">
+<LocList>
+<Loc EndOffset="11195" SrcFileId="1" StartOffset="11139"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1814" HierarchyLvlTypeId="5" Intrnl_Id="241" Name="openURLinDialog">
+<Header>
+<Loc EndOffset="12259" SrcFileId="1" StartOffset="12168"/>
+</Header>
+<LocList>
+<Loc EndOffset="12333" SrcFileId="1" StartOffset="12168"/>
+</LocList>
+<StmntSeq Intrnl_Id="242">
+<LocList>
+<Loc EndOffset="12327" SrcFileId="1" StartOffset="12269"/>
+</LocList>
+<BasicStmnt CovItemId="S102" CovItemPrefix="cabra.Utils.java" Intrnl_Id="243">
+<LocList>
+<Loc EndOffset="12327" SrcFileId="1" StartOffset="12269"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1815" HierarchyLvlTypeId="5" Intrnl_Id="244" Name="openURLinDialog">
+<Header>
+<Loc EndOffset="12819" SrcFileId="1" StartOffset="12710"/>
+</Header>
+<LocList>
+<Loc EndOffset="13426" SrcFileId="1" StartOffset="12710"/>
+</LocList>
+<StmntSeq Intrnl_Id="245">
+<LocList>
+<Loc EndOffset="12890" SrcFileId="1" StartOffset="12868"/>
+<Loc EndOffset="12930" SrcFileId="1" StartOffset="12907"/>
+<Loc EndOffset="12993" SrcFileId="1" StartOffset="12939"/>
+<Loc EndOffset="13076" SrcFileId="1" StartOffset="13040"/>
+<Loc EndOffset="13108" SrcFileId="1" StartOffset="13085"/>
+<Loc EndOffset="13179" SrcFileId="1" StartOffset="13117"/>
+<Loc EndOffset="13219" SrcFileId="1" StartOffset="13188"/>
+<Loc EndOffset="13242" SrcFileId="1" StartOffset="13228"/>
+<Loc EndOffset="13278" SrcFileId="1" StartOffset="13251"/>
+<Loc EndOffset="13309" SrcFileId="1" StartOffset="13287"/>
+<Loc EndOffset="13354" SrcFileId="1" StartOffset="13318"/>
+<Loc EndOffset="13420" SrcFileId="1" StartOffset="13393"/>
+</LocList>
+<BasicStmnt CovItemId="S103" CovItemPrefix="cabra.Utils.java" Intrnl_Id="246">
+<LocList>
+<Loc EndOffset="12890" SrcFileId="1" StartOffset="12868"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S104" CovItemPrefix="cabra.Utils.java" Intrnl_Id="247">
+<LocList>
+<Loc EndOffset="12930" SrcFileId="1" StartOffset="12907"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S105" CovItemPrefix="cabra.Utils.java" Intrnl_Id="248">
+<LocList>
+<Loc EndOffset="12993" SrcFileId="1" StartOffset="12939"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S106" CovItemPrefix="cabra.Utils.java" Intrnl_Id="249">
+<LocList>
+<Loc EndOffset="13076" SrcFileId="1" StartOffset="13040"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S107" CovItemPrefix="cabra.Utils.java" Intrnl_Id="250">
+<LocList>
+<Loc EndOffset="13108" SrcFileId="1" StartOffset="13085"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S108" CovItemPrefix="cabra.Utils.java" Intrnl_Id="251">
+<LocList>
+<Loc EndOffset="13179" SrcFileId="1" StartOffset="13117"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S109" CovItemPrefix="cabra.Utils.java" Intrnl_Id="252">
+<LocList>
+<Loc EndOffset="13219" SrcFileId="1" StartOffset="13188"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S110" CovItemPrefix="cabra.Utils.java" Intrnl_Id="253">
+<LocList>
+<Loc EndOffset="13242" SrcFileId="1" StartOffset="13228"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S111" CovItemPrefix="cabra.Utils.java" Intrnl_Id="254">
+<LocList>
+<Loc EndOffset="13278" SrcFileId="1" StartOffset="13251"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S112" CovItemPrefix="cabra.Utils.java" Intrnl_Id="255">
+<LocList>
+<Loc EndOffset="13309" SrcFileId="1" StartOffset="13287"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S113" CovItemPrefix="cabra.Utils.java" Intrnl_Id="256">
+<LocList>
+<Loc EndOffset="13354" SrcFileId="1" StartOffset="13318"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S114" CovItemPrefix="cabra.Utils.java" Intrnl_Id="257">
+<LocList>
+<Loc EndOffset="13420" SrcFileId="1" StartOffset="13393"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1816" HierarchyLvlTypeId="5" Intrnl_Id="258" Name="changeFrameLocation">
+<Header>
+<Loc EndOffset="13725" SrcFileId="1" StartOffset="13656"/>
+</Header>
+<LocList>
+<Loc EndOffset="13975" SrcFileId="1" StartOffset="13656"/>
+</LocList>
+<StmntSeq Intrnl_Id="259">
+<LocList>
+<Loc EndOffset="13772" SrcFileId="1" StartOffset="13735"/>
+<Loc EndOffset="13905" SrcFileId="1" StartOffset="13880"/>
+<Loc EndOffset="13969" SrcFileId="1" StartOffset="13941"/>
+</LocList>
+<BasicStmnt CovItemId="S115" CovItemPrefix="cabra.Utils.java" Intrnl_Id="260">
+<LocList>
+<Loc EndOffset="13772" SrcFileId="1" StartOffset="13735"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S116" CovItemPrefix="cabra.Utils.java" Intrnl_Id="261">
+<LocList>
+<Loc EndOffset="13905" SrcFileId="1" StartOffset="13880"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S117" CovItemPrefix="cabra.Utils.java" Intrnl_Id="262">
+<LocList>
+<Loc EndOffset="13969" SrcFileId="1" StartOffset="13941"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1817" HierarchyLvlTypeId="5" Intrnl_Id="263" Name="centerComponent">
+<Header>
+<Loc EndOffset="14219" SrcFileId="1" StartOffset="14148"/>
+</Header>
+<LocList>
+<Loc EndOffset="14904" SrcFileId="1" StartOffset="14148"/>
+</LocList>
+<StmntSeq Intrnl_Id="264">
+<LocList>
+<Loc EndOffset="14349" SrcFileId="1" StartOffset="14287"/>
+<Loc EndOffset="14423" SrcFileId="1" StartOffset="14358"/>
+<Loc EndOffset="14649" SrcFileId="1" StartOffset="14612"/>
+<Loc EndOffset="14695" SrcFileId="1" StartOffset="14658"/>
+<Loc EndOffset="14788" SrcFileId="1" StartOffset="14751"/>
+<Loc EndOffset="14832" SrcFileId="1" StartOffset="14797"/>
+<Loc EndOffset="14898" SrcFileId="1" StartOffset="14850"/>
+</LocList>
+<BasicStmnt CovItemId="S118" CovItemPrefix="cabra.Utils.java" Intrnl_Id="265">
+<LocList>
+<Loc EndOffset="14349" SrcFileId="1" StartOffset="14287"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S119" CovItemPrefix="cabra.Utils.java" Intrnl_Id="266">
+<LocList>
+<Loc EndOffset="14423" SrcFileId="1" StartOffset="14358"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S120" CovItemPrefix="cabra.Utils.java" Intrnl_Id="267">
+<LocList>
+<Loc EndOffset="14649" SrcFileId="1" StartOffset="14612"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S121" CovItemPrefix="cabra.Utils.java" Intrnl_Id="268">
+<LocList>
+<Loc EndOffset="14695" SrcFileId="1" StartOffset="14658"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S122" CovItemPrefix="cabra.Utils.java" Intrnl_Id="269">
+<LocList>
+<Loc EndOffset="14788" SrcFileId="1" StartOffset="14751"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S123" CovItemPrefix="cabra.Utils.java" Intrnl_Id="270">
+<LocList>
+<Loc EndOffset="14832" SrcFileId="1" StartOffset="14797"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S124" CovItemPrefix="cabra.Utils.java" Intrnl_Id="271">
+<LocList>
+<Loc EndOffset="14898" SrcFileId="1" StartOffset="14850"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1818" HierarchyLvlTypeId="5" Intrnl_Id="272" Name="centerOnScreen">
+<Header>
+<Loc EndOffset="15106" SrcFileId="1" StartOffset="15052"/>
+</Header>
+<LocList>
+<Loc EndOffset="15656" SrcFileId="1" StartOffset="15052"/>
+</LocList>
+<StmntSeq Intrnl_Id="273">
+<LocList>
+<Loc EndOffset="15175" SrcFileId="1" StartOffset="15120"/>
+<Loc EndOffset="15235" SrcFileId="1" StartOffset="15188"/>
+<Loc EndOffset="15293" SrcFileId="1" StartOffset="15248"/>
+<Loc EndOffset="15353" SrcFileId="1" StartOffset="15306"/>
+<Loc EndOffset="15409" SrcFileId="1" StartOffset="15367"/>
+<Loc EndOffset="15466" SrcFileId="1" StartOffset="15422"/>
+<Loc EndOffset="15527" SrcFileId="1" StartOffset="15480"/>
+<Loc EndOffset="15586" SrcFileId="1" StartOffset="15540"/>
+<Loc EndOffset="15648" SrcFileId="1" StartOffset="15600"/>
+</LocList>
+<BasicStmnt CovItemId="S125" CovItemPrefix="cabra.Utils.java" Intrnl_Id="274">
+<LocList>
+<Loc EndOffset="15175" SrcFileId="1" StartOffset="15120"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S126" CovItemPrefix="cabra.Utils.java" Intrnl_Id="275">
+<LocList>
+<Loc EndOffset="15235" SrcFileId="1" StartOffset="15188"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S127" CovItemPrefix="cabra.Utils.java" Intrnl_Id="276">
+<LocList>
+<Loc EndOffset="15293" SrcFileId="1" StartOffset="15248"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S128" CovItemPrefix="cabra.Utils.java" Intrnl_Id="277">
+<LocList>
+<Loc EndOffset="15353" SrcFileId="1" StartOffset="15306"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S129" CovItemPrefix="cabra.Utils.java" Intrnl_Id="278">
+<LocList>
+<Loc EndOffset="15409" SrcFileId="1" StartOffset="15367"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S130" CovItemPrefix="cabra.Utils.java" Intrnl_Id="279">
+<LocList>
+<Loc EndOffset="15466" SrcFileId="1" StartOffset="15422"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S131" CovItemPrefix="cabra.Utils.java" Intrnl_Id="280">
+<LocList>
+<Loc EndOffset="15527" SrcFileId="1" StartOffset="15480"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S132" CovItemPrefix="cabra.Utils.java" Intrnl_Id="281">
+<LocList>
+<Loc EndOffset="15586" SrcFileId="1" StartOffset="15540"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S133" CovItemPrefix="cabra.Utils.java" Intrnl_Id="282">
+<LocList>
+<Loc EndOffset="15648" SrcFileId="1" StartOffset="15600"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1819" HierarchyLvlTypeId="5" Intrnl_Id="283" Name="drawEmblem">
+<Header>
+<Loc EndOffset="16000" SrcFileId="1" StartOffset="15937"/>
+</Header>
+<LocList>
+<Loc EndOffset="16921" SrcFileId="1" StartOffset="15937"/>
+</LocList>
+<StmntSeq Intrnl_Id="284">
+<LocList>
+<Loc EndOffset="16061" SrcFileId="1" StartOffset="16014"/>
+<Loc EndOffset="16162" SrcFileId="1" StartOffset="16074"/>
+<Loc EndOffset="16383" SrcFileId="1" StartOffset="16345"/>
+<Loc EndOffset="16436" SrcFileId="1" StartOffset="16396"/>
+<Loc EndOffset="16554" SrcFileId="1" StartOffset="16505"/>
+<Loc EndOffset="16646" SrcFileId="1" StartOffset="16595"/>
+<Loc EndOffset="16826" SrcFileId="1" StartOffset="16740"/>
+</LocList>
+<BasicStmnt CovItemId="S134" CovItemPrefix="cabra.Utils.java" Intrnl_Id="285">
+<LocList>
+<Loc EndOffset="16061" SrcFileId="1" StartOffset="16014"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S135" CovItemPrefix="cabra.Utils.java" Intrnl_Id="286">
+<LocList>
+<Loc EndOffset="16162" SrcFileId="1" StartOffset="16074"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S136" CovItemPrefix="cabra.Utils.java" Intrnl_Id="287">
+<LocList>
+<Loc EndOffset="16383" SrcFileId="1" StartOffset="16345"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S137" CovItemPrefix="cabra.Utils.java" Intrnl_Id="288">
+<LocList>
+<Loc EndOffset="16436" SrcFileId="1" StartOffset="16396"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S138" CovItemPrefix="cabra.Utils.java" Intrnl_Id="289">
+<LocList>
+<Loc EndOffset="16554" SrcFileId="1" StartOffset="16505"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S139" CovItemPrefix="cabra.Utils.java" Intrnl_Id="290">
+<LocList>
+<Loc EndOffset="16646" SrcFileId="1" StartOffset="16595"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S140" CovItemPrefix="cabra.Utils.java" Intrnl_Id="291">
+<LocList>
+<Loc EndOffset="16826" SrcFileId="1" StartOffset="16740"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1820" HierarchyLvlTypeId="5" Intrnl_Id="292" Name="putPanelInDialog">
+<Header>
+<Loc EndOffset="17585" SrcFileId="1" StartOffset="17447"/>
+</Header>
+<LocList>
+<Loc EndOffset="18121" SrcFileId="1" StartOffset="17447"/>
+</LocList>
+<StmntSeq Intrnl_Id="293">
+<LocList>
+<Loc EndOffset="17650" SrcFileId="1" StartOffset="17595"/>
+<Loc EndOffset="17711" SrcFileId="1" StartOffset="17693"/>
+<Loc EndOffset="17791" SrcFileId="1" StartOffset="17720"/>
+<Loc EndOffset="17910" SrcFileId="1" StartOffset="17800"/>
+<Loc EndOffset="17946" SrcFileId="1" StartOffset="17919"/>
+<Loc EndOffset="18083" SrcFileId="1" StartOffset="17955"/>
+<Loc EndOffset="18115" SrcFileId="1" StartOffset="18101"/>
+</LocList>
+<BasicStmnt CovItemId="S141" CovItemPrefix="cabra.Utils.java" Intrnl_Id="294">
+<LocList>
+<Loc EndOffset="17650" SrcFileId="1" StartOffset="17595"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S142" CovItemPrefix="cabra.Utils.java" Intrnl_Id="295">
+<LocList>
+<Loc EndOffset="17711" SrcFileId="1" StartOffset="17693"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S143" CovItemPrefix="cabra.Utils.java" Intrnl_Id="296">
+<LocList>
+<Loc EndOffset="17791" SrcFileId="1" StartOffset="17720"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S144" CovItemPrefix="cabra.Utils.java" Intrnl_Id="297">
+<Branch CovItemId="B26" CovItemPrefix="cabra.Utils.java" Implct="false" Intrnl_Id="298">
+<Cond/>
+<LocList>
+<Loc EndOffset="17854" SrcFileId="1" StartOffset="17840"/>
+</LocList>
+<StmntSeq Intrnl_Id="299">
+<LocList>
+<Loc EndOffset="17854" SrcFileId="1" StartOffset="17840"/>
+</LocList>
+<BasicStmnt CovItemId="S145" CovItemPrefix="cabra.Utils.java" Intrnl_Id="300">
+<LocList>
+<Loc EndOffset="17854" SrcFileId="1" StartOffset="17840"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B27" CovItemPrefix="cabra.Utils.java" Implct="false" Intrnl_Id="301">
+<Cond>
+<Loc EndOffset="17867" SrcFileId="1" StartOffset="17863"/>
+</Cond>
+<LocList>
+<Loc EndOffset="17910" SrcFileId="1" StartOffset="17880"/>
+</LocList>
+<StmntSeq Intrnl_Id="302">
+<LocList>
+<Loc EndOffset="17910" SrcFileId="1" StartOffset="17880"/>
+</LocList>
+<BasicStmnt CovItemId="S146" CovItemPrefix="cabra.Utils.java" Intrnl_Id="303">
+<LocList>
+<Loc EndOffset="17910" SrcFileId="1" StartOffset="17880"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="17802" SrcFileId="1" StartOffset="17800"/>
+<LocList>
+<Loc EndOffset="17910" SrcFileId="1" StartOffset="17800"/>
+</LocList>
+<RootTerm CovItemId="C12" CovItemPrefix="cabra.Utils.java" Intrnl_Id="304">
+<OpTerm BooleanOpId="2" Intrnl_Id="305">
+<BasicBoolTerm Intrnl_Id="306">
+<LocList>
+<Loc EndOffset="17812" SrcFileId="1" StartOffset="17803"/>
+</LocList>
+</BasicBoolTerm>
+<BasicBoolTerm Intrnl_Id="307">
+<LocList>
+<Loc EndOffset="17826" SrcFileId="1" StartOffset="17816"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="17815" SrcFileId="1" StartOffset="17813"/>
+</LocList>
+</OpTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S147" CovItemPrefix="cabra.Utils.java" Intrnl_Id="308">
+<LocList>
+<Loc EndOffset="17946" SrcFileId="1" StartOffset="17919"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S148" CovItemPrefix="cabra.Utils.java" Intrnl_Id="309">
+<Branch CovItemId="B28" CovItemPrefix="cabra.Utils.java" Implct="false" Intrnl_Id="310">
+<Cond/>
+<LocList>
+<Loc EndOffset="18022" SrcFileId="1" StartOffset="17985"/>
+</LocList>
+<StmntSeq Intrnl_Id="311">
+<LocList>
+<Loc EndOffset="18022" SrcFileId="1" StartOffset="17985"/>
+</LocList>
+<BasicStmnt CovItemId="S149" CovItemPrefix="cabra.Utils.java" Intrnl_Id="312">
+<LocList>
+<Loc EndOffset="18022" SrcFileId="1" StartOffset="17985"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B29" CovItemPrefix="cabra.Utils.java" Implct="false" Intrnl_Id="313">
+<Cond>
+<Loc EndOffset="18035" SrcFileId="1" StartOffset="18031"/>
+</Cond>
+<LocList>
+<Loc EndOffset="18083" SrcFileId="1" StartOffset="18048"/>
+</LocList>
+<StmntSeq Intrnl_Id="314">
+<LocList>
+<Loc EndOffset="18083" SrcFileId="1" StartOffset="18048"/>
+</LocList>
+<BasicStmnt CovItemId="S150" CovItemPrefix="cabra.Utils.java" Intrnl_Id="315">
+<LocList>
+<Loc EndOffset="18083" SrcFileId="1" StartOffset="18048"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="17957" SrcFileId="1" StartOffset="17955"/>
+<LocList>
+<Loc EndOffset="18083" SrcFileId="1" StartOffset="17955"/>
+</LocList>
+<RootTerm CovItemId="C13" CovItemPrefix="cabra.Utils.java" Intrnl_Id="316">
+<BasicBoolTerm Intrnl_Id="317">
+<LocList>
+<Loc EndOffset="17971" SrcFileId="1" StartOffset="17958"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S151" CovItemPrefix="cabra.Utils.java" Intrnl_Id="318">
+<LocList>
+<Loc EndOffset="18115" SrcFileId="1" StartOffset="18101"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1821" HierarchyLvlTypeId="5" Intrnl_Id="319" Name="showDialog">
+<Header>
+<Loc EndOffset="18446" SrcFileId="1" StartOffset="18373"/>
+</Header>
+<LocList>
+<Loc EndOffset="18512" SrcFileId="1" StartOffset="18373"/>
+</LocList>
+<StmntSeq Intrnl_Id="320">
+<LocList>
+<Loc EndOffset="18506" SrcFileId="1" StartOffset="18456"/>
+</LocList>
+<BasicStmnt CovItemId="S152" CovItemPrefix="cabra.Utils.java" Intrnl_Id="321">
+<LocList>
+<Loc EndOffset="18506" SrcFileId="1" StartOffset="18456"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1822" HierarchyLvlTypeId="5" Intrnl_Id="322" Name="showDialog">
+<Header>
+<Loc EndOffset="18861" SrcFileId="1" StartOffset="18771"/>
+</Header>
+<LocList>
+<Loc EndOffset="19213" SrcFileId="1" StartOffset="18771"/>
+</LocList>
+<StmntSeq Intrnl_Id="323">
+<LocList>
+<Loc EndOffset="19201" SrcFileId="1" StartOffset="18871"/>
+</LocList>
+<BasicStmnt CovItemId="S153" CovItemPrefix="cabra.Utils.java" Intrnl_Id="324">
+<LocList>
+<Loc EndOffset="19201" SrcFileId="1" StartOffset="18871"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="1823" HierarchyLvlTypeId="5" Intrnl_Id="325" Name="debug">
+<Header>
+<Loc EndOffset="19652" SrcFileId="1" StartOffset="19601"/>
+</Header>
+<LocList>
+<Loc EndOffset="20090" SrcFileId="1" StartOffset="19601"/>
+</LocList>
+<StmntSeq Intrnl_Id="326">
+<LocList>
+<Loc EndOffset="19682" SrcFileId="1" StartOffset="19662"/>
+<Loc EndOffset="19739" SrcFileId="1" StartOffset="19691"/>
+<Loc EndOffset="19876" SrcFileId="1" StartOffset="19774"/>
+<Loc EndOffset="19971" SrcFileId="1" StartOffset="19885"/>
+<Loc EndOffset="20084" SrcFileId="1" StartOffset="19989"/>
+</LocList>
+<BasicStmnt CovItemId="S154" CovItemPrefix="cabra.Utils.java" Intrnl_Id="327">
+<LocList>
+<Loc EndOffset="19682" SrcFileId="1" StartOffset="19662"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S155" CovItemPrefix="cabra.Utils.java" Intrnl_Id="328">
+<LocList>
+<Loc EndOffset="19739" SrcFileId="1" StartOffset="19691"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S156" CovItemPrefix="cabra.Utils.java" Intrnl_Id="329" MltplExecId="L9-2" MltplExecPrefix="cabra.Utils.java" NvrExecId="L9-0" NvrExecPrefix="cabra.Utils.java" OnceExecutedId="L9-1" OnceExecutedPrefix="cabra.Utils.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="330">
+<LocList>
+<Loc EndOffset="19866" SrcFileId="1" StartOffset="19834"/>
+</LocList>
+<BasicStmnt CovItemId="S157" CovItemPrefix="cabra.Utils.java" Intrnl_Id="331">
+<LocList>
+<Loc EndOffset="19866" SrcFileId="1" StartOffset="19834"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="19777" SrcFileId="1" StartOffset="19774"/>
+<LocList>
+<Loc EndOffset="19876" SrcFileId="1" StartOffset="19774"/>
+</LocList>
+</LoopStmnt>
+<BasicStmnt CovItemId="S158" CovItemPrefix="cabra.Utils.java" Intrnl_Id="332">
+<LocList>
+<Loc EndOffset="19971" SrcFileId="1" StartOffset="19885"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S159" CovItemPrefix="cabra.Utils.java" Intrnl_Id="333">
+<LocList>
+<Loc EndOffset="20084" SrcFileId="1" StartOffset="19989"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</MASTRoot>
+</TestSessionContainer>

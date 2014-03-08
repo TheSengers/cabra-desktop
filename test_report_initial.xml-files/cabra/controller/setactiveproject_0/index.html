@@ -1,0 +1,217 @@
+
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>setActiveProject - 8-Mar-2014 12:47:39 PM - CodeCover Report</title>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+</head>
+<body>
+    <div class="headline">
+        Coverage Report
+    </div>
+    <div class="session">
+        8-Mar-2014 12:47:39 PM
+    </div>
+    <div class="sessionDate">
+        measured on March 8, 2014 12:47:39 PM MST
+    </div>
+    <div class="linkToTop">
+          <a href="../../../../test_report_initial.xml">
+              up to the title page
+          </a>
+    </div>
+    <div class="ancestors">
+    <a href="../../index.html">
+        cabra</a>
+    .
+    <a href="../index.html">
+        Controller</a>
+    .
+    setActiveProject
+    </div><div class="methodInfo">
+    <table class="methodInfo">
+    <thead class="methodInfo">
+        <tr class="methodInfo">
+            <th class="methodInfo firstcolumn"></th>
+            <th class="methodInfo" colspan="3">Statement Coverage</th>
+            <th class="methodInfo" colspan="3">Branch Coverage</th>
+            <th class="methodInfo" colspan="3">Term Coverage</th>
+        </tr>
+    </thead>
+    <tbody class="methodInfo">
+        <tr class="methodInfo">
+            <td class="methodInfo firstcolumn">
+                    public void setActiveProject(String projectName, boolean shouldSave)
+            </td>  
+                                    <td class="methodInfo">
+                        3&nbsp;/&nbsp;3
+                </td>
+                <td class="methodInfo">
+                        100&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:100%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        2&nbsp;/&nbsp;2
+                </td>
+                <td class="methodInfo">
+                        100&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:100%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        2&nbsp;/&nbsp;2
+                </td>
+                <td class="methodInfo">
+                        100&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:100%"></div></div>
+                </td>   
+                        </tr>
+    </tbody>
+    </table></div>
+    <div class="code">
+    <table class="code">
+        <thead class="code">
+        <tr class="code">
+                        <th class="code" colspan="3">Controller.java</th>
+                </tr>
+        </thead>
+        <tbody class="code">
+                      <tr class="code" id="L399">
+             <td class="code lineNumber">
+                  <a href="#L399">399</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; public void setActiveProject(String projectName, boolean shouldSave){
+              </td>
+          </tr>
+                      <tr class="code" id="L400">
+             <td class="code lineNumber">
+                  <a href="#L400">400</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //find the matching project
+              </td>
+          </tr>
+                      <tr class="code" id="L401">
+             <td class="code lineNumber">
+                  <a href="#L401">401</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">Project project = null;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L402">
+             <td class="code lineNumber">
+                  <a href="#L402">402</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(Project proj : projects){
+              </td>
+          </tr>
+                      <tr class="code" id="L403">
+             <td class="code lineNumber">
+                  <a href="#L403">403</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //System.out.println(proj.getName());
+              </td>
+          </tr>
+                      <tr class="code" id="L404">
+             <td class="code lineNumber">
+                  <a href="#L404">404</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Branch_Coverage">if</span>(<span class="covered fullyCovered Term_Coverage">proj.getName().equals(projectName)</span>)
+              </td>
+          </tr>
+                      <tr class="code" id="L405">
+             <td class="code lineNumber">
+                  <a href="#L405">405</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">project = proj;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L406">
+             <td class="code lineNumber">
+                  <a href="#L406">406</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L407">
+             <td class="code lineNumber">
+                  <a href="#L407">407</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  
+              </td>
+          </tr>
+                      <tr class="code" id="L408">
+             <td class="code lineNumber">
+                  <a href="#L408">408</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">setActiveProject(project, shouldSave);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L409">
+             <td class="code lineNumber">
+                  <a href="#L409">409</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+            </tbody>
+    </table></div>
+        <div class="creationNote">
+        created on March 8, 2014 1:07:12 PM MST with
+        <a href="http://www.codecover.org">
+            CodeCover
+        </a>
+    </div>    
+</body>
+</html>
+        

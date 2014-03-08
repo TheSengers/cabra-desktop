@@ -1,0 +1,217 @@
+
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>padWithLeadingZeroes - 8-Mar-2014 12:47:39 PM - CodeCover Report</title>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+</head>
+<body>
+    <div class="headline">
+        Coverage Report
+    </div>
+    <div class="session">
+        8-Mar-2014 12:47:39 PM
+    </div>
+    <div class="sessionDate">
+        measured on March 8, 2014 12:47:39 PM MST
+    </div>
+    <div class="linkToTop">
+          <a href="../../../../test_report_initial.xml">
+              up to the title page
+          </a>
+    </div>
+    <div class="ancestors">
+    <a href="../../index.html">
+        cabra</a>
+    .
+    <a href="../index.html">
+        Utils</a>
+    .
+    padWithLeadingZeroes
+    </div><div class="methodInfo">
+    <table class="methodInfo">
+    <thead class="methodInfo">
+        <tr class="methodInfo">
+            <th class="methodInfo firstcolumn"></th>
+            <th class="methodInfo" colspan="3">Statement Coverage</th>
+            <th class="methodInfo" colspan="3">Branch Coverage</th>
+            <th class="methodInfo" colspan="3">Term Coverage</th>
+        </tr>
+    </thead>
+    <tbody class="methodInfo">
+        <tr class="methodInfo">
+            <td class="methodInfo firstcolumn">
+                    public static String padWithLeadingZeroes(int x, int digits)
+            </td>  
+                                    <td class="methodInfo">
+                        4&nbsp;/&nbsp;4
+                </td>
+                <td class="methodInfo">
+                        100&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:100%"></div></div>
+                </td>   
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                                                <td class="methodInfo">
+                        2&nbsp;/&nbsp;2
+                </td>
+                <td class="methodInfo">
+                        100&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:100%"></div></div>
+                </td>   
+                        </tr>
+    </tbody>
+    </table></div>
+    <div class="code">
+    <table class="code">
+        <thead class="code">
+        <tr class="code">
+                        <th class="code" colspan="3">Utils.java</th>
+                </tr>
+        </thead>
+        <tbody class="code">
+                      <tr class="code" id="L184">
+             <td class="code lineNumber">
+                  <a href="#L184">184</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; public static String padWithLeadingZeroes(int x, int digits){
+              </td>
+          </tr>
+                      <tr class="code" id="L185">
+             <td class="code lineNumber">
+                  <a href="#L185">185</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">String string = x + &quot;&quot;;</span> //default string representation
+              </td>
+          </tr>
+                      <tr class="code" id="L186">
+             <td class="code lineNumber">
+                  <a href="#L186">186</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">int zeroesInFront = digits - numDigits(x);</span> //total digits - digits in number is number to add on front
+              </td>
+          </tr>
+                      <tr class="code" id="L187">
+             <td class="code lineNumber">
+                  <a href="#L187">187</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L188">
+             <td class="code lineNumber">
+                  <a href="#L188">188</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //add specified # of 0s on front of string
+              </td>
+          </tr>
+                      <tr class="code" id="L189">
+             <td class="code lineNumber">
+                  <a href="#L189">189</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int i=0; <span class="covered fullyCovered Term_Coverage">i&lt;zeroesInFront</span>; i++){
+              </td>
+          </tr>
+                      <tr class="code" id="L190">
+             <td class="code lineNumber">
+                  <a href="#L190">190</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">string = &quot;0&quot; + string;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L191">
+             <td class="code lineNumber">
+                  <a href="#L191">191</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L192">
+             <td class="code lineNumber">
+                  <a href="#L192">192</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L193">
+             <td class="code lineNumber">
+                  <a href="#L193">193</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">return string;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L194">
+             <td class="code lineNumber">
+                  <a href="#L194">194</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+            </tbody>
+    </table></div>
+        <div class="creationNote">
+        created on March 8, 2014 1:07:12 PM MST with
+        <a href="http://www.codecover.org">
+            CodeCover
+        </a>
+    </div>    
+</body>
+</html>
+        

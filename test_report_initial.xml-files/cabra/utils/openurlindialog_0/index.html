@@ -1,0 +1,305 @@
+
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>openURLinDialog - 8-Mar-2014 12:47:39 PM - CodeCover Report</title>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+</head>
+<body>
+    <div class="headline">
+        Coverage Report
+    </div>
+    <div class="session">
+        8-Mar-2014 12:47:39 PM
+    </div>
+    <div class="sessionDate">
+        measured on March 8, 2014 12:47:39 PM MST
+    </div>
+    <div class="linkToTop">
+          <a href="../../../../test_report_initial.xml">
+              up to the title page
+          </a>
+    </div>
+    <div class="ancestors">
+    <a href="../../index.html">
+        cabra</a>
+    .
+    <a href="../index.html">
+        Utils</a>
+    .
+    openURLinDialog
+    </div><div class="methodInfo">
+    <table class="methodInfo">
+    <thead class="methodInfo">
+        <tr class="methodInfo">
+            <th class="methodInfo firstcolumn"></th>
+            <th class="methodInfo" colspan="3">Statement Coverage</th>
+            <th class="methodInfo" colspan="3">Branch Coverage</th>
+            <th class="methodInfo" colspan="3">Term Coverage</th>
+        </tr>
+    </thead>
+    <tbody class="methodInfo">
+        <tr class="methodInfo">
+            <td class="methodInfo firstcolumn">
+                    public static void openURLinDialog(String url, String title,  String iconPath, JFrame frame, boolean visible)
+            </td>  
+                                    <td class="methodInfo">
+                        0&nbsp;/&nbsp;12
+                </td>
+                <td class="methodInfo">
+                        0&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:0%"></div></div>
+                </td>   
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                        </tr>
+    </tbody>
+    </table></div>
+    <div class="code">
+    <table class="code">
+        <thead class="code">
+        <tr class="code">
+                        <th class="code" colspan="3">Utils.java</th>
+                </tr>
+        </thead>
+        <tbody class="code">
+                      <tr class="code" id="L373">
+             <td class="code lineNumber">
+                  <a href="#L373">373</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; public static void openURLinDialog(String url, String title,&nbsp; String iconPath, JFrame frame, boolean visible){
+              </td>
+          </tr>
+                      <tr class="code" id="L374">
+             <td class="code lineNumber">
+                  <a href="#L374">374</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //create panel with page in it
+              </td>
+          </tr>
+                      <tr class="code" id="L375">
+             <td class="code lineNumber">
+                  <a href="#L375">375</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">final int WIDTH = 400;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L376">
+             <td class="code lineNumber">
+                  <a href="#L376">376</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">final int HEIGHT = 300;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L377">
+             <td class="code lineNumber">
+                  <a href="#L377">377</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">JPanel webView = createEditorPane(url, WIDTH, HEIGHT);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L378">
+             <td class="code lineNumber">
+                  <a href="#L378">378</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L379">
+             <td class="code lineNumber">
+                  <a href="#L379">379</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //put it in a dialog
+              </td>
+          </tr>
+                      <tr class="code" id="L380">
+             <td class="code lineNumber">
+                  <a href="#L380">380</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">JDialog dialog = new JDialog(frame);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L381">
+             <td class="code lineNumber">
+                  <a href="#L381">381</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">dialog.setTitle(title);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L382">
+             <td class="code lineNumber">
+                  <a href="#L382">382</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">dialog.setIconImage(GUI.createImageIcon(iconPath).getImage());</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L383">
+             <td class="code lineNumber">
+                  <a href="#L383">383</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">dialog.setContentPane(webView);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L384">
+             <td class="code lineNumber">
+                  <a href="#L384">384</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">dialog.pack();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L385">
+             <td class="code lineNumber">
+                  <a href="#L385">385</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">dialog.setResizable(false);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L386">
+             <td class="code lineNumber">
+                  <a href="#L386">386</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">dialog.setModal(true);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L387">
+             <td class="code lineNumber">
+                  <a href="#L387">387</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">Utils.centerComponent(dialog,frame);</span>&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L388">
+             <td class="code lineNumber">
+                  <a href="#L388">388</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L389">
+             <td class="code lineNumber">
+                  <a href="#L389">389</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //open it
+              </td>
+          </tr>
+                      <tr class="code" id="L390">
+             <td class="code lineNumber">
+                  <a href="#L390">390</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">dialog.setVisible(visible);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L391">
+             <td class="code lineNumber">
+                  <a href="#L391">391</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+            </tbody>
+    </table></div>
+        <div class="creationNote">
+        created on March 8, 2014 1:07:12 PM MST with
+        <a href="http://www.codecover.org">
+            CodeCover
+        </a>
+    </div>    
+</body>
+</html>
+        

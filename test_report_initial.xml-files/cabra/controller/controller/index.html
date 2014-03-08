@@ -1,0 +1,1801 @@
+
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Controller - 8-Mar-2014 12:47:39 PM - CodeCover Report</title>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+</head>
+<body>
+    <div class="headline">
+        Coverage Report
+    </div>
+    <div class="session">
+        8-Mar-2014 12:47:39 PM
+    </div>
+    <div class="sessionDate">
+        measured on March 8, 2014 12:47:39 PM MST
+    </div>
+    <div class="linkToTop">
+          <a href="../../../../test_report_initial.xml">
+              up to the title page
+          </a>
+    </div>
+    <div class="ancestors">
+    <a href="../../index.html">
+        cabra</a>
+    .
+    <a href="../index.html">
+        Controller</a>
+    .
+    Controller
+    </div><div class="methodInfo">
+    <table class="methodInfo">
+    <thead class="methodInfo">
+        <tr class="methodInfo">
+            <th class="methodInfo firstcolumn"></th>
+            <th class="methodInfo" colspan="3">Statement Coverage</th>
+            <th class="methodInfo" colspan="3">Branch Coverage</th>
+            <th class="methodInfo" colspan="3">Term Coverage</th>
+        </tr>
+    </thead>
+    <tbody class="methodInfo">
+        <tr class="methodInfo">
+            <td class="methodInfo firstcolumn">
+                    public Controller()
+            </td>  
+                                    <td class="methodInfo">
+                        20&nbsp;/&nbsp;35
+                </td>
+                <td class="methodInfo">
+                        57&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:57%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        10&nbsp;/&nbsp;20
+                </td>
+                <td class="methodInfo">
+                        50&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:50%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        9&nbsp;/&nbsp;22
+                </td>
+                <td class="methodInfo">
+                        40&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:40%"></div></div>
+                </td>   
+                        </tr>
+    </tbody>
+    </table></div>
+    <div class="code">
+    <table class="code">
+        <thead class="code">
+        <tr class="code">
+                        <th class="code" colspan="3">Controller.java</th>
+                </tr>
+        </thead>
+        <tbody class="code">
+                      <tr class="code" id="L32">
+             <td class="code lineNumber">
+                  <a href="#L32">32</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; public Controller(){
+              </td>
+          </tr>
+                      <tr class="code" id="L33">
+             <td class="code lineNumber">
+                  <a href="#L33">33</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* the plan:
+              </td>
+          </tr>
+                      <tr class="code" id="L34">
+             <td class="code lineNumber">
+                  <a href="#L34">34</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * IF no existing projects:
+              </td>
+          </tr>
+                      <tr class="code" id="L35">
+             <td class="code lineNumber">
+                  <a href="#L35">35</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GET new project and make a project with it
+              </td>
+          </tr>
+                      <tr class="code" id="L36">
+             <td class="code lineNumber">
+                  <a href="#L36">36</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * ELSE: (existing projects)
+              </td>
+          </tr>
+                      <tr class="code" id="L37">
+             <td class="code lineNumber">
+                  <a href="#L37">37</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LOAD projects:
+              </td>
+          </tr>
+                      <tr class="code" id="L38">
+             <td class="code lineNumber">
+                  <a href="#L38">38</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LOAD cards and give them to project
+              </td>
+          </tr>
+                      <tr class="code" id="L39">
+             <td class="code lineNumber">
+                  <a href="#L39">39</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LOAD notes and give them to project
+              </td>
+          </tr>
+                      <tr class="code" id="L40">
+             <td class="code lineNumber">
+                  <a href="#L40">40</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * FINALLY:
+              </td>
+          </tr>
+                      <tr class="code" id="L41">
+             <td class="code lineNumber">
+                  <a href="#L41">41</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; INITIALIZE GUI
+              </td>
+          </tr>
+                      <tr class="code" id="L42">
+             <td class="code lineNumber">
+                  <a href="#L42">42</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BUILD the GUI using the projects
+              </td>
+          </tr>
+                      <tr class="code" id="L43">
+             <td class="code lineNumber">
+                  <a href="#L43">43</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IF userData exists:
+              </td>
+          </tr>
+                      <tr class="code" id="L44">
+             <td class="code lineNumber">
+                  <a href="#L44">44</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LOAD it
+              </td>
+          </tr>
+                      <tr class="code" id="L45">
+             <td class="code lineNumber">
+                  <a href="#L45">45</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ELSE:
+              </td>
+          </tr>
+                      <tr class="code" id="L46">
+             <td class="code lineNumber">
+                  <a href="#L46">46</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CREATE a new one with defaults
+              </td>
+          </tr>
+                      <tr class="code" id="L47">
+             <td class="code lineNumber">
+                  <a href="#L47">47</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TELL the GUI to adapt to these changes
+              </td>
+          </tr>
+                      <tr class="code" id="L48">
+             <td class="code lineNumber">
+                  <a href="#L48">48</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * 
+              </td>
+          </tr>
+                      <tr class="code" id="L49">
+             <td class="code lineNumber">
+                  <a href="#L49">49</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * 
+              </td>
+          </tr>
+                      <tr class="code" id="L50">
+             <td class="code lineNumber">
+                  <a href="#L50">50</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */
+              </td>
+          </tr>
+                      <tr class="code" id="L51">
+             <td class="code lineNumber">
+                  <a href="#L51">51</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: catch(Exception e)">try</span>{
+              </td>
+          </tr>
+                      <tr class="code" id="L52">
+             <td class="code lineNumber">
+                  <a href="#L52">52</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /** Is it the first time the program's being booted up?
+              </td>
+          </tr>
+                      <tr class="code" id="L53">
+             <td class="code lineNumber">
+                  <a href="#L53">53</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * 
+              </td>
+          </tr>
+                      <tr class="code" id="L54">
+             <td class="code lineNumber">
+                  <a href="#L54">54</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */
+              </td>
+          </tr>
+                      <tr class="code" id="L55">
+             <td class="code lineNumber">
+                  <a href="#L55">55</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">boolean firstRun = false;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L56">
+             <td class="code lineNumber">
+                  <a href="#L56">56</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  
+              </td>
+          </tr>
+                      <tr class="code" id="L57">
+             <td class="code lineNumber">
+                  <a href="#L57">57</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //if there isn't a cabraprojects file, create it
+              </td>
+          </tr>
+                      <tr class="code" id="L58">
+             <td class="code lineNumber">
+                  <a href="#L58">58</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: then">if</span>(<span class="covered partlyCovered Term_Coverage">SaveLoad.getProjectFolder().exists() == false</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L59">
+             <td class="code lineNumber">
+                  <a href="#L59">59</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">SaveLoad.getProjectFolder().mkdir();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L60">
+             <td class="code lineNumber">
+                  <a href="#L60">60</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //unless the user deleted their data directory, this means this is the first run
+              </td>
+          </tr>
+                      <tr class="code" id="L61">
+             <td class="code lineNumber">
+                  <a href="#L61">61</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">firstRun = true;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L62">
+             <td class="code lineNumber">
+                  <a href="#L62">62</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L63">
+             <td class="code lineNumber">
+                  <a href="#L63">63</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L64">
+             <td class="code lineNumber">
+                  <a href="#L64">64</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">UserData.load();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L65">
+             <td class="code lineNumber">
+                  <a href="#L65">65</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //USER DATA IS NOW LOADED; do any init of prefs or such here
+              </td>
+          </tr>
+                      <tr class="code" id="L66">
+             <td class="code lineNumber">
+                  <a href="#L66">66</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L67">
+             <td class="code lineNumber">
+                  <a href="#L67">67</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //create point manager
+              </td>
+          </tr>
+                      <tr class="code" id="L68">
+             <td class="code lineNumber">
+                  <a href="#L68">68</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: catch(NumberFormatException nfe)">try</span>{
+              </td>
+          </tr>
+                      <tr class="code" id="L69">
+             <td class="code lineNumber">
+                  <a href="#L69">69</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">pointManager = new PointManager();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L70">
+             <td class="code lineNumber">
+                  <a href="#L70">70</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L71">
+             <td class="code lineNumber">
+                  <a href="#L71">71</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Branch_Coverage">catch(NumberFormatException nfe)</span>{
+              </td>
+          </tr>
+                      <tr class="code" id="L72">
+             <td class="code lineNumber">
+                  <a href="#L72">72</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //if there's an exception like this, the wrong data was loaded into the User Data
+              </td>
+          </tr>
+                      <tr class="code" id="L73">
+             <td class="code lineNumber">
+                  <a href="#L73">73</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //probably done by 0.6.0
+              </td>
+          </tr>
+                      <tr class="code" id="L74">
+             <td class="code lineNumber">
+                  <a href="#L74">74</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L75">
+             <td class="code lineNumber">
+                  <a href="#L75">75</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //alert user
+              </td>
+          </tr>
+                      <tr class="code" id="L76">
+             <td class="code lineNumber">
+                  <a href="#L76">76</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">Utils.showDialog(null, </span>
+              </td>
+          </tr>
+                      <tr class="code" id="L77">
+             <td class="code lineNumber">
+                  <a href="#L77">77</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  <span class="covered notCovered Statement_Coverage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;Sorry! Your user data seems to have been corrupted and has been reset.&quot;, </span>
+              </td>
+          </tr>
+                      <tr class="code" id="L78">
+             <td class="code lineNumber">
+                  <a href="#L78">78</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  <span class="covered notCovered Statement_Coverage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;User data corrupted&quot;);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L79">
+             <td class="code lineNumber">
+                  <a href="#L79">79</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L80">
+             <td class="code lineNumber">
+                  <a href="#L80">80</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //clear all data since something's corrupted
+              </td>
+          </tr>
+                      <tr class="code" id="L81">
+             <td class="code lineNumber">
+                  <a href="#L81">81</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">UserData.makeAllDefault();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L82">
+             <td class="code lineNumber">
+                  <a href="#L82">82</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L83">
+             <td class="code lineNumber">
+                  <a href="#L83">83</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //reload points
+              </td>
+          </tr>
+                      <tr class="code" id="L84">
+             <td class="code lineNumber">
+                  <a href="#L84">84</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">pointManager = new PointManager();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L85">
+             <td class="code lineNumber">
+                  <a href="#L85">85</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L86">
+             <td class="code lineNumber">
+                  <a href="#L86">86</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L87">
+             <td class="code lineNumber">
+                  <a href="#L87">87</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //user data is set, so update font
+              </td>
+          </tr>
+                      <tr class="code" id="L88">
+             <td class="code lineNumber">
+                  <a href="#L88">88</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">updatePreferredFont(</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L89">
+             <td class="code lineNumber">
+                  <a href="#L89">89</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  <span class="covered fullyCovered Statement_Coverage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UserData.getPref(&quot;FontName&quot;), </span>
+              </td>
+          </tr>
+                      <tr class="code" id="L90">
+             <td class="code lineNumber">
+                  <a href="#L90">90</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  <span class="covered fullyCovered Statement_Coverage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UserData.getInt(&quot;Prefs.FontSize&quot;)</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L91">
+             <td class="code lineNumber">
+                  <a href="#L91">91</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  <span class="covered fullyCovered Statement_Coverage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; );</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L92">
+             <td class="code lineNumber">
+                  <a href="#L92">92</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L93">
+             <td class="code lineNumber">
+                  <a href="#L93">93</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //load projects
+              </td>
+          </tr>
+                      <tr class="code" id="L94">
+             <td class="code lineNumber">
+                  <a href="#L94">94</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">ArrayList&lt;Project&gt; loadedProjects = loadProjectsFromFile();</span> //these projects are all stocked with cards/notes&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L95">
+             <td class="code lineNumber">
+                  <a href="#L95">95</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">this.projects = loadedProjects;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L96">
+             <td class="code lineNumber">
+                  <a href="#L96">96</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">this.gui = new GUI(this,loadedProjects);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L97">
+             <td class="code lineNumber">
+                  <a href="#L97">97</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  
+              </td>
+          </tr>
+                      <tr class="code" id="L98">
+             <td class="code lineNumber">
+                  <a href="#L98">98</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //lack of projects matters now
+              </td>
+          </tr>
+                      <tr class="code" id="L99">
+             <td class="code lineNumber">
+                  <a href="#L99">99</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: else">if</span>(<span class="covered partlyCovered Term_Coverage">projects.isEmpty()</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L100">
+             <td class="code lineNumber">
+                  <a href="#L100">100</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //no active project
+              </td>
+          </tr>
+                      <tr class="code" id="L101">
+             <td class="code lineNumber">
+                  <a href="#L101">101</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">setNoActiveProject();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L102">
+             <td class="code lineNumber">
+                  <a href="#L102">102</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L103">
+             <td class="code lineNumber">
+                  <a href="#L103">103</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Branch_Coverage">else</span>{
+              </td>
+          </tr>
+                      <tr class="code" id="L104">
+             <td class="code lineNumber">
+                  <a href="#L104">104</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //there is an active project
+              </td>
+          </tr>
+                      <tr class="code" id="L105">
+             <td class="code lineNumber">
+                  <a href="#L105">105</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">String projectName = UserData.getString(&quot;Project&quot;);</span> //the raw name of the project
+              </td>
+          </tr>
+                      <tr class="code" id="L106">
+             <td class="code lineNumber">
+                  <a href="#L106">106</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">setActiveProject(projectName,false);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L107">
+             <td class="code lineNumber">
+                  <a href="#L107">107</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L108">
+             <td class="code lineNumber">
+                  <a href="#L108">108</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  
+              </td>
+          </tr>
+                      <tr class="code" id="L109">
+             <td class="code lineNumber">
+                  <a href="#L109">109</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">Themes theme = Themes.getThemeByName(UserData.getString(&quot;Theme&quot;));</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L110">
+             <td class="code lineNumber">
+                  <a href="#L110">110</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">setTheme(theme);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L111">
+             <td class="code lineNumber">
+                  <a href="#L111">111</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L112">
+             <td class="code lineNumber">
+                  <a href="#L112">112</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">gui.makeFrameVisible();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L113">
+             <td class="code lineNumber">
+                  <a href="#L113">113</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L114">
+             <td class="code lineNumber">
+                  <a href="#L114">114</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //give first run info
+              </td>
+          </tr>
+                      <tr class="code" id="L115">
+             <td class="code lineNumber">
+                  <a href="#L115">115</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: then">if</span>(<span class="covered partlyCovered Term_Coverage">firstRun</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L116">
+             <td class="code lineNumber">
+                  <a href="#L116">116</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //show advice
+              </td>
+          </tr>
+                      <tr class="code" id="L117">
+             <td class="code lineNumber">
+                  <a href="#L117">117</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">Utils.openURLinDialog(&quot;http://www.cabra.hathix.com/cabra/welcome.php&quot;, </span>
+              </td>
+          </tr>
+                      <tr class="code" id="L118">
+             <td class="code lineNumber">
+                  <a href="#L118">118</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  <span class="covered notCovered Statement_Coverage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;Welcome to Cabra!&quot;, </span>
+              </td>
+          </tr>
+                      <tr class="code" id="L119">
+             <td class="code lineNumber">
+                  <a href="#L119">119</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  <span class="covered notCovered Statement_Coverage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; gui.getFrame(), true);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L120">
+             <td class="code lineNumber">
+                  <a href="#L120">120</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L121">
+             <td class="code lineNumber">
+                  <a href="#L121">121</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //set user data's latest version to this
+              </td>
+          </tr>
+                      <tr class="code" id="L122">
+             <td class="code lineNumber">
+                  <a href="#L122">122</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">UserData.setString(&quot;Version&quot;, About.VERSION);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L123">
+             <td class="code lineNumber">
+                  <a href="#L123">123</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L124">
+             <td class="code lineNumber">
+                  <a href="#L124">124</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //add a default project
+              </td>
+          </tr>
+                      <tr class="code" id="L125">
+             <td class="code lineNumber">
+                  <a href="#L125">125</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //this.addProject(new Project(&quot;My First Project&quot;), true);
+              </td>
+          </tr>
+                      <tr class="code" id="L126">
+             <td class="code lineNumber">
+                  <a href="#L126">126</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L127">
+             <td class="code lineNumber">
+                  <a href="#L127">127</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L128">
+             <td class="code lineNumber">
+                  <a href="#L128">128</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //show changelog if this is a new version
+              </td>
+          </tr>
+                      <tr class="code" id="L129">
+             <td class="code lineNumber">
+                  <a href="#L129">129</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">boolean upgrade = UserData.getString(&quot;Version&quot;).equals(About.VERSION) == false;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L130">
+             <td class="code lineNumber">
+                  <a href="#L130">130</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: implicit (omitted) branch">if</span>(!<span class="covered partlyCovered Term_Coverage">firstRun</span> &amp;&amp; <span class="covered partlyCovered Term_Coverage">upgrade</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L131">
+             <td class="code lineNumber">
+                  <a href="#L131">131</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //not first run (then new version doesn't matter)&nbsp;&nbsp; &amp;&amp;&nbsp;&nbsp; old version != new version
+              </td>
+          </tr>
+                      <tr class="code" id="L132">
+             <td class="code lineNumber">
+                  <a href="#L132">132</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  
+              </td>
+          </tr>
+                      <tr class="code" id="L133">
+             <td class="code lineNumber">
+                  <a href="#L133">133</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //store new version
+              </td>
+          </tr>
+                      <tr class="code" id="L134">
+             <td class="code lineNumber">
+                  <a href="#L134">134</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">String version = About.VERSION;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L135">
+             <td class="code lineNumber">
+                  <a href="#L135">135</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">UserData.setString(&quot;Version&quot;, About.VERSION);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L136">
+             <td class="code lineNumber">
+                  <a href="#L136">136</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L137">
+             <td class="code lineNumber">
+                  <a href="#L137">137</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //show changelog
+              </td>
+          </tr>
+                      <tr class="code" id="L138">
+             <td class="code lineNumber">
+                  <a href="#L138">138</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: then">if</span>(<span class="covered partlyCovered Term_Coverage">About.NIGHTLY</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L139">
+             <td class="code lineNumber">
+                  <a href="#L139">139</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //don't bother with showing nightly changelog; docs are rarely written for nightlies
+              </td>
+          </tr>
+                      <tr class="code" id="L140">
+             <td class="code lineNumber">
+                  <a href="#L140">140</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*&nbsp; Utils.showDialog(gui.getFrame(),
+              </td>
+          </tr>
+                      <tr class="code" id="L141">
+             <td class="code lineNumber">
+                  <a href="#L141">141</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;&lt;html&gt;&lt;center&gt;Thanks for testing Cabra &quot; + version + &quot;!&lt;br&gt;As thanks, here's &lt;b&gt;100&lt;/b&gt; points!&quot;,
+              </td>
+          </tr>
+                      <tr class="code" id="L142">
+             <td class="code lineNumber">
+                  <a href="#L142">142</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;Thanks for upgrading to Cabra &quot; + version + &quot;!&quot;
+              </td>
+          </tr>
+                      <tr class="code" id="L143">
+             <td class="code lineNumber">
+                  <a href="#L143">143</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; );&nbsp; */
+              </td>
+          </tr>
+                      <tr class="code" id="L144">
+             <td class="code lineNumber">
+                  <a href="#L144">144</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L145">
+             <td class="code lineNumber">
+                  <a href="#L145">145</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Branch_Coverage">else</span>{
+              </td>
+          </tr>
+                      <tr class="code" id="L146">
+             <td class="code lineNumber">
+                  <a href="#L146">146</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* Utils.openURLinDialog(&quot;http://cabra.hathix.com/changelog/&quot; + Utils.sanitizeURL(version) + &quot;.php&quot;, 
+              </td>
+          </tr>
+                      <tr class="code" id="L147">
+             <td class="code lineNumber">
+                  <a href="#L147">147</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;Thanks for upgrading to Cabra &quot; + version + &quot;!&quot;, 
+              </td>
+          </tr>
+                      <tr class="code" id="L148">
+             <td class="code lineNumber">
+                  <a href="#L148">148</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; gui.getFrame(), true);&nbsp; */
+              </td>
+          </tr>
+                      <tr class="code" id="L149">
+             <td class="code lineNumber">
+                  <a href="#L149">149</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L150">
+             <td class="code lineNumber">
+                  <a href="#L150">150</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L151">
+             <td class="code lineNumber">
+                  <a href="#L151">151</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //earn points for upgrading
+              </td>
+          </tr>
+                      <tr class="code" id="L152">
+             <td class="code lineNumber">
+                  <a href="#L152">152</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: else">if</span>(<span class="covered partlyCovered Term_Coverage">About.PRERELEASE</span>)
+              </td>
+          </tr>
+                      <tr class="code" id="L153">
+             <td class="code lineNumber">
+                  <a href="#L153">153</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">gainPoints(Activity.USE_BETA);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L154">
+             <td class="code lineNumber">
+                  <a href="#L154">154</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Branch_Coverage">else</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L155">
+             <td class="code lineNumber">
+                  <a href="#L155">155</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">gainPoints(Activity.USE_NEW_VERSION);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L156">
+             <td class="code lineNumber">
+                  <a href="#L156">156</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L157">
+             <td class="code lineNumber">
+                  <a href="#L157">157</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L158">
+             <td class="code lineNumber">
+                  <a href="#L158">158</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //if you're lucky, you earn some free points; also don't do it on first run and overwhelm them w/dialogs
+              </td>
+          </tr>
+                      <tr class="code" id="L159">
+             <td class="code lineNumber">
+                  <a href="#L159">159</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: then">if</span>(!<span class="covered notCovered Term_Coverage">firstRun</span> &amp;&amp; !<span class="covered partlyCovered Term_Coverage">upgrade</span> &amp;&amp; <span class="covered notCovered Term_Coverage">Utils.pushLuck(CHANCE_TO_GET_LUCKY)</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L160">
+             <td class="code lineNumber">
+                  <a href="#L160">160</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //earn points!
+              </td>
+          </tr>
+                      <tr class="code" id="L161">
+             <td class="code lineNumber">
+                  <a href="#L161">161</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">int points = Activity.GET_LUCKY.getPoints();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L162">
+             <td class="code lineNumber">
+                  <a href="#L162">162</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">Utils.showDialog(gui.getFrame(),</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L163">
+             <td class="code lineNumber">
+                  <a href="#L163">163</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  <span class="covered notCovered Statement_Coverage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;&lt;html&gt;&lt;center&gt;&quot;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L164">
+             <td class="code lineNumber">
+                  <a href="#L164">164</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  <span class="covered notCovered Statement_Coverage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + &quot;I'm feeling generous, so here's &lt;b&gt;&quot; +&nbsp; points + &quot;&lt;/b&gt; free points! Enjoy!&quot;,</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L165">
+             <td class="code lineNumber">
+                  <a href="#L165">165</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  <span class="covered notCovered Statement_Coverage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;You got lucky!&quot;,</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L166">
+             <td class="code lineNumber">
+                  <a href="#L166">166</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  <span class="covered notCovered Statement_Coverage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;goatgift.png&quot;);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L167">
+             <td class="code lineNumber">
+                  <a href="#L167">167</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">gainPoints(Activity.GET_LUCKY);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L168">
+             <td class="code lineNumber">
+                  <a href="#L168">168</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L169">
+             <td class="code lineNumber">
+                  <a href="#L169">169</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L170">
+             <td class="code lineNumber">
+                  <a href="#L170">170</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //is it time for an upgrade? see how long it's been since the last check
+              </td>
+          </tr>
+                      <tr class="code" id="L171">
+             <td class="code lineNumber">
+                  <a href="#L171">171</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">long lastCheck = Long.parseLong(UserData.getString(&quot;LastUpdateCheck&quot;));</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L172">
+             <td class="code lineNumber">
+                  <a href="#L172">172</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">long rightNow = Calendar.getInstance().getTimeInMillis();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L173">
+             <td class="code lineNumber">
+                  <a href="#L173">173</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">long updateInterval = Utils.daysToMillis(UserData.getIntPref(&quot;UpdateInterval&quot;));</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L174">
+             <td class="code lineNumber">
+                  <a href="#L174">174</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: then">if</span>(<span class="covered partlyCovered Term_Coverage">rightNow - lastCheck &gt;= updateInterval</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L175">
+             <td class="code lineNumber">
+                  <a href="#L175">175</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //time to check for updates, it's been more than the chosen interval since the last one
+              </td>
+          </tr>
+                      <tr class="code" id="L176">
+             <td class="code lineNumber">
+                  <a href="#L176">176</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">Updates.checkForUpdates(gui);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L177">
+             <td class="code lineNumber">
+                  <a href="#L177">177</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L178">
+             <td class="code lineNumber">
+                  <a href="#L178">178</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L179">
+             <td class="code lineNumber">
+                  <a href="#L179">179</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">gui.update();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L180">
+             <td class="code lineNumber">
+                  <a href="#L180">180</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">gui.refresh();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L181">
+             <td class="code lineNumber">
+                  <a href="#L181">181</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L182">
+             <td class="code lineNumber">
+                  <a href="#L182">182</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Branch_Coverage">catch(Exception e)</span>{
+              </td>
+          </tr>
+                      <tr class="code" id="L183">
+             <td class="code lineNumber">
+                  <a href="#L183">183</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //some sort of exception threw off the whole thing
+              </td>
+          </tr>
+                      <tr class="code" id="L184">
+             <td class="code lineNumber">
+                  <a href="#L184">184</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">Utils.debug(e, &quot;Fatal error&quot;);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L185">
+             <td class="code lineNumber">
+                  <a href="#L185">185</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L186">
+             <td class="code lineNumber">
+                  <a href="#L186">186</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+            </tbody>
+    </table></div>
+        <div class="creationNote">
+        created on March 8, 2014 1:07:12 PM MST with
+        <a href="http://www.codecover.org">
+            CodeCover
+        </a>
+    </div>    
+</body>
+</html>
+        

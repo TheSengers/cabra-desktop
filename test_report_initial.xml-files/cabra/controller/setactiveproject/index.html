@@ -1,0 +1,470 @@
+
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>setActiveProject - 8-Mar-2014 12:47:39 PM - CodeCover Report</title>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+</head>
+<body>
+    <div class="headline">
+        Coverage Report
+    </div>
+    <div class="session">
+        8-Mar-2014 12:47:39 PM
+    </div>
+    <div class="sessionDate">
+        measured on March 8, 2014 12:47:39 PM MST
+    </div>
+    <div class="linkToTop">
+          <a href="../../../../test_report_initial.xml">
+              up to the title page
+          </a>
+    </div>
+    <div class="ancestors">
+    <a href="../../index.html">
+        cabra</a>
+    .
+    <a href="../index.html">
+        Controller</a>
+    .
+    setActiveProject
+    </div><div class="methodInfo">
+    <table class="methodInfo">
+    <thead class="methodInfo">
+        <tr class="methodInfo">
+            <th class="methodInfo firstcolumn"></th>
+            <th class="methodInfo" colspan="3">Statement Coverage</th>
+            <th class="methodInfo" colspan="3">Branch Coverage</th>
+            <th class="methodInfo" colspan="3">Term Coverage</th>
+        </tr>
+    </thead>
+    <tbody class="methodInfo">
+        <tr class="methodInfo">
+            <td class="methodInfo firstcolumn">
+                    public void setActiveProject(Project project, boolean shouldSave)
+            </td>  
+                                    <td class="methodInfo">
+                        7&nbsp;/&nbsp;8
+                </td>
+                <td class="methodInfo">
+                        87&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:87%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        7&nbsp;/&nbsp;8
+                </td>
+                <td class="methodInfo">
+                        87&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:87%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        6&nbsp;/&nbsp;6
+                </td>
+                <td class="methodInfo">
+                        100&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:100%"></div></div>
+                </td>   
+                        </tr>
+    </tbody>
+    </table></div>
+    <div class="code">
+    <table class="code">
+        <thead class="code">
+        <tr class="code">
+                        <th class="code" colspan="3">Controller.java</th>
+                </tr>
+        </thead>
+        <tbody class="code">
+                      <tr class="code" id="L358">
+             <td class="code lineNumber">
+                  <a href="#L358">358</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; public void setActiveProject(Project project, boolean shouldSave){
+              </td>
+          </tr>
+                      <tr class="code" id="L359">
+             <td class="code lineNumber">
+                  <a href="#L359">359</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //if nothing has matched, there's a problem
+              </td>
+          </tr>
+                      <tr class="code" id="L360">
+             <td class="code lineNumber">
+                  <a href="#L360">360</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Branch_Coverage">if</span>(<span class="covered fullyCovered Term_Coverage">project == null</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L361">
+             <td class="code lineNumber">
+                  <a href="#L361">361</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //set the first project as active, then call this method again
+              </td>
+          </tr>
+                      <tr class="code" id="L362">
+             <td class="code lineNumber">
+                  <a href="#L362">362</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">setActiveProject(projects.get(0),false);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L363">
+             <td class="code lineNumber">
+                  <a href="#L363">363</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">return;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L364">
+             <td class="code lineNumber">
+                  <a href="#L364">364</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L365">
+             <td class="code lineNumber">
+                  <a href="#L365">365</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L366">
+             <td class="code lineNumber">
+                  <a href="#L366">366</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Branch_Coverage">if</span>(<span class="covered fullyCovered Term_Coverage">shouldSave</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L367">
+             <td class="code lineNumber">
+                  <a href="#L367">367</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //quick! Save the old notes if they weren't saved yet
+              </td>
+          </tr>
+                      <tr class="code" id="L368">
+             <td class="code lineNumber">
+                  <a href="#L368">368</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Branch_Coverage">if</span>(<span class="covered fullyCovered Term_Coverage">activeProject != null</span>){
+              </td>
+          </tr>
+                      <tr class="code" id="L369">
+             <td class="code lineNumber">
+                  <a href="#L369">369</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: catch(NullPointerException n)">try</span>{
+              </td>
+          </tr>
+                      <tr class="code" id="L370">
+             <td class="code lineNumber">
+                  <a href="#L370">370</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">gui.saveAllNotes();</span> //that should do it&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L371">
+             <td class="code lineNumber">
+                  <a href="#L371">371</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L372">
+             <td class="code lineNumber">
+                  <a href="#L372">372</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Branch_Coverage">catch(NullPointerException n)</span>{
+              </td>
+          </tr>
+                      <tr class="code" id="L373">
+             <td class="code lineNumber">
+                  <a href="#L373">373</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //error with saving project
+              </td>
+          </tr>
+                      <tr class="code" id="L374">
+             <td class="code lineNumber">
+                  <a href="#L374">374</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">System.out.println(&quot;Error saving project notes!&quot;);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L375">
+             <td class="code lineNumber">
+                  <a href="#L375">375</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L376">
+             <td class="code lineNumber">
+                  <a href="#L376">376</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L377">
+             <td class="code lineNumber">
+                  <a href="#L377">377</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L378">
+             <td class="code lineNumber">
+                  <a href="#L378">378</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L379">
+             <td class="code lineNumber">
+                  <a href="#L379">379</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">activeProject = project;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L380">
+             <td class="code lineNumber">
+                  <a href="#L380">380</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //alert all 
+              </td>
+          </tr>
+                      <tr class="code" id="L381">
+             <td class="code lineNumber">
+                  <a href="#L381">381</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">gui.newActiveProject(project);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L382">
+             <td class="code lineNumber">
+                  <a href="#L382">382</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  
+              </td>
+          </tr>
+                      <tr class="code" id="L383">
+             <td class="code lineNumber">
+                  <a href="#L383">383</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //set user data
+              </td>
+          </tr>
+                      <tr class="code" id="L384">
+             <td class="code lineNumber">
+                  <a href="#L384">384</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">UserData.setString(&quot;Project&quot;,project.getName());</span> 
+              </td>
+          </tr>
+                      <tr class="code" id="L385">
+             <td class="code lineNumber">
+                  <a href="#L385">385</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </td>
+          </tr>
+                      <tr class="code" id="L386">
+             <td class="code lineNumber">
+                  <a href="#L386">386</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //load the notes for the project
+              </td>
+          </tr>
+                      <tr class="code" id="L387">
+             <td class="code lineNumber">
+                  <a href="#L387">387</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // activeProject.loadNotes();
+              </td>
+          </tr>
+                      <tr class="code" id="L388">
+             <td class="code lineNumber">
+                  <a href="#L388">388</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  
+              </td>
+          </tr>
+                      <tr class="code" id="L389">
+             <td class="code lineNumber">
+                  <a href="#L389">389</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //fix the home panel, which shows nothing unless this is done
+              </td>
+          </tr>
+                      <tr class="code" id="L390">
+             <td class="code lineNumber">
+                  <a href="#L390">390</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">refresh();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L391">
+             <td class="code lineNumber">
+                  <a href="#L391">391</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+            </tbody>
+    </table></div>
+        <div class="creationNote">
+        created on March 8, 2014 1:07:12 PM MST with
+        <a href="http://www.codecover.org">
+            CodeCover
+        </a>
+    </div>    
+</body>
+</html>
+        
