@@ -235,7 +235,7 @@ public class Card extends Object{
                 if(aCard == null) return false;
                 if(aCard instanceof Card == false)return false; //if it's not a card, stop it
                     Card card = (Card)aCard;
-                    if(card == null) return false;
+                   // if(card == null) return false;
                     return card.answerText.equals(this.answerText) && card.questionText.equals(this.questionText)
                             && card.pictureName.equals(this.pictureName)
                             && card.status == this.status;
