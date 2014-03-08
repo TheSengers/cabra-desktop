@@ -156,5 +156,103 @@ public class Deck_Test {
 		Card expectedCard = null;
 		assertEquals("Returned card", expectedCard, actualCard);	
 	}
-
+	
+	/*----------------------------------------------------------------------------------------*/
+	/*-----------------------------WHITE BOX BEYOND THIS POINT!!!-----------------------------*/
+	/*----------------------------------------------------------------------------------------*/
+	
+	@Test
+	public void getCurrentCard() {
+		Deck deck = new Deck();
+		
+		Card card = new Card(Status.A, "q1","a1", "pic");
+		deck.add(card);
+		deck.add(new Card(Status.C,"q2","a2", "pic"));
+		deck.add(new Card("q3","a3"));
+		deck.add(new Card(Status.A,"q4","a4", "pic"));
+		
+		assertEquals(deck.getCurrentCard(), null);	
+	}
+	
+	@Test
+	public void makeCurrentCardNull() {
+		Deck deck = new Deck();
+		
+		deck.add(new Card(Status.A, "q1","a1", "pic"));
+		deck.add(new Card(Status.C,"q2","a2", "pic"));
+		deck.add(new Card("q3","a3"));
+		deck.add(new Card(Status.A,"q4","a4", "pic"));
+		deck.makeCurrentCardNull();
+		
+		assertEquals(deck.getCurrentCard(), null);	
+	}
+	
+	@Test
+	public void grabIndex() {
+		Deck deck = new Deck();
+		
+		deck.add(new Card(Status.A, "q1","a1", "pic"));
+		
+		assertEquals(deck.getCurrentIndex(), 0);	
+	}
+	
+	@Test
+	public void testShuffle() {
+		Deck deck = new Deck();
+		Deck constant = new Deck();
+		
+		deck.add(new Card(Status.A, "q1","a1", "pic"));
+		deck.add(new Card(Status.C,"q2","a2", "pic"));
+		deck.add(new Card(Status.B,"q3","a3", "pic"));
+		deck.add(new Card(Status.A,"q4","a4", "pic"));
+		deck.add(new Card(Status.A, "q5","a5", "pic"));
+		deck.add(new Card(Status.C,"q6","a6", "pic"));
+		deck.add(new Card(Status.B,"q7","a7", "pic"));
+		deck.add(new Card(Status.A,"q8","a8", "pic"));
+		deck.add(new Card(Status.B,"q9","a9", "pic"));
+		deck.add(new Card(Status.A,"q0","a0", "pic"));
+		
+		constant = deck;
+		deck.shuffle();
+		
+		assertNotSame(deck, constant);	
+	}
+	
+	@Test
+	public void getNextCard() {
+		Deck deck = new Deck();
+		
+		Card card = new Card(Status.A, "q1","a1", "pic");
+		deck.add(card);
+		deck.add(new Card(Status.C,"q2","a2", "pic"));
+		deck.add(new Card(Status.B,"q3","a3", "pic"));
+		
+		assertEquals(card, deck.getCard());	
+	}
+	
+	@Test
+	public void checkNextCardIndex() {
+		Deck deck = new Deck();
+		
+		Card card = new Card(Status.A, "q1","a1", "pic");
+		deck.add(card);
+		deck.add(new Card(Status.C,"q2","a2", "pic"));
+		deck.add(new Card(Status.B,"q3","a3", "pic"));
+		
+		card = deck.getCard();
+		
+		assertEquals(deck.getCurrentIndex(), 1);	
+	}
+	
+	@Test
+	public void getNextCardOverLimit() {
+		Deck deck = new Deck();
+		
+		Card card = new Card(Status.A, "q1","a1", "pic");
+		deck.add(card);
+		
+		deck.getCard();
+		
+		assertEquals(card, deck.getCard());
+	}
 }
