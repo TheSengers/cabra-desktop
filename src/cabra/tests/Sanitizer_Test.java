@@ -71,12 +71,39 @@ public class Sanitizer_Test {
 		assertEquals("String with no underscores", expectedString, actualString);	
 	}
 	
+	
+	/**************************************WHITE-BOX TESTS**************************************/
+	
 	@Test
-	public void s() {
-		String actualString = Sanitizer.removeUnderscores(null);
-		String expectedString = null;
+	public void hasDisallowedChar_positiveTest_test() {
+		boolean actualBool = Sanitizer.hasDisallowedChar("hi my name is Santiago Taco");
+		boolean expectedBool = false;
 		
-		assertEquals("String with no underscores", expectedString, actualString);	
+		assertEquals("Has disallowed characters", expectedBool, actualBool);	
+	}
+	
+	@Test
+	public void hasDisallowedChar_hasInteragtionMarks_test() {
+		boolean actualBool = Sanitizer.hasDisallowedChar("How are you ?");
+		boolean expectedBool = true;
+		
+		assertEquals("Has disallowed characters", expectedBool, actualBool);	
+	}
+	
+	@Test
+	public void sanitize_positiveTests_test() {
+		String actualString = Sanitizer.sanitize("How are you?");
+		String expectedString = "How are you";
+		
+		assertEquals("Sanitize string", expectedString, actualString);	
+	}
+	
+	@Test
+	public void sanitize_stringWithNoDisallowedCharacters_test() {
+		String actualString = Sanitizer.sanitize("How are you");
+		String expectedString = "How are you";
+		
+		assertEquals("Sanitize string", expectedString, actualString);	
 	}
 
 }
