@@ -24,8 +24,10 @@ import junit.framework.TestCase;
  *
  * @author HelmanRGKu
  */
+
 public class Project_Test extends TestCase {
     
+	public final static int DEFAULT_TIMEOUT = 2000;
     public Project_Test(String testName) {
         super(testName);
     }
@@ -783,12 +785,321 @@ public class Project_Test extends TestCase {
      * Test to make sure that the project has alternative ways of getting the project name.
      */
     public void testToString() {
-        System.out.println("toString");
         Project project = new Project("Name");
         String ExpectedResult = "Name";
         String ActualResult = project.toString();
         assertEquals(ExpectedResult, ActualResult);
     }
+    
+    
+    /***********************************************************************************************************
+     * Start of test added for Whitebox
+     ***********************************************************************************************************/
 
+    @Test(timeout = DEFAULT_TIMEOUT)
+    /*
+     * Test the  new session function 
+     */
+    public void test_create_Session_for_project()
+    {
+    	  Project project = new Project("Name");
+    	  Card card = new Card("Question", "Answer");
+    	  project.addCard(card);
+          project.newSession();
+          assertNotNull(project.getSession());
+    }
+    
+    @Test
+    /*
+     * Test adding a card to the project that has pictures.
+     */
+    public void test_AddCard_With_Pictures()
+    {
+    	Project project = new Project("Name");
+    	Card card = new Card(Status.A, 1, "Question", "Answer", "batman");
+    	project.addCard(card);
+    	project.newSession();
+    	assertNotNull(project.getCards().get(0));
+    }
+    
+    @Test
+    /*
+     * test the get status cards function
+     */
+    public void test_CardStatuses()
+    {
+    	Project project = new Project("Name");
+    	Card card1 = new Card("Question", "Answer");
+    	Card card2 = new Card("Question", "Answer");
+    	Card card3 = new Card("Question", "Answer");
+    	Card card4 = new Card("Question", "Answer");
+    	Card card5 = new Card("Question", "Answer");
+    	
+    	card1.setStatus(Status.A);
+    	card2.setStatus(Status.B);
+    	card2.setStatus(Status.C);
+    	card2.setStatus(Status.D);
+    	card2.setStatus(Status.E);
+    	
+    	project.addCard(card1);
+    	project.addCard(card2);
+    	project.addCard(card3);
+    	project.addCard(card4);
+    	project.addCard(card5);
+    	
+    	int expectedResult[] = {1,1,1,1,1};
+    	int actualResult[] = project.cardStatuses();
+    	
+    	assertEquals("Card Statuses", expectedResult, actualResult);
 
+    }
+    
+    @Test
+    /*
+     * test comparing two projects
+     */
+    public void test_CompateTo_twoDifferentProject_sameName()
+    {
+    	Project project1 = new Project("Name1");
+    	Project project2 = new Project("Name2");
+
+    	int expectedResult = 1;
+    	int actualResult = project1.compareTo(project2);
+    	
+    	assertEquals("Compare two projects same name", expectedResult, actualResult);
+    	
+
+    }
+    
+    @Test
+    /*
+     * test comparing two projects
+     */
+    public void test_CompateTo_ProjectwithItself()
+    {
+    	Project project1 = new Project("Name");
+
+    	int expectedResult = 0;
+    	int actualResult = project1.compareTo(project1);
+    	
+    	assertEquals("Compare two projects same name", expectedResult, actualResult);
+    	
+
+    }
+    
+    @Test
+    /*
+     * test create a smaple project
+     */
+    public void test_Create_Sample_Project()
+    {
+    	Project project1 = new Project("Sample");
+    	Controller controller = new Controller();
+    	
+    	Project.createSampleProject(controller);
+    	
+    	
+
+    	Project expectedResult = controller.getAllProjects().get(0);
+    	Project actualResult = project1;
+    	
+    	assertEquals("Create smaple project", expectedResult, actualResult);
+    	
+
+    }
+    
+    
+    @Test
+    /*
+     * test the equal function
+     */
+    public void test_equals_Null_Project()
+    {
+    	Project project1 = new Project("Sample");
+    	Project project2 = null;
+    	
+    	project1.equals(project2);
+
+    	boolean expectedResult = false;
+    	boolean actualResult = project1.equals(project2);
+    	
+    	assertEquals("Equals project null", expectedResult, actualResult);
+    	
+
+    }
+    
+    @Test
+    /*
+     * test the equal function comparing a project to a card.
+     */
+    public void test_equals_Object_NotProject()
+    {
+    	Project project1 = new Project("Sample");
+    	Card card = new Card("Question", "Answer");
+    	
+    	project1.equals(card);
+
+    	boolean expectedResult = false;
+    	boolean actualResult = project1.equals(card);
+    	
+    	assertEquals("Equals project null", expectedResult, actualResult);
+    	
+
+    }
+    
+    
+    @Test
+    /*
+     * compare two projects
+     */
+    public void test_equals_Object_Project()
+    {
+    	Project project1 = new Project("Sample");
+    	Project project2 = new Project("Sample");
+    	
+    	project1.equals(project2);
+
+    	boolean expectedResult = true;
+    	boolean actualResult = project1.equals(project2);
+    	
+    	assertEquals("Equals project null", expectedResult, actualResult);
+    }
+    
+    @Test
+    /*
+     * Test that the hash codes are not the same, Project with name
+     */
+    public void test_hascode_ProjectWithName()
+    {
+    	int my_hash = 3;
+    	int expectedResult =19 * my_hash + "Sample".hashCode();
+    	
+    	Project project1 = new Project("Sample");
+    	int actualResult = project1.hashCode();
+    	
+    	assertNotSame("hash code name", expectedResult, actualResult);
+    }
+
+    @Test
+    /*
+     * Test that the hash codes are not the same, Project with no name
+     */
+    public void test_hascode_ProjectWitNoName()
+    {
+    	int my_hash = 3;
+    	int expectedResult =19 * my_hash + "Sample".hashCode();
+    	
+    	Project project1 = new Project(null);
+    	int actualResult = project1.hashCode();
+    	
+    	assertNotSame("hash code no name", expectedResult, actualResult);
+    }
+
+    
+    @Test
+    /*
+     * Test skip all cards making sure they are not deleted onced skipped
+     */
+    public void test_Skip_all()
+    {
+    	Project project1 = new Project("Sample");
+    	Card card1 = new Card("Question", "Answer");
+    	Card card2 = new Card("Question", "Answer");
+    	Card card3 = new Card("Question", "Answer");
+    	
+    	project1.addCard(card1);
+    	project1.addCard(card2);
+    	project1.addCard(card3);
+    	
+    	project1.skipAll();
+    	
+    	
+    	assertNotNull(project1.getCards().get(0));
+    }
+    
+    @Test
+    /*
+     * Test for skipping project with no cards does not delete the project
+     */
+    public void test_Skip_all_Project_No_Cards()
+    {
+    	Project project1 = new Project("Sample");
+    	
+    	project1.skipAll();
+    	
+    	
+    	assertNotNull(project1);
+    }
+    
+    @Test
+    /*
+     * Test cards to make sure their status are reset
+     */
+    public void test_resetCards()
+    {
+    	Project project1 = new Project("Sample");
+    	Card card1 = new Card("Question", "Answer");
+    	Card card2 = new Card("Question", "Answer");
+    	Card card3 = new Card("Question", "Answer");
+    	
+    	project1.addCard(card1);
+    	project1.addCard(card2);
+    	project1.addCard(card3);
+    	
+    	project1.resetAllCards();
+    	
+    	Status expectedResult = Status.A;
+    	Status actualResult = project1.getCards().get(1).getStatus();
+    	
+    	
+    	assertEquals("cards statuses", expectedResult, actualResult);
+    }
+    
+    
+    @Test
+    /*
+     * Test cards to make sure their status are reset
+     */
+    public void test_Save()
+    {
+    	Project project1 = new Project("Sample");
+    	Card card1 = new Card("Question", "Answer");
+    	Note note1 = new Note("loco");
+    	
+    	project1.addCard(card1);
+    	project1.addNote(note1);
+    	
+    	project1.save();
+    	
+    	Note expectedResult = note1;
+    	Note actualResult = project1.getNotes().get(0);
+    	
+    	
+    	assertEquals("Saving project", expectedResult, actualResult);
+    }
+    
+    
+
+    @Test
+    /*
+     * Test the print function
+     */
+    public void test_Print()
+    {
+    	Project project1 = new Project("Sample");
+    	Controller controller = new Controller();
+    	project1.print(controller);
+    	assertNotNull(project1);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
