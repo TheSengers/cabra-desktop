@@ -310,7 +310,7 @@ public class Controller_Tests {
 	
 	@Test
 	//remove the activeProject.
-	public void removeProject_removeActiveProjects_test() {
+	public void removeProject_removeActiveProject_test() {
 		Controller cont = getNewController();
 		Project p1 =  cont.addProject("p1", true);
 		Project p2 = cont.addProject("p2", true);

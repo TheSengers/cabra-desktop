@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package cabra.tests;
 
 import cabra.Card;
@@ -965,6 +962,20 @@ public class Project_Test extends TestCase {
     	assertEquals("Equals project null", expectedResult, actualResult);
     }
     
+    
+    @Test (expected = Exception.class)
+    /*
+     * compare two project with one that has a null project LOLO
+     */
+    public void test_equals_Object_Project_Null_Name()
+    {
+    	Project project1 = new Project("Sample");
+    	Project project2 = new Project(null);
+    	
+    	project1.equals(project2);
+    	
+    }
+    
     @Test
     /*
      * Test that the hash codes are not the same, Project with name
@@ -1080,7 +1091,7 @@ public class Project_Test extends TestCase {
     
     
 
-    @Test
+    @Test(expected  = NullPointerException.class)
     /*
      * Test the print function
      */
@@ -1088,18 +1099,14 @@ public class Project_Test extends TestCase {
     {
     	Project project1 = new Project("Sample");
     	Controller controller = new Controller();
+    	Card card1 = new Card("Question","Answer");
+    	project1.addCard(card1);
     	project1.print(controller);
-    	assertNotNull(project1);
     }
     
+}    
     
     
     
     
     
-    
-    
-    
-    
-    
-}

@@ -133,6 +133,7 @@ public class Status_Tests {
 		
 		assertEquals("Status", expectedStatus, actualStatus);
 	}
+
 	
 	@Test
 	public void getStatus_learnedStatus_test() {
@@ -142,6 +143,8 @@ public class Status_Tests {
 		
 		assertEquals("Status", expectedStatus, actualStatus);
 	}
+	
+	/*-----------Status.importFromPast test-----------*/
 	
 	@Test
 	public void importFromPast_learnedStatus_test() {
