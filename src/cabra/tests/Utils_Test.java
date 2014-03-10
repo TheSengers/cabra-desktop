@@ -430,4 +430,13 @@ public class Utils_Test {
 		String expected = "86%";
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}	
+	
+	@Test	
+	public void sanitizeURL_positive_test(){
+		String url = "http://cats and dogs.com/cat food.html";
+		String expected = "http://cats%20and%20dogs.com/cat%20food.html";
+		String actual = Utils.sanitizeURL(url);
+		assertEquals("Utils.sanitizeURL returned an unexpected result\n",expected, actual);
+	}
+
 }
