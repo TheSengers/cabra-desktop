@@ -405,15 +405,22 @@ public class Utils_Test {
 	}
 	
 	/*------------ New test cases ------------*/
-	@Test	
+	/*@Test	
 	public void average_empty_test() {
 		int[] empty_arr;
 		empty_arr = new int[0];
 		int actual = Utils.average(empty_arr);
 		int expected = 0;
 		assertEquals("Passing an empty array to Utils.arraySum returned an unexpected result\n",expected, actual);
-	}
+	}*/
 	
+	@Test
+	public void getExtension_dot_at_end_test() {
+		File file_ext = new File("swagyolo.");
+		String actual = Utils.getExtension(file_ext);
+		String expected = null;
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
 	//shouldn't work
 	@Test
 	public void toPercent_exception_test() {
