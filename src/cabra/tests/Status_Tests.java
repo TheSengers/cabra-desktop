@@ -221,4 +221,66 @@ public class Status_Tests {
 		
 		assertEquals("Status toString", expectedString, actualString);
 	}
+	
+	/**************************************MUTATION TESTS**************************************/
+	
+	@Test
+	public void getToolTipText_positiveTestA_test() {
+		Status st = Status.A;
+		
+		String actualToolTip = st.getToolTipText();
+		String expectedToolTip = "These cards are new, so you'll study them the most.";
+		
+		assertEquals("Tooltip text", expectedToolTip, actualToolTip);
+	}
+	
+	@Test
+	public void getToolTipText_positiveTestC_test() {
+		Status st = Status.C;
+		
+		String actualToolTip = st.getToolTipText();
+		String expectedToolTip = "You're in the process of learning these cards, so you'll study these occasionally.";
+		
+		assertEquals("Tooltip text", expectedToolTip, actualToolTip);
+	}
+	
+	@Test
+	public void getToolTipText_positiveTestD_test() {
+		Status st = Status.D;
+		
+		String actualToolTip = st.getToolTipText();
+		String expectedToolTip = "You know these cards very well, so you won't study them often.";
+		
+		assertEquals("Tooltip text", expectedToolTip, actualToolTip);
+	}
+	
+	@Test
+	public void getToolTipText_positiveTestE_test() {
+		Status st = Status.E;
+		
+		String actualToolTip = st.getToolTipText();
+		String expectedToolTip = "You know these cards cold, so you'll study them rarely.";
+		
+		assertEquals("Tooltip text", expectedToolTip, actualToolTip);
+	}
+	
+	@Test
+	public void getReps_positiveTestD_test() {
+		Status st = Status.D;
+		
+		int actualReps = st.getReps();
+		int expectedReps = 8;
+		
+		assertEquals("Number of reps", expectedReps, actualReps);
+	}
+	
+	@Test
+	public void getReps_positiveTestE_test() {
+		Status st = Status.E;
+		
+		int actualReps = st.getReps();
+		int expectedReps = 12;
+		
+		assertEquals("Number of reps", expectedReps, actualReps);
+	}
 }
