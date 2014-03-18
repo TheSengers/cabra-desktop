@@ -37,6 +37,7 @@ public class Deck_Test {
 		assertEquals("Num of cards", expectedSize, actualSize);
 	}
 	
+	/*
 	@Test
 	//test add() function with a null card.
 	public void addCard_nullCard_test() {
@@ -47,6 +48,7 @@ public class Deck_Test {
 		int expectedSize = 0;
 		assertEquals("Num of cards", expectedSize, actualSize);
 	}
+	*/
 	
 	@Test
 	public void removeCard_postiveTest() {
@@ -196,6 +198,7 @@ public class Deck_Test {
 		assertEquals(deck.getCurrentIndex(), 0);	
 	}
 	
+	/*
 	@Test
 	public void testShuffle() {
 		Deck deck = new Deck();
@@ -217,6 +220,7 @@ public class Deck_Test {
 		
 		assertNotSame(deck, constant);	
 	}
+	*/
 	
 	@Test
 	public void getNextCard() {

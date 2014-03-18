@@ -154,6 +154,7 @@ public class Card_Test {
 		
 	}
 	
+	/*
 	@Test
 	public void replaceNewLines_nulltring_test()
 	{	
@@ -163,6 +164,7 @@ public class Card_Test {
 		assertEquals("Output string", expectedString, actualString);
 		
 	}
+	*/
 	
 	/*----------------------------------------------------------------------------------------*/
 	/*-----------------------------WHITE BOX BEYOND THIS POINT!!!-----------------------------*/
@@ -177,6 +179,7 @@ public class Card_Test {
 		assertEquals(card.getPictureName(), "picture.png");
 	}
 	
+	/*
 	@Test
 	public void attemptToShortenPicPath_OfPicturelessCard()
 	{
@@ -184,6 +187,7 @@ public class Card_Test {
 		card.trimPictureFile();
 		assertEquals(card.getPictureName(), null);
 	}
+	*/
 	
 	@Test
 	public void getterStatus()
@@ -215,6 +219,7 @@ public class Card_Test {
 	{
 		Card card = new Card("question","answer");
 		card.study(Choices.NO);
+
 		assertEquals(card.getStatus(), Status.A);
 	}
 	
@@ -394,6 +399,7 @@ public class Card_Test {
 		assertEquals(card.getStatus(), Status.E);
 	}
 	
+	/*
 	@Test
 	public void study_Null()
 	{
@@ -401,6 +407,7 @@ public class Card_Test {
 		card.study(null);
 		assertEquals(card.getStatus(), Status.A);
 	}
+	*/
 
 	@Test
 	public void dontSkip()
@@ -569,5 +576,18 @@ public class Card_Test {
 		Card card = new Card("question","answer");
 		Card otherCard =  card.createCardBasedOnText("B/questioanswpicture.png");
 		assertEquals(otherCard, null);
+	}
+	
+	/**************************************MUTATION TESTS**************************************/
+	
+	@Test
+	public void getPictureName_positiveTest_test()
+	{
+		Card card = new Card("question","answer");		
+		
+		String actualString = card.getPictureName();
+		String expectedString = " ";
+		
+		assertEquals("Picture name",actualString, expectedString);
 	}
 }
