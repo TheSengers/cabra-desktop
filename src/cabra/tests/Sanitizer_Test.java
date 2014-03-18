@@ -38,6 +38,7 @@ public class Sanitizer_Test {
 		assertEquals("String with no spaces", expectedString, actualString);		
 	}
 	
+	/*
 	@Test
 	//test with a null string.
 	public void removeSpaces_nullString_test() {
@@ -46,6 +47,7 @@ public class Sanitizer_Test {
 		
 		assertEquals("String with no spaces", expectedString, actualString);		
 	}
+	*/
 	
 	@Test
 	public void removeUnderscores_postiveTest() {
@@ -106,4 +108,14 @@ public class Sanitizer_Test {
 		assertEquals("Sanitize string", expectedString, actualString);	
 	}
 
+	/**************************************MUTATION TESTS**************************************/
+	
+	@Test
+	public void sanitize_positiveTest2_test() {
+		String actualString = Sanitizer.sanitize("How are you??");
+		String expectedString = "How are you";
+		
+		assertEquals("Sanitize string", expectedString, actualString);	
+	}
+	
 }
