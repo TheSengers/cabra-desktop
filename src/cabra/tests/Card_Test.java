@@ -562,6 +562,71 @@ public class Card_Test {
 	}
 	
 	@Test
+	public void hashReturnNullQuestion()
+	{
+		Card card = new Card(Status.C, null,"answer","picture.png");
+		String questionText = null;
+		String answerText = "answer";
+		String pictureName = "picture.png";
+		Status status = Status.C;
+		int hash = 7;
+	    hash = 43 * hash + (questionText != null ? questionText.hashCode() : 0);
+	    hash = 43 * hash + (answerText != null ? answerText.hashCode() : 0);
+	    hash = 43 * hash + (pictureName != null ? pictureName.hashCode() : 0);
+	    hash = 43 * hash + (status != null ? status.hashCode() : 0);
+	    assertEquals(card.hashCode(), hash);
+	}
+	
+	@Test
+	public void hashReturnNullAnswer()
+	{
+		Card card = new Card(Status.C, "question",null,"picture.png");
+		String questionText = "question";
+		String answerText = null;
+		String pictureName = "picture.png";
+		Status status = Status.C;
+		int hash = 7;
+	    hash = 43 * hash + (questionText != null ? questionText.hashCode() : 0);
+	    hash = 43 * hash + (answerText != null ? answerText.hashCode() : 0);
+	    hash = 43 * hash + (pictureName != null ? pictureName.hashCode() : 0);
+	    hash = 43 * hash + (status != null ? status.hashCode() : 0);
+	    assertEquals(card.hashCode(), hash);
+	}
+	
+	@Test
+	public void hashReturnNullPicture()
+	{
+		Card card = new Card(Status.C, "question","answer",null);
+		String questionText = "question";
+		String answerText = "answer";
+		String pictureName = null;
+		Status status = Status.C;
+		int hash = 7;
+	    hash = 43 * hash + (questionText != null ? questionText.hashCode() : 0);
+	    hash = 43 * hash + (answerText != null ? answerText.hashCode() : 0);
+	    hash = 43 * hash + (pictureName != null ? pictureName.hashCode() : 0);
+	    hash = 43 * hash + (status != null ? status.hashCode() : 0);
+	    assertEquals(card.hashCode(), hash);
+	}
+	
+	/*@Test
+	public void hashReturnNullStatus()
+	{
+		Card card = new Card(Status.C, "question","answer","picture.png");
+		card.setStatus(null);
+		String questionText = "question";
+		String answerText = "answer";
+		String pictureName = "picture.png";
+		Status status = null;
+		int hash = 7;
+	    hash = 43 * hash + (questionText != null ? questionText.hashCode() : 0);
+	    hash = 43 * hash + (answerText != null ? answerText.hashCode() : 0);
+	    hash = 43 * hash + (pictureName != null ? pictureName.hashCode() : 0);
+	    hash = 43 * hash + (status != null ? status.hashCode() : 0);
+	    assertEquals(card.hashCode(), hash);
+	}*/
+	
+	@Test
 	public void textGeneratedCard()
 	{
 		Card card = new Card("question","answer");
