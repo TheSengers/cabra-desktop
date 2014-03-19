@@ -393,6 +393,15 @@ public class Utils_Test {
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
 
+	@Test
+	public void Percent_divd_by_zero_test() {
+		int numerator = 100;
+		int denominator = 0;
+		int actual = Utils.percent(numerator, denominator);
+		int expected = 0;
+		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
+	}
+	
 	/*------------Utils.padWithLeadingZeroes test------------*/
 	@Test
 	public void padWithLeadingZeroes_positive_test() {
