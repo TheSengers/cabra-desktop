@@ -116,6 +116,14 @@ public class Sanitizer_Test {
 		String expectedString = "How are you";
 		
 		assertEquals("Sanitize string", expectedString, actualString);	
+	}	
+	
+	@Test
+	public void sanitize_positiveTest3_test() {
+		String actualString = Sanitizer.sanitize("?How are you");
+		String expectedString = "How are you";
+		
+		assertEquals("Sanitize string", expectedString, actualString);	
 	}
 	
 }
