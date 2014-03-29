@@ -375,13 +375,13 @@ public class Project_Test extends TestCase {
      *This test makes sure that the user cannot remove a card from a project with no cards
      *ASK TODAY
      */
-    /*public void testRemoveCard_ProjectWithoutCard() {
+    public void testRemoveCard_ProjectWithoutCard() {
         Card cardToRemove = new Card("Remove","Yes");
         Project project = new Project("Name");
         project.removeCard(cardToRemove);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
-    }*/
+    }
     
     @Test
     /**

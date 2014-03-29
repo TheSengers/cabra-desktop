@@ -154,7 +154,7 @@ public class Card_Test {
 		
 	}
 	
-	/*
+	
 	@Test
 	public void replaceNewLines_nulltring_test()
 	{	
@@ -164,7 +164,7 @@ public class Card_Test {
 		assertEquals("Output string", expectedString, actualString);
 		
 	}
-	*/
+	
 	
 	/*----------------------------------------------------------------------------------------*/
 	/*-----------------------------WHITE BOX BEYOND THIS POINT!!!-----------------------------*/
@@ -179,7 +179,7 @@ public class Card_Test {
 		assertEquals(card.getPictureName(), "picture.png");
 	}
 	
-	/*
+	
 	@Test
 	public void attemptToShortenPicPath_OfPicturelessCard()
 	{
@@ -187,7 +187,7 @@ public class Card_Test {
 		card.trimPictureFile();
 		assertEquals(card.getPictureName(), null);
 	}
-	*/
+	
 	
 	@Test
 	public void getterStatus()
@@ -399,7 +399,7 @@ public class Card_Test {
 		assertEquals(card.getStatus(), Status.E);
 	}
 	
-	/*
+	
 	@Test
 	public void study_Null()
 	{
@@ -407,7 +407,7 @@ public class Card_Test {
 		card.study(null);
 		assertEquals(card.getStatus(), Status.A);
 	}
-	*/
+	
 
 	@Test
 	public void dontSkip()
@@ -609,7 +609,7 @@ public class Card_Test {
 	    assertEquals(card.hashCode(), hash);
 	}
 	
-	/*@Test
+	@Test
 	public void hashReturnNullStatus()
 	{
 		Card card = new Card(Status.C, "question","answer","picture.png");
@@ -624,7 +624,7 @@ public class Card_Test {
 	    hash = 43 * hash + (pictureName != null ? pictureName.hashCode() : 0);
 	    hash = 43 * hash + (status != null ? status.hashCode() : 0);
 	    assertEquals(card.hashCode(), hash);
-	}*/
+	}
 	
 	@Test
 	public void textGeneratedCard()

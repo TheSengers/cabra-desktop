@@ -129,7 +129,7 @@ public class Utils_Test {
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
 	
-	/*
+	
 	@Test
 	public void dayToMillis_year_test() {
 		int daynums = 365;
@@ -139,7 +139,7 @@ public class Utils_Test {
 		expected = expected.multiply(largedays);
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
-	*/
+	
 	
 	@Test
 	public void dayToMillis_max32signedlong_test() {
@@ -151,7 +151,7 @@ public class Utils_Test {
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
 	
-	/*
+	
 	@Test
 	public void dayToMillis_max32unsignedlong_test() {
 		int daynums = 25;
@@ -161,7 +161,7 @@ public class Utils_Test {
 		expected = expected.multiply(largedays);
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
-	*/
+	
 	
 	@Test
 	public void dayToMillis_zero_test() {
@@ -267,7 +267,7 @@ public class Utils_Test {
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
 	
-	/*
+	
 	@Test
 	public void numDigits_negative_num_test() {
 		int input = (-1000);
@@ -275,7 +275,7 @@ public class Utils_Test {
 		int expected = 4;
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
-	*/
+	
 	
 	@Test
 	public void numDigits_onedigit_zero_test() {
@@ -318,7 +318,7 @@ public class Utils_Test {
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
 
-	/*
+	
 	@Test
 	public void stringWithPlural_zero_quantity_test() {
 		String input = "dog";
@@ -326,7 +326,7 @@ public class Utils_Test {
 		String expected = "dog";
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
-	*/
+	
 
 	/*------------Utils.toIntegerArray test------------*/
 	@SuppressWarnings("deprecation")
@@ -422,14 +422,14 @@ public class Utils_Test {
 	}
 	
 	/*------------ New test cases ------------*/
-	/*@Test	
+	@Test	
 	public void average_empty_test() {
 		int[] empty_arr;
 		empty_arr = new int[0];
 		int actual = Utils.average(empty_arr);
 		int expected = 0;
 		assertEquals("Passing an empty array to Utils.arraySum returned an unexpected result\n",expected, actual);
-	}*/
+	}
 	
 	@Test
 	public void getExtension_dot_at_end_test() {
@@ -438,7 +438,7 @@ public class Utils_Test {
 		String expected = null;
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}
-	/*
+	
 	//shouldn't work
 	@Test
 	public void toPercent_exception_test() {
@@ -448,7 +448,7 @@ public class Utils_Test {
 		String expected = "86%";
 		assertEquals("Utils.arraySum returned an unexpected result\n",expected, actual);
 	}	
-	*/
+	
 	
 	@Test	
 	public void sanitizeURL_positive_test(){
